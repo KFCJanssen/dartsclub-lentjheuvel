@@ -1223,12 +1223,28 @@ async function seedIfEmpty(){
     localStorage.setItem('dc-seeded','1');
   }catch(e){}
 }
+/* Speelschema's die Claude via GitHub meelevert (schedules.json) worden één keer in het team gezet.
+   Daarna bewerkt de club het schema gewoon in de app; een nieuwe versie overschrijft het weer. */
+async function applySchedules(){
+  try{
+    const r=await fetch('schedules.json',{cache:'no-store'});if(!r.ok)return;
+    const list=await r.json();if(!Array.isArray(list)||!list.length)return;
+    const snap=await getDocsFromServer(collection(fs,'teams'));
+    const teams=snap.docs.map(d=>({id:d.id,...d.data()}));
+    for(const e of list){
+      const t=teams.find(x=>x.id===e.teamId)||teams.find(x=>(x.name||'').toLowerCase()===(e.team||'').toLowerCase());
+      if(!t||t.scheduleVersion===e.version)continue;
+      await setDoc(doc(fs,'teams',t.id),{schedule:e.schedule,scheduleNote:e.scheduleNote||'',scheduleVersion:e.version,rev:(t.rev||0)+1,updatedAt:Date.now()},{merge:true});
+    }
+  }catch(err){}
+}
 async function initDb(){
   db=makeDb();
   setSync(navigator.onLine?'ok':'offline');
   window.addEventListener('online',()=>setSync('ok'));
   window.addEventListener('offline',()=>setSync('offline'));
   await seedIfEmpty();
+  applySchedules();
   onSnapshot(doc(fs,'settings','format'),d=>{S.settings=d.exists()?d.data():null;if(!(S.route&&S.route.name==='beheer'))render()},()=>{});
   if(S.route&&S.route.name==='beheer')checkAdmin();
   db.collection('teams').onSnapshot(s=>mergeSnap('teams',s),()=>setSync('fout'));
