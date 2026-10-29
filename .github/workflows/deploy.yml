@@ -1,0 +1,17 @@
+# Zet de app automatisch online bij elke wijziging op de main-branch.
+name: Online zetten (Firebase Hosting)
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DARTSCLUB_LENTJHEUVEL }}
+          channelId: live
+          projectId: dartsclub-lentjheuvel

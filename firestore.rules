@@ -1,0 +1,34 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function registered() {
+      return request.auth != null &&
+        exists(/databases/$(database)/documents/devices/$(request.auth.uid));
+    }
+    function admin() {
+      return registered() &&
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+    match /config/{doc} { allow read, write: if false; }
+    match /devices/{uid} {
+      allow create: if request.auth != null && request.auth.uid == uid
+        && request.resource.data.code ==
+           get(/databases/$(database)/documents/config/access).data.code;
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow update, delete: if false;
+    }
+    match /admins/{uid} {
+      allow create: if registered() && request.auth.uid == uid
+        && request.resource.data.code ==
+           get(/databases/$(database)/documents/config/admin).data.code;
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow update, delete: if false;
+    }
+    match /settings/{id} {
+      allow read: if registered();
+      allow write: if admin();
+    }
+    match /teams/{id}   { allow read, write: if registered(); }
+    match /matches/{id} { allow read, write: if registered(); }
+  }
+}
