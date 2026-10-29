@@ -833,7 +833,7 @@ function vAvond(id){
 
 /* ---------- losse partij ---------- */
 function vLos(){
-  if(!S.ui.los)S.ui.los={kind:(S.losPreset||'501'),size:1,bo:3,home:['',''],away:['','']};S.losPreset=null;
+  if(!S.ui.los)S.ui.los=S.losPreset?{kind:S.losPreset,size:1,bo:3,home:['',''],away:['','']}:(S.losLast?clone(S.losLast):{kind:'501',size:1,bo:3,home:['',''],away:['','']});S.losPreset=null;
   const l=S.ui.los;
   let h='<div class="page"><div class="topbar"><button class="btn ghost sm" data-go="oefenen">← Oefenen</button><span class="spacer"></span>'+syncPill()+'</div>';
   h+='<h2 class="sec">Losse partij <small>namen zijn optioneel</small></h2>';
@@ -877,13 +877,13 @@ function winDialog(m,g){
   if(g.solo){const ss=soloStats(g);
     return '<div class="cover"><div class="dialog"><span class="meta">Oefenpartij klaar</span><h3 class="c0">'+ss.legs+' legs gegooid</h3>'+
     '<div class="solostats"><span><small>'+ss.avgLbl+'</small><b>'+(ss.avg!=null?ss.avg.toFixed(g.kind==='tactic'?2:1):'–')+'</b></span><span><small>Beste leg</small><b>'+(ss.best!=null?ss.best+' '+ss.unit:'–')+'</b></span></div>'+
-    '<p class="meta" style="margin:0">Oefenpartijen worden niet bewaard.</p><div class="row" style="justify-content:center"><button class="btn primary" data-go="los">Nog een keer</button><button class="btn" data-go="oefenen">Naar oefenen</button><button class="btn ghost" data-a="undo">Laatste actie terugdraaien</button></div></div></div>';
+    '<p class="meta" style="margin:0">Oefenpartijen worden niet bewaard.</p><div class="row" style="justify-content:center"><button class="btn primary" data-a="losagain">Nog een keer</button><button class="btn" data-go="los">Andere partij</button><button class="btn ghost" data-a="undo">Laatste actie terugdraaien</button></div></div></div>';
   }
   const w=legsWon(g),s=g.winner;
   const next=m.kind==='avond'?m.games.find(x=>x.n>g.n&&x.winner==null):null;
   return '<div class="cover"><div class="dialog"><span class="meta">'+(m.kind==='los'?'Partij':'Partij '+g.n)+' gewonnen door</span><h3 class="c'+s+'">'+esc(sideLabel(m,g,s))+'</h3><div class="score-big">'+w[0]+' – '+w[1]+'</div>'+(m.kind==='los'?'<p class="meta" style="margin:0">Losse partijen worden niet bewaard.</p>':'')+
   '<div class="row" style="justify-content:center">'+(next?'<button class="btn primary" data-go="partij-'+m.id+'-'+next.n+'">Volgende: partij '+next.n+' ('+KIND_LABEL[next.kind]+')</button>':'')+
-  (m.kind==='avond'?'<button class="btn'+(next?'':' primary')+'" data-go="avond-'+m.id+'">Naar speelavond</button>':'<button class="btn primary" data-go="los">Nieuwe losse partij</button><button class="btn" data-go="oefenen">Naar oefenen</button>')+
+  (m.kind==='avond'?'<button class="btn'+(next?'':' primary')+'" data-go="avond-'+m.id+'">Naar speelavond</button>':'<button class="btn primary" data-a="losagain">Nog een keer</button><button class="btn" data-go="los">Andere partij</button>')+
   (readOnly?'':'<button class="btn ghost" data-a="undo">Laatste actie terugdraaien</button>')+'</div></div></div>';
 }
 
@@ -977,6 +977,13 @@ function ptsDialog(m,g,l){
 }
 
 /* ================= acties ================= */
+function startLos(l){
+  const solo=l.size===0;
+  S.losLast=clone(l);
+  const g={n:1,block:0,kind:l.kind,size:solo?1:l.size,solo,bestOf:l.bo||3,home:l.home.slice(0,solo?1:l.size).map(x=>(x||'').trim()),away:solo?[]:l.away.slice(0,l.size).map(x=>(x||'').trim()),legs:[],winner:null};
+  const m={id:uid(),kind:'los',type:'Los',teamName:'',opponent:'',date:today(),createdAt:Date.now(),status:'open',games:[g]};
+  persist('matches',m);go('partij-'+m.id+'-1');
+}
 function endLos(m,g){
   if(m.kind!=='los'||(g.winner!==0&&g.winner!==1))return false;
   S.ui.losCache=clone(m);removeDoc('matches',m.id);return true;
@@ -1111,12 +1118,10 @@ function act(el){
     case 'gclose':S.ui.guide=null;render();return;
     case 'gtry':S.losPreset=v;go('los');return;
     case 'lbo':S.ui.los.bo=+v;render();return;
-    case 'startlos':{
-      const l=S.ui.los;
-      const solo=l.size===0;
-      const g={n:1,block:0,kind:l.kind,size:solo?1:l.size,solo,bestOf:l.bo||3,home:l.home.slice(0,solo?1:l.size).map(x=>(x||'').trim()),away:solo?[]:l.away.slice(0,l.size).map(x=>(x||'').trim()),legs:[],winner:null};
-      const m={id:uid(),kind:'los',type:'Los',teamName:'',opponent:'',date:today(),createdAt:Date.now(),status:'open',games:[g]};
-      persist('matches',m);go('partij-'+m.id+'-1');return;
+    case 'startlos':startLos(S.ui.los);return;
+    case 'losagain':{ /* exact dezelfde oefenpartij opnieuw starten */
+      const {m}=curGame();const g=m&&m.games[0];if(!g)return;
+      startLos({kind:g.kind,size:g.solo?0:g.size,bo:g.bestOf||3,home:(g.home||[]).concat(['','']).slice(0,2),away:(g.away||[]).concat(['','']).slice(0,2)});return;
     }
     case 'fs':{const d=document.documentElement;try{if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});else if(d.requestFullscreen)d.requestFullscreen().catch(()=>toast('Volledig scherm is hier niet beschikbaar.'));else toast('Volledig scherm is hier niet beschikbaar.')}catch(err){toast('Volledig scherm is hier niet beschikbaar.')}return}
     /* 501/701 */
