@@ -181,7 +181,7 @@ input.in:focus,select.in:focus{border-color:var(--brass);outline:none}
 .gx-c{background:#0b0b0b;border-radius:6px;display:flex;align-items:center;justify-content:center;gap:8px;color:#ff6a5c;container-type:size}
 .gx-trow .gx-c:last-child{color:#57d68a}
 .gx-c em{font-style:normal;color:var(--brass);font-weight:800}
-.gx-c .mk{height:30px;gap:3px}.gx-c .mk .kx{width:24px;height:30px}.gx-c .mk .ln{height:4px}
+.gx-c .mk{height:30px;gap:24px}.gx-c .mk .kx{width:24px;height:30px}.gx-c .mk .ln{height:4px}
 .gx-n{background:var(--paper);color:var(--ink);border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:900;font-size:1.7rem}
 .gx-min{border:1px solid #2a2a2a;background:#111;border-radius:6px;color:#bbb;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.4rem}
 .gx-score{display:flex;align-items:center;gap:10px;background:var(--panel);border:2px solid var(--line);border-radius:10px;padding:6px 12px;align-self:center}
@@ -299,8 +299,8 @@ input.in.nr{font-variant-numeric:tabular-nums;letter-spacing:.12em;text-align:ce
 .pl.on{border-color:var(--brass);background:var(--brass-soft)}
 .pl .nm{font-weight:700;font-size:clamp(.85rem,1.8vmin,1.1rem);color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pl.on .nm{color:var(--brass)}
-.hist{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px}
-.chip{height:clamp(50px,9.4vmin,98px);border-radius:8px;border:1px solid var(--line);background:var(--panel-2);font-family:var(--font-display);font-weight:900;font-size:clamp(1.9rem,6.6vmin,4.3rem);font-variant-numeric:tabular-nums;line-height:1;padding:0;min-width:0}
+.hist{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.chip{height:clamp(56px,10.4vmin,108px);border-radius:8px;border:1px solid var(--line);background:var(--panel-2);font-family:var(--font-display);font-weight:900;font-size:clamp(1.9rem,6.6vmin,4.3rem);font-variant-numeric:tabular-nums;line-height:1;padding:0;min-width:0}
 .chip.empty{background:transparent;border-style:dashed;cursor:default}
 .chip.bust{color:var(--warn)}
 .chip{container-type:size;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
@@ -359,7 +359,7 @@ button:disabled{opacity:.4}
 .trow.dead .tnum{background:#4a4a46;color:#1a1a1a;text-decoration:line-through}
 .trow.dead .tcell{opacity:.55}
 .tminus{border:1px solid #2a2a2a;background:#111;border-radius:8px;color:#bbb;font-size:min(60cqh,2rem);font-weight:700;line-height:1;padding:0;min-height:0}
-.mk{position:relative;flex:none;display:inline-flex;align-items:center;gap:6cqh;height:76cqh}
+.mk{position:relative;flex:none;display:inline-flex;align-items:center;gap:62cqh;height:76cqh}
 .mk .kx{position:relative;display:block;width:62cqh;height:76cqh}
 .mk .kx::before,.mk .kx::after{content:"";position:absolute;left:50%;top:50%;width:14%;height:100%;border-radius:3px;background:currentColor;transform:translate(-50%,-50%) rotate(35deg)}
 .mk .kx::after{transform:translate(-50%,-50%) rotate(-35deg)}
@@ -924,9 +924,9 @@ function vX01(m,g){
     h+='<section class="sideP '+(side?'b':'a')+(on?' on':'')+'"><div class="stripe"></div><div class="side-head"><span class="lbl fit c'+side+'">'+esc(sideLabel(m,g,side))+'</span>'+(!g.solo&&l.starter===side?'<span class="started">Begon</span>':'')+legPips(w[side],g)+'</div>'+
       '<div class="remwrap"><span class="rem">'+st.rem[side]+'</span></div><ul class="players">';
     { /* één rij per kant, nieuwste score links; oudere scores vervagen */
-      const mine=st.entries.filter(e=>e.side===side).slice(-5).reverse();
+      const mine=st.entries.filter(e=>e.side===side).slice(-4).reverse();
       let chips=mine.map((e,k)=>{const v=e.s===DOOD?'0':String(e.s);return '<button class="chip a'+k+(e.bust?' bust':'')+(e.out?' out':'')+(ed&&ed.turn===e.i?' ed':'')+'" data-a="chip" data-i="'+e.i+'" aria-label="Corrigeer deze score"><span class="cv d'+v.length+'">'+v+'</span>'+(e.bust?'<small>DOOD</small>':'')+'</button>'}).join('');
-      for(let k=mine.length;k<5;k++)chips+='<span class="chip empty"></span>';
+      for(let k=mine.length;k<4;k++)chips+='<span class="chip empty"></span>';
       h+='<li class="pl'+(on?' on':'')+'"><span class="nm"><b class="newest">◀ nieuwste</b> eerst · tik om te corrigeren</span><div class="hist">'+chips+'</div></li>';
     }
     h+='</ul></section>';
