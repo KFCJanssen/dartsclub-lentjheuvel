@@ -181,7 +181,7 @@ input.in:focus,select.in:focus{border-color:var(--brass);outline:none}
 .gx-c{background:#0b0b0b;border-radius:6px;display:flex;align-items:center;justify-content:center;gap:8px;color:#ff6a5c;container-type:size}
 .gx-trow .gx-c:last-child{color:#57d68a}
 .gx-c em{font-style:normal;color:var(--brass);font-weight:800}
-.gx-c .mk{width:34px;height:34px}
+.gx-c .mk{height:30px;gap:3px}.gx-c .mk .kx{width:24px;height:30px}.gx-c .mk .ln{height:4px}
 .gx-n{background:var(--paper);color:var(--ink);border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:900;font-size:1.7rem}
 .gx-min{border:1px solid #2a2a2a;background:#111;border-radius:6px;color:#bbb;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.4rem}
 .gx-score{display:flex;align-items:center;gap:10px;background:var(--panel);border:2px solid var(--line);border-radius:10px;padding:6px 12px;align-self:center}
@@ -286,8 +286,11 @@ input.in.nr{font-variant-numeric:tabular-nums;letter-spacing:.12em;text-align:ce
 .sideP .stripe{height:8px;flex:none;background:var(--red)}
 .sideP.b .stripe{background:var(--green)}
 .sideP.on{border-color:var(--brass);box-shadow:0 0 0 3px var(--brass) inset}
-.side-head{display:flex;align-items:center;gap:10px;padding:10px 14px 0;flex:none}
-.side-head .lbl{font-weight:700;font-size:clamp(1rem,2.4vmin,1.6rem);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;flex:1}
+.side-head{display:flex;align-items:center;gap:12px;padding:12px 14px 2px;flex:none}
+.side-head .lbl{font-family:var(--font-display);font-weight:800;font-size:clamp(1.3rem,4.6vmin,2.6rem);line-height:1.05;letter-spacing:.01em;white-space:nowrap;overflow:hidden;min-width:0;flex:1}
+.side-head .started{font-size:clamp(.8rem,2vmin,1.1rem);padding:3px 9px}
+.side-head .legs{gap:8px}
+.side-head .legs i{width:clamp(16px,2.8vmin,28px);height:clamp(16px,2.8vmin,28px);border-width:3px}
 .remwrap{flex:1 1 0;min-height:0;container-type:size;display:flex;align-items:center;justify-content:center}
 .rem{font-family:var(--font-display);font-weight:900;line-height:.8;font-variant-numeric:tabular-nums;font-size:min(88cqh,58cqw);letter-spacing:-.01em}
 .sideP.a .rem{color:#ffece7}
@@ -296,11 +299,16 @@ input.in.nr{font-variant-numeric:tabular-nums;letter-spacing:.12em;text-align:ce
 .pl.on{border-color:var(--brass);background:var(--brass-soft)}
 .pl .nm{font-weight:700;font-size:clamp(.85rem,1.8vmin,1.1rem);color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pl.on .nm{color:var(--brass)}
-.hist{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
-.chip{height:clamp(44px,8vmin,84px);border-radius:8px;border:1px solid var(--line);background:var(--panel-2);font-family:var(--font-display);font-weight:900;font-size:clamp(1.6rem,5.2vmin,3.4rem);font-variant-numeric:tabular-nums;line-height:1;padding:0;min-width:0}
+.hist{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px}
+.chip{height:clamp(50px,9.4vmin,98px);border-radius:8px;border:1px solid var(--line);background:var(--panel-2);font-family:var(--font-display);font-weight:900;font-size:clamp(1.9rem,6.6vmin,4.3rem);font-variant-numeric:tabular-nums;line-height:1;padding:0;min-width:0}
 .chip.empty{background:transparent;border-style:dashed;cursor:default}
 .chip.bust{color:var(--warn)}
-.chip.bust small{font-size:.5em;display:block;font-family:var(--font-body);font-weight:700;letter-spacing:.04em}
+.chip{container-type:size;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+.chip .cv{display:block;line-height:.9;font-size:min(80cqh,118cqi)}
+.chip .cv.d2{font-size:min(80cqh,82cqi)}
+.chip .cv.d3{font-size:min(80cqh,58cqi)}
+.chip.bust .cv{font-size:min(56cqh,58cqi)}
+.chip.bust small{font-size:min(20cqh,22cqi);display:block;font-family:var(--font-body);font-weight:800;letter-spacing:.04em;line-height:1.1}
 .chip.out{background:var(--brass);color:#1c1606;border-color:var(--brass)}
 .chip.ed{outline:4px solid var(--brass);outline-offset:-2px}
 
@@ -328,11 +336,12 @@ button:disabled{opacity:.4}
 
 /* ---------- Tac-tic: bordweergave ---------- */
 .game.tac{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1.25fr) minmax(0,7fr) auto;grid-template-areas:"bar" "head" "board" "foot"}
-.thead{grid-area:head;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:8px;min-height:0}
+.thead{grid-area:head;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;min-height:0}
 .tscore{border-radius:12px;border:2px solid var(--line);background:var(--panel);display:grid;grid-template-rows:auto minmax(0,1fr);min-height:0;min-width:0;overflow:hidden;padding:0}
 .tscore .h{display:flex;align-items:center;justify-content:center;gap:10px;font-weight:800;font-size:clamp(.9rem,2.2vmin,1.4rem);padding:4px 8px;color:#fff;white-space:nowrap;overflow:hidden}
 .tscore.s0 .h{background:var(--red)} .tscore.s1 .h{background:var(--green)}
-.tscore .h span{overflow:hidden;text-overflow:ellipsis;min-width:0}
+.tscore .h .tn{overflow:hidden;text-overflow:ellipsis;min-width:0}
+.tscore .h .started{font-size:.75em}
 .tscore .v{container-type:size;min-height:0;display:flex;align-items:center;justify-content:center}
 .tscore .v b{font-family:var(--font-display);font-weight:900;font-size:min(92cqh,45cqw);line-height:.8;font-variant-numeric:tabular-nums}
 .tscore .v small{font-size:min(16cqh,4.5cqw);color:var(--muted);font-weight:600;margin-left:.6em;align-self:flex-end;margin-bottom:.6em}
@@ -350,12 +359,11 @@ button:disabled{opacity:.4}
 .trow.dead .tnum{background:#4a4a46;color:#1a1a1a;text-decoration:line-through}
 .trow.dead .tcell{opacity:.55}
 .tminus{border:1px solid #2a2a2a;background:#111;border-radius:8px;color:#bbb;font-size:min(60cqh,2rem);font-weight:700;line-height:1;padding:0;min-height:0}
-.mk{position:relative;flex:none;width:76cqh;height:76cqh}
-.mk::before,.mk::after{content:"";position:absolute;left:50%;top:50%;width:13%;height:100%;border-radius:3px;background:currentColor;transform:translate(-50%,-50%) rotate(40deg)}
-.mk::after{transform:translate(-50%,-50%) rotate(-40deg)}
-.mk.m1::after{display:none}
-.mk.m3{border:max(3px,9cqh) solid currentColor;border-radius:50%}
-.mk.m3::before,.mk.m3::after{height:62%}
+.mk{position:relative;flex:none;display:inline-flex;align-items:center;gap:6cqh;height:76cqh}
+.mk .kx{position:relative;display:block;width:62cqh;height:76cqh}
+.mk .kx::before,.mk .kx::after{content:"";position:absolute;left:50%;top:50%;width:14%;height:100%;border-radius:3px;background:currentColor;transform:translate(-50%,-50%) rotate(35deg)}
+.mk .kx::after{transform:translate(-50%,-50%) rotate(-35deg)}
+.mk .ln{position:absolute;left:-8%;right:-8%;top:50%;height:11cqh;min-height:3px;border-radius:3px;background:currentColor;transform:translateY(-50%)}
 .tcell.s0 .mk{color:#ff6a5c} .tcell.s1 .mk{color:#57d68a}
 .tfoot{grid-area:foot;display:flex;gap:8px;align-items:stretch;flex-wrap:wrap}
 .tfoot .btn{min-height:52px;font-size:1rem}
@@ -577,6 +585,14 @@ let toastT=null;
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>{t.hidden=true},2400)}
 
 /* ================= weergave ================= */
+/* krimp lange teamnamen tot ze precies passen (bijv. 'Dartteam Friends 4 Life') */
+function fitText(){
+  document.querySelectorAll('.fit').forEach(el=>{
+    el.style.fontSize='';let fs=parseFloat(getComputedStyle(el).fontSize),min=14;
+    while(el.scrollWidth>el.clientWidth+1&&fs>min){fs-=1;el.style.fontSize=fs+'px'}
+  });
+}
+window.addEventListener('resize',()=>fitText());
 function render(){
   if(S.gate!=='ok'){$app.innerHTML=vGate();return}
   const r=S.route||{name:'home'};let html='';
@@ -591,6 +607,7 @@ function render(){
   else if(r.name==='partij')html=vPartij(r.id,r.n);
   else if(r.name==='los')html=vLos();
   $app.innerHTML=html;
+  fitText();
   if(S.ui.focus){const el=document.querySelector(S.ui.focus);if(el)el.focus();S.ui.focus=null}
 }
 function confirmBtn(key,label,action){
@@ -601,6 +618,7 @@ function notFound(){return '<div class="page"><div class="empty"><strong>Niet ge
 
 /* ================= uitleg voor de schrijver ================= */
 const MK=n=>'<span class="gmk">'+n+'</span>';
+function MKH(n){if(n<=0)return '';const k=Math.min(3,n);return '<span class="mk m'+k+'"><i class="kx"></i>'+(k>=2?'<i class="kx"></i>':'')+(k===3?'<i class="ln"></i>':'')+'</span>'}
 const GUIDES={
   x01:{title:'501 en 701 schrijven',steps:[
     {t:'Het scorebord',p:'Het grote getal is wat elke kant nog moet gooien. De kant met de <b>gouden rand</b> gooit nu. Bij wie de leg begon staat <b>Begon</b>.',
@@ -614,11 +632,11 @@ const GUIDES={
   ],tryKind:'501'},
   tactic:{title:'Tac-tic schrijven',steps:[
     {t:'Het bord',p:'In het midden staan 20 tot en met 10 en <b>B</b> (bull). Links schrijf je voor de thuisploeg, rechts voor de gasten, net als op het krijtbord.',
-     ill:'<div class="gx-tac"><div class="gx-trow"><span class="gx-c"><i class="mk m2"></i></span><span class="gx-n">20</span><span class="gx-c"></span></div><div class="gx-trow"><span class="gx-c">'+MK(1)+'</span><span class="gx-n">19</span><span class="gx-c">'+MK(2)+'</span></div><div class="gx-trow"><span class="gx-c"></span><span class="gx-n">B</span><span class="gx-c"><i class="mk m1"></i></span></div></div>'},
-    {t:'Kruisjes zetten',p:'Tik naast het getal voor elke raak: eerst een streep, dan een kruis, dan een kruis met cirkel. Die cirkel betekent <b>dicht</b>. Een dubbel is twee tikken, een triple drie. Te veel getikt? Tik op het <b>minnetje</b> aan de rand.',
-     ill:'<div class="gx-tac"><div class="gx-trow"><span class="gx-min">−</span><span class="gx-c"><i class="mk m1"></i><i class="mk m2"></i><i class="mk m3"></i></span><span class="gx-n">18</span></div></div>'},
+     ill:'<div class="gx-tac"><div class="gx-trow"><span class="gx-c">'+MKH(2)+'</span><span class="gx-n">20</span><span class="gx-c"></span></div><div class="gx-trow"><span class="gx-c">'+MK(1)+'</span><span class="gx-n">19</span><span class="gx-c">'+MK(2)+'</span></div><div class="gx-trow"><span class="gx-c"></span><span class="gx-n">B</span><span class="gx-c">'+MKH(1)+'</span></div></div>'},
+    {t:'Kruisjes zetten',p:'Tik naast het getal voor elke raak: eerst één kruis, dan twee kruisen, dan een streep door de twee kruisen. Die streep betekent <b>dicht</b>. Een dubbel is twee tikken, een triple drie. Te veel getikt? Tik op het <b>minnetje</b> aan de rand.',
+     ill:'<div class="gx-tac"><div class="gx-trow"><span class="gx-min">−</span><span class="gx-c">'+MKH(1)+MKH(2)+MKH(3)+'</span><span class="gx-n">18</span></div></div>'},
     {t:'Punten',p:'Is een getal bij jou dicht en bij de tegenstander nog open? Dan telt elke extra tik de waarde van dat getal bij je punten op. Punten anders aanpassen: tik op de grote score bovenaan en kies <b>+ Erbij</b>, <b>− Eraf</b> of <b>= Vervang</b>.',
-     ill:'<div class="gx-col"><div class="gx-score">'+MK(2)+'<span class="c0">Thuis</span><b>57</b></div><div class="gx-tac"><div class="gx-trow"><span class="gx-c"><i class="mk m3"></i> <em>+19</em>'+MK(1)+'</span><span class="gx-n">19</span><span class="gx-c"><i class="mk m1"></i></span></div></div></div>'},
+     ill:'<div class="gx-col"><div class="gx-score">'+MK(2)+'<span class="c0">Thuis</span><b>57</b></div><div class="gx-tac"><div class="gx-trow"><span class="gx-c">'+MKH(3)+' <em>+19</em>'+MK(1)+'</span><span class="gx-n">19</span><span class="gx-c">'+MKH(1)+'</span></div></div></div>'},
     {t:'Winnen',p:'Wie alles dicht heeft én meer punten, wint de leg: er verschijnt een knop <b>Leg naar …</b>. Alles dicht en gelijk in punten? Dan wordt de leg overgegooid. <b>Ongedaan maken</b> draait de laatste tik terug.',
      ill:'<div class="gx-banner">Lentjheuvel 5 heeft alles dicht en meer punten. <span>Leg naar Lentjheuvel 5</span></div>'}
   ],tryKind:'tactic'},
@@ -903,11 +921,11 @@ function vX01(m,g){
         '<span><small>Beste leg</small><b>'+(ss.best!=null?ss.best+' <i>pijlen</i>':'–')+'</b></span></div></section>';
       return;
     }
-    h+='<section class="sideP '+(side?'b':'a')+(on?' on':'')+'"><div class="stripe"></div><div class="side-head"><span class="lbl c'+side+'">'+esc(sideLabel(m,g,side))+'</span>'+(!g.solo&&l.starter===side?'<span class="started">Begon</span>':'')+legPips(w[side],g)+'</div>'+
+    h+='<section class="sideP '+(side?'b':'a')+(on?' on':'')+'"><div class="stripe"></div><div class="side-head"><span class="lbl fit c'+side+'">'+esc(sideLabel(m,g,side))+'</span>'+(!g.solo&&l.starter===side?'<span class="started">Begon</span>':'')+legPips(w[side],g)+'</div>'+
       '<div class="remwrap"><span class="rem">'+st.rem[side]+'</span></div><ul class="players">';
     { /* één rij per kant, nieuwste score links; oudere scores vervagen */
       const mine=st.entries.filter(e=>e.side===side).slice(-5).reverse();
-      let chips=mine.map((e,k)=>'<button class="chip a'+k+(e.bust?' bust':'')+(e.out?' out':'')+(ed&&ed.turn===e.i?' ed':'')+'" data-a="chip" data-i="'+e.i+'" aria-label="Corrigeer deze score">'+(e.s===DOOD?'0<small>DOOD</small>':e.bust?e.s+'<small>DOOD</small>':e.s)+'</button>').join('');
+      let chips=mine.map((e,k)=>{const v=e.s===DOOD?'0':String(e.s);return '<button class="chip a'+k+(e.bust?' bust':'')+(e.out?' out':'')+(ed&&ed.turn===e.i?' ed':'')+'" data-a="chip" data-i="'+e.i+'" aria-label="Corrigeer deze score"><span class="cv d'+v.length+'">'+v+'</span>'+(e.bust?'<small>DOOD</small>':'')+'</button>'}).join('');
       for(let k=mine.length;k<5;k++)chips+='<span class="chip empty"></span>';
       h+='<li class="pl'+(on?' on':'')+'"><span class="nm"><b class="newest">◀ nieuwste</b> eerst · tik om te corrigeren</span><div class="hist">'+chips+'</div></li>';
     }
@@ -929,7 +947,7 @@ function vX01(m,g){
 
 /* ----- Tac-tic ----- */
 function tacLeg(g){return g.legs.length?g.legs[g.legs.length-1]:newTacLeg()}
-function markHTML(n){return n<=0?'':'<span class="mk m'+Math.min(3,n)+'"></span>'}
+function markHTML(n){return MKH(n)}
 function vTac(m,g){
   const l=tacLeg(g),w=legsWon(g),over=g.winner===0||g.winner===1;
   const tswap=!g.solo&&!over&&!readOnly?'<button class="btn sm" data-a="tstarter">Wissel beginner</button>':'';
@@ -937,13 +955,12 @@ function vTac(m,g){
   if(g.solo){
     const closed=TARGETS.filter(t=>(l.marks[0][t]||0)>=3).length,ss=soloStats(g);
     h+='<div class="thead"><div class="tscore s0"><span class="h"><span>'+esc(sideLabel(m,g,0))+'</span>'+legPips(w[0],g)+'</span><span class="v"><b>'+closed+'</b><small>van 12 dicht</small></span></div>'+
-      '<div class="tleg"><span class="l">Leg</span><span class="n">'+Math.max(1,g.legs.length)+'</span></div>'+
       '<button class="tscore s1 round" data-a="tround"'+(readOnly||over?' disabled':'')+'><span class="h"><span>Beurt</span></span><span class="v"><b>'+((l.rounds||0)+1)+'</b><small>tik na elke beurt</small></span></button></div>';
   }else
   h+='<div class="thead">'+[0,1].map(s=>{
     const open=TARGETS.filter(t=>(l.marks[s][t]||0)<3).length;
-    const sc='<button class="tscore s'+s+'" data-a="pts" data-v="'+s+'"'+(readOnly||over?' disabled':'')+' aria-label="Punten '+esc(sideLabel(m,g,s))+' aanpassen"><span class="h"><span>'+esc(sideLabel(m,g,s))+'</span>'+legPips(w[s],g)+'</span><span class="v"><b>'+l.pts[s]+'</b>'+(open?'':'<small>dicht</small>')+'</span></button>';
-    return s===0?sc+'<div class="tleg"><span class="l">Leg</span><span class="n">'+Math.max(1,g.legs.length)+'</span><span class="tstart">Begon<b class="c'+(l.starter||0)+'">'+esc(sideLabel(m,g,l.starter||0))+'</b></span></div>':sc;
+    const sc='<button class="tscore s'+s+'" data-a="pts" data-v="'+s+'"'+(readOnly||over?' disabled':'')+' aria-label="Punten '+esc(sideLabel(m,g,s))+' aanpassen"><span class="h">'+((l.starter||0)===s?'<span class="started">Begon</span>':'')+'<span class="tn">'+esc(sideLabel(m,g,s))+'</span>'+legPips(w[s],g)+'</span><span class="v"><b>'+l.pts[s]+'</b>'+(open?'':'<small>dicht</small>')+'</span></button>';
+    return sc;
   }).join('')+'</div>';
   const dis=readOnly||over?' disabled':'';
   h+='<div class="tboard">'+TARGETS.map(t=>{
