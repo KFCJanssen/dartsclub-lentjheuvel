@@ -3,7 +3,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {initializeTestEnvironment, assertSucceeds, assertFails} from '@firebase/rules-unit-testing';
-import {doc, getDoc, setDoc, deleteDoc, collection, getDocs} from 'firebase/firestore';
+import {doc, getDoc, setDoc, updateDoc, deleteDoc, collection, getDocs} from 'firebase/firestore';
 
 const env = await initializeTestEnvironment({
   projectId: 'demo-dartsclub',
@@ -48,6 +48,7 @@ await t('mag wel een nieuw meegeleverd speelschema zetten', () => assertSucceeds
 await t('mag geen team verwijderen', () => assertFails(deleteDoc(doc(tablet, 'teams/t1'))));
 await t('mag geen team naar de prullenbak verplaatsen', () => assertFails(setDoc(doc(tablet, 'teams/t1'), {deleted: {at: 1}}, {merge: true})));
 await t('mag scores opslaan', () => assertSucceeds(setDoc(doc(tablet, 'matches/m1'), {id: 'm1', kind: 'avond', teamId: 't1', games: [1], rev: 2})));
+await t('mag één partij apart opslaan', () => assertSucceeds(updateDoc(doc(tablet, 'matches/m1'), {'gm.3': {n: 3, legs: []}, rev: 3})));
 await t('mag een avond naar de prullenbak verplaatsen', () => assertSucceeds(setDoc(doc(tablet, 'matches/m1'), {id: 'm1', kind: 'avond', teamId: 't1', games: [1], rev: 3, deleted: {at: 2}})));
 await t('mag niet terugzetten uit de prullenbak', () => assertFails(setDoc(doc(tablet, 'matches/m2'), {id: 'm2', kind: 'avond', teamId: 't1', games: [], rev: 2})));
 await t('mag niet definitief verwijderen', () => assertFails(deleteDoc(doc(tablet, 'matches/m2'))));

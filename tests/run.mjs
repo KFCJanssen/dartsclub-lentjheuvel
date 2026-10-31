@@ -182,6 +182,61 @@ test('gearchiveerde avond verdwijnt uit het huidige seizoen', () => {
   assert.ok(!S.matches.a1 && S.archived.a1);
 });
 
+console.log('Opslaan per partij');
+test('avond gaat heen en terug zonder verlies', () => {
+  const n = app.newNight({id: 't', name: 'T', division: '3e divisie'}, {type: 'Divisie'});
+  n.games[2].legs = [leg(0, [100, 60])];
+  const r = app.toRemote('matches', n);
+  assert.ok(r.gm && r.gm[3], 'partijen niet per nummer opgeslagen');
+  assert.deepEqual(app.fromRemote('matches', JSON.parse(JSON.stringify(r))).games, n.games);
+});
+test('twee tablets op dezelfde avond overschrijven elkaars partijen niet', () => {
+  // nabootsing van de server: set vervangt alles, update past alleen genoemde velden aan
+  let server = null;
+  const apply = (op, data) => {
+    if (op === 'set') { server = JSON.parse(JSON.stringify(data)); return; }
+    for (const [k, v] of Object.entries(data)) {
+      const parts = k.split('.'); let o = server;
+      while (parts.length > 1) { const p = parts.shift(); o[p] = o[p] || {}; o = o[p]; }
+      o[parts[0]] = JSON.parse(JSON.stringify(v));
+    }
+  };
+  const n = app.newNight({id: 't', name: 'T', division: '3e divisie'}, {type: 'Divisie'});
+  apply('set', app.toRemote('matches', n));
+  // tablet A en B hebben allebei de oude stand; A speelt partij 1, B speelt partij 2
+  const a = JSON.parse(JSON.stringify(n)), b = JSON.parse(JSON.stringify(n));
+  a.games[0].legs = [leg(0, [180])]; b.games[1].legs = [leg(1, [140])];
+  const patch = (o, gn) => { const r = app.toRemote('matches', o), u = {}; Object.keys(r).forEach(k => { if (k !== 'gm' && k !== 'games') u[k] = r[k]; }); u['gm.' + gn] = r.gm[gn]; return u; };
+  apply('update', patch(a, 1)); apply('update', patch(b, 2));
+  const merged = app.fromRemote('matches', server);
+  assert.equal(merged.games[0].legs[0].turns[0], 180, 'partij 1 van tablet A is kwijt');
+  assert.equal(merged.games[1].legs[0].turns[0], 140, 'partij 2 van tablet B is kwijt');
+});
+test('oude avonden (zonder per-partij opslag) blijven leesbaar', () => {
+  const old = {id: 'o', kind: 'avond', games: [{n: 1, legs: []}]};
+  assert.equal(app.fromRemote('matches', old), old);
+});
+
+console.log("180's en high finishes");
+test('180 en high finish worden herkend', () => {
+  app.S.settings = null;
+  const g = x01('501', [leg(0, [180, 0, 180, 0, 141]), leg(1, [180, 60, 100, 0, 100, 100, 121])]);
+  const h = app.highlights(g);
+  assert.deepEqual(h.c180, [2, 1]);
+  assert.deepEqual(h.hf.map(x => x.side + ':' + x.v), ['0:141', '1:121']);
+});
+test('finish onder de grens is geen high finish', () => {
+  const g = x01('501', [leg(0, [180, 0, 180, 0, 100, 0, 41])]);
+  assert.equal(app.highlights(g).hf.length, 0);
+  app.S.settings = {hf: 101};
+  assert.equal(app.highlights(x01('501', [leg(0, [180, 0, 180, 0, 41, 0, 100])])).hf.length, 0, '100 telt niet bij grens 101');
+  app.S.settings = null;
+});
+test('dood gegooide 180 telt niet', () => {
+  const g = x01('501', [leg(0, [180, 0, 180, 0, 180])]);
+  assert.deepEqual(app.highlights(g).c180, [2, 0]);
+});
+
 console.log('Speelschema\'s');
 test('schedules.json is geldig', () => {
   const list = JSON.parse(fs.readFileSync(path.join(root, 'public/schedules.json'), 'utf8'));
@@ -224,7 +279,7 @@ test('alle schermen zijn op te bouwen zonder fouten', () => {
   S.trash = {z: {id: 'z', kind: 'avond', teamName: 'L5', opponent: 'X', date: '2026-10-01', games: [], deleted: {at: 1793000000000, by: 'Tablet bar'}}};
   S.archived = {q: {id: 'q', kind: 'avond', teamId: 't1', archived: '2025-2026', opponent: 'Y', date: '2026-05-01', status: 'klaar', games: []}};
   S.ui.openSeason = '2025-2026';
-  out.push(app.vBeheer(), app.vTeamInfo('t1'));
+  out.push(app.vBeheer(), app.vTeamInfo('t1'), app.vLive());
   S.isAdmin = false;
   S.route = {name: 'los'}; out.push(app.vLos());
   S.route = {name: 'teaminfo', id: 't1'}; app.openResult(t, t.schedule[0], null); out.push(app.resultDialog());

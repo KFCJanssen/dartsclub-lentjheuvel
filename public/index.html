@@ -106,8 +106,8 @@ input.in:focus,select.in:focus{border-color:var(--brass);outline:none}
 /* speelavond */
 .tot{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px 20px}
 .tot .side{display:flex;flex-direction:column;min-width:0}
-.tot .side span{font-size:.85rem;color:var(--muted);font-weight:600}
-.tot .big{font-family:var(--font-display);font-weight:900;font-size:4rem;line-height:.9;font-variant-numeric:tabular-nums}
+.tot .side span:first-child{font-size:.85rem;color:var(--muted);font-weight:600}
+.tot .side .big{font-family:var(--font-display);font-weight:900;font-size:4rem;line-height:.9;font-variant-numeric:tabular-nums}
 .legtot{display:flex;flex-direction:column;padding-left:18px;border-left:1px solid var(--line)}
 .legtot b{font-family:var(--font-display);font-weight:900;font-size:2.6rem;line-height:.95;font-variant-numeric:tabular-nums}
 .order{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
@@ -243,6 +243,22 @@ input.in:focus,select.in:focus{border-color:var(--brass);outline:none}
 .drow .dn small{color:var(--muted);font-size:.82rem}
 .drow .dt{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .drow .btn{min-height:40px;padding:6px 12px;font-size:.9rem}
+.hls{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.hl{font-size:.75rem;font-weight:800;padding:2px 7px;border-radius:5px;border:1px solid currentColor;letter-spacing:.02em}
+.hlsum{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:baseline;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:10px 14px}
+.hlsum b{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;margin-right:4px}
+.hlsum small{color:var(--muted)}
+.live{min-height:100%;display:flex;flex-direction:column;gap:12px;padding-block:10px;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px))}
+.lgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:12px}
+.lcard{background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.lc-head{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:center;font-weight:800;font-size:1.15rem}
+.lc-head span:last-child{text-align:right}
+.lc-head span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lc-score{font-family:var(--font-display);font-weight:900;font-size:2.6rem;line-height:1}
+.lc-meta,.lc-game,.lc-sub{color:var(--muted);font-size:.9rem;font-weight:600}
+.lc-big{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lc-big b{font-family:var(--font-display);font-weight:900;font-size:clamp(3rem,9vw,6rem);line-height:.9;text-align:center;background:var(--bg);border-radius:10px;padding:8px 0}
+.lc-none{color:var(--muted);font-weight:700;padding:16px 0}
 .tabs{display:flex;gap:4px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:4px;align-self:flex-start}
 .tab{border:0;background:transparent;border-radius:9px;padding:10px 22px;font-weight:700;font-size:1.05rem;min-height:48px;color:var(--muted)}
 .tab.on{background:var(--chalk);color:#111}
@@ -440,7 +456,7 @@ button:disabled{opacity:.4}
 
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {initializeFirestore,persistentLocalCache,persistentMultipleTabManager,collection,doc,setDoc,deleteDoc,getDoc,getDocsFromServer,onSnapshot,query,orderBy,limit,writeBatch,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {initializeFirestore,persistentLocalCache,persistentMultipleTabManager,collection,doc,setDoc,updateDoc,deleteDoc,getDoc,getDocsFromServer,onSnapshot,query,orderBy,limit,writeBatch,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import {getAuth,signInAnonymously,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 const SEED_TEAMS=[{"division": "3e divisie", "id": "mvsbp16tjlav6o", "name": "Lentjheuvel 5", "players": [{"id": "mvsbp16tuwl1k1", "name": "Patrick", "role": "C"}, {"id": "mvsbp16txthb9f", "name": "Jordy", "role": "VC"}, {"id": "mvsbp16tesb5e7", "name": "Devin", "role": ""}, {"id": "mvsbp16tal1apv", "name": "Kai", "role": ""}, {"id": "mvsbpk04dxcpit", "name": "Wouter", "role": ""}, {"id": "mvsbplocw2ube9", "name": "Milan", "role": ""}, {"id": "mvsbpnd13eeuay", "name": "Nick", "role": ""}], "schedule": [{"address": "", "date": "2026-09-04", "id": "s00", "opponent": "Captainsmeeting Treebeek Trefcentrum", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2026-09-11", "id": "s01", "opponent": "Toernooi koppel 701", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2026-09-18", "id": "s02", "opponent": "Heksenberg 3", "round": "1", "type": "Divisie", "venue": "Thuis"}, {"address": "Pius XII Plein 38, 6433 CZ Hoensbroek", "date": "2026-09-25", "id": "s03", "opponent": "Flying Darts 5", "round": "2", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2026-10-02", "id": "s04", "opponent": "De Burcht 13", "round": "3", "type": "Divisie", "venue": "Thuis"}, {"address": "", "date": "2026-10-09", "id": "s05", "opponent": "Bekerronde 1 L128", "round": "", "type": "Beker", "venue": ""}, {"address": "Klaverstraat 17, 6135 GR Sittard", "date": "2026-10-16", "id": "s06", "opponent": "DC Brandtaveerne 1", "round": "4", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2026-10-23", "id": "s07", "opponent": "Vrije week / Inhaalweek", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2026-10-30", "id": "s08", "opponent": "Treebeekse Treffers 2", "round": "5", "type": "Divisie", "venue": "Thuis"}, {"address": "Kerkstraat 23, 6439 AN Doenrade", "date": "2026-11-06", "id": "s09", "opponent": "Bullys 2", "round": "6", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2026-11-13", "id": "s10", "opponent": "Bekerronde 2 L64", "round": "", "type": "Beker", "venue": ""}, {"address": "", "date": "2026-11-20", "id": "s11", "opponent": "Hoekje 4", "round": "7", "type": "Divisie", "venue": "Thuis"}, {"address": "", "date": "2026-11-27", "id": "s12", "opponent": "Kunt Jod", "round": "8", "type": "Divisie", "venue": "Thuis"}, {"address": "", "date": "2026-12-04", "id": "s13", "opponent": "Vrije week / Inhaalweek", "round": "", "type": "Info", "venue": ""}, {"address": "Wilhelminastraat 1, 6161 SX Geleen", "date": "2026-12-11", "id": "s14", "opponent": "Reunie 5", "round": "9", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2026-12-18", "id": "s15", "opponent": "Bekerronde 1 L32 · laatste kans op terugval naar eigen divisie", "round": "", "type": "Beker", "venue": ""}, {"address": "", "date": "2027-01-08", "id": "s16", "opponent": "Toernooi koppel Tac-Tic", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2027-01-15", "id": "s17", "opponent": "DC Carboon 1", "round": "10", "type": "Divisie", "venue": "Thuis"}, {"address": "Gravin van Schonbornlaan 4, 6433 AZ Hoensbroek", "date": "2027-01-22", "id": "s18", "opponent": "Lucky Ducks", "round": "11", "type": "Divisie", "venue": "Uit"}, {"address": "Roebroekweg 44, 6414 BC Heerlen", "date": "2027-01-29", "id": "s19", "opponent": "Heksenberg 3", "round": "12", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2027-02-05", "id": "s20", "opponent": "Vrije week i.v.m. carnaval", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2027-02-12", "id": "s21", "opponent": "Bekerronde 1 L16", "round": "", "type": "Beker", "venue": ""}, {"address": "", "date": "2027-02-19", "id": "s22", "opponent": "Flying Darts 5", "round": "13", "type": "Divisie", "venue": "Thuis"}, {"address": "", "date": "2027-02-26", "id": "s23", "opponent": "Vrije week / Inhaalweek", "round": "", "type": "Info", "venue": ""}, {"address": "Wieenweg 18, 6445 CD Brunssum", "date": "2027-03-05", "id": "s24", "opponent": "De Burcht 13", "round": "14", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2027-03-12", "id": "s25", "opponent": "DC Brandtaveerne 1", "round": "15", "type": "Divisie", "venue": "Thuis"}, {"address": "Maanstraat 20, 6446 XE Brunssum", "date": "2027-03-19", "id": "s26", "opponent": "Treebeekse Treffers 2", "round": "16", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2027-03-26", "id": "s27", "opponent": "Bekerronde 1 kwartfinale", "round": "", "type": "Beker", "venue": ""}, {"address": "", "date": "2027-04-02", "id": "s28", "opponent": "Bullys 2", "round": "17", "type": "Divisie", "venue": "Thuis"}, {"address": "Kerkstraat 75, 6137 SM Sittard", "date": "2027-04-09", "id": "s29", "opponent": "Hoekje 4", "round": "18", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2027-04-16", "id": "s30", "opponent": "Bekerronde 1 halve finale", "round": "", "type": "Beker", "venue": ""}, {"address": "", "date": "2027-04-23", "id": "s31", "opponent": "Vrije week / Inhaalweek", "round": "", "type": "Info", "venue": ""}, {"address": "Terbruggen 5, 6471 JS Eygelshoven", "date": "2027-04-30", "id": "s32", "opponent": "Kunt Jod", "round": "19", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2027-05-07", "id": "s33", "opponent": "Reunie 5", "round": "20", "type": "Divisie", "venue": "Thuis"}, {"address": "Ganzeweiden 38, 6413 GG Heerlen", "date": "2027-05-14", "id": "s34", "opponent": "DC Carboon 1", "round": "21", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2027-05-21", "id": "s35", "opponent": "Lucky Ducks", "round": "22", "type": "Divisie", "venue": "Thuis"}, {"address": "", "date": "2027-05-28", "id": "s36", "opponent": "Ben Rozemeijer Memorial single 501 toernooi", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2027-06-04", "id": "s37", "opponent": "Algemene ledenvergadering", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2027-06-11", "id": "s38", "opponent": "Bekerfinales 1e, 2e en 3e divisie", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2027-06-12", "id": "s39", "opponent": "Bekerfinale algemene ronde", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2027-06-18", "id": "s40", "opponent": "Divisiekampioenschappen", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2027-06-25", "id": "s41", "opponent": "Feestavond", "round": "", "type": "Info", "venue": ""}], "scheduleNote": "Speelronde 19, 20, 21 en 22 mogen niet uitgesteld worden, maar mogen wel vooruit gespeeld worden."}, {"division": "4e divisie", "id": "mvsf87qe54n8dm", "name": "Lentjheuvel 4", "players": [{"id": "mvsf87qeudn5lp", "name": "Tanja", "nr": "", "role": "C"}, {"id": "mvsf87qe2f1xcb", "name": "John", "nr": "", "role": "VC"}, {"id": "mvsf87qemosvw5", "name": "Robert-Paul", "nr": "", "role": ""}, {"id": "mvsf87qecg2gvb", "name": "Jacques", "nr": "", "role": ""}, {"id": "mvsf8ofigotpcq", "name": "Monique", "nr": "", "role": ""}, {"id": "mvsf8rbgkbgtz6", "name": "Bo", "nr": "", "role": ""}], "schedule": [], "scheduleNote": ""}, {"division": "1e divisie", "id": "mvsfaq24a2xdur", "name": "Lentjheuvel 2", "players": [], "schedule": [], "scheduleNote": ""}, {"division": "1e divisie", "id": "mvsfazf6tp3q7b", "name": "Lentjheuvel 3", "players": [], "schedule": [], "scheduleNote": ""}, {"division": "Hoofdklasse", "id": "mvsfb7n4wd4pjy", "name": "Scorpions", "players": [], "schedule": [], "scheduleNote": ""}];
 (function(){
@@ -479,18 +495,29 @@ const fmtDate=s=>{if(!s)return'';const [y,m,d]=s.split('-');const mn=['jan','feb
 /* ================= opslag ================= */
 function lsLoad(){try{const j=JSON.parse(localStorage.getItem(LS_KEY)||'{}');S.teams=j.teams||{};S.matches=j.matches||{}}catch(e){}}
 function lsSave(){try{localStorage.setItem(LS_KEY,JSON.stringify({teams:S.teams,matches:S.matches}))}catch(e){}}
-const pend={},busy={},retried={};
-function flush(path){
-  if(!db||busy[path]||!pend[path])return;
-  const body=pend[path];pend[path]=null;busy[path]=true;
-  db.doc(path).set(body).then(()=>{retried[path]=0;setSync('ok')},e=>{
-    const code=e&&e.code;
-    if(code==='invalid_argument'){readOnly=true;setSync('ro')}
-    else if(code==='unavailable'&&!retried[path]&&!pend[path]){retried[path]=1;pend[path]=body}
-    else setSync('fout');
-  }).finally(()=>{busy[path]=false;if(pend[path])setTimeout(()=>flush(path),400+Math.random()*600)});
+const pend={},busy={};
+/* Een avond wordt per partij opgeslagen (veld gm.<nr>), zodat twee tablets op dezelfde avond
+   elkaars partijen nooit overschrijven. Voor oudere app-versies schrijven we ook nog de hele lijst mee. */
+function toRemote(coll,o){
+  const r=clone(o);
+  if(coll==='matches'&&r.kind==='avond'&&Array.isArray(r.games)){const gm={};r.games.forEach(g=>{gm[g.n]=g});r.gm=gm}
+  return r;
 }
-function persist(coll,obj){
+function fromRemote(coll,v){
+  if(coll!=='matches'||!v||!v.gm)return v;
+  const r=clone(v),byN={};(r.games||[]).forEach(g=>{byN[g.n]=g});Object.values(r.gm).forEach(g=>{if(g&&g.n!=null)byN[g.n]=g});
+  r.games=Object.values(byN).sort((a,b)=>a.n-b.n);delete r.gm;return r;
+}
+function writeDoc(coll,id,games){
+  if(!db||readOnly)return;
+  const o=findAny(coll,id);if(!o)return;
+  const path=coll+'/'+id,r=toRemote(coll,o);let pr;
+  if(games&&r.gm){const u={};Object.keys(r).forEach(k=>{if(k!=='gm'&&k!=='games')u[k]=r[k]});games.forEach(n=>{u['gm.'+n]=r.gm[n]});pr=db.doc(path).update(u)}
+  else pr=db.doc(path).set(r);
+  busy[path]=(busy[path]||0)+1;
+  pr.then(()=>setSync('ok'),e=>{setSync('fout');if(e&&e.code==='not-found'&&games)writeDoc(coll,id)}).finally(()=>{busy[path]--});
+}
+function persist(coll,obj,gameN){
   if(coll==='matches'&&obj.kind==='avond'){
     const all=obj.games.every(g=>g.winner===0||g.winner===1);
     if(all&&obj.status!=='klaar'){obj.status='klaar';obj.autoKlaar=true}
@@ -499,7 +526,7 @@ function persist(coll,obj){
   obj.rev=(obj.rev||0)+1;obj.updatedAt=Date.now();
   place(coll,obj.id,obj);lsSave();
   if(coll==='matches'&&obj.kind==='los')return; /* oefenpartijen blijven op deze tablet */
-  if(db&&!readOnly){const p=coll+'/'+obj.id;pend[p]=clone(obj);flush(p)}
+  writeDoc(coll,obj.id,gameN!=null?(gameN<0?[]:[gameN]):null);
 }
 /* elk document staat in precies één bakje: gewoon, prullenbak of archief */
 function place(coll,id,v){
@@ -529,7 +556,7 @@ function remoteLos(coll,id,data){
   return true;
 }
 function mergeSnap(coll,snap){
-  if(firstSnap[coll]){firstSnap[coll]=false;const fresh={};snap.docs.forEach(d=>{const v=d.data();if(remoteLos(coll,d.id,v))return;fresh[d.id]=clone(v)});
+  if(firstSnap[coll]){firstSnap[coll]=false;const fresh={};snap.docs.forEach(d=>{const v=fromRemote(coll,d.data());if(remoteLos(coll,d.id,v))return;fresh[d.id]=clone(v)});
     Object.keys(S[coll]).forEach(id=>{const p=coll+'/'+id,o=S[coll][id];if(((pend[p]||busy[p])||(coll==='matches'&&o&&o.kind==='los'))&&!fresh[id])fresh[id]=o});
     S[coll]=fresh;
     if(coll==='teams'){S.trashTeams={};Object.keys(fresh).forEach(id=>{if(fresh[id].deleted)place('teams',id,fresh[id])})}
@@ -540,7 +567,7 @@ function mergeSnap(coll,snap){
       if(coll==='matches'&&S.matches[id]&&S.matches[id].kind==='los')return;
       if(c.type!=='removed'&&remoteLos(coll,id,c.doc.data()))return;
       if(c.type==='removed'){if(!pend[p]&&!busy[p])place(coll,id,null);return}
-      const v=c.doc.data(),loc=findAny(coll,id);
+      const v=fromRemote(coll,c.doc.data()),loc=findAny(coll,id);
       if(!loc||(v.rev||0)>=(loc.rev||0))place(coll,id,clone(v));
     });
   }
@@ -623,6 +650,7 @@ function parseRoute(){
   if(h==='oefenen')return {name:'oefenen'};
   if(h==='uitleg')return {name:'uitleg'};
   if(h==='beheer')return {name:'beheer'};
+  if(h==='live')return {name:'live'};
   if((mm=h.match(/^team-([a-z0-9]+)$/)))return {name:'teaminfo',id:mm[1]};
   if((mm=h.match(/^teamedit-([a-z0-9]+)$/)))return {name:'team',id:mm[1]};
   if((mm=h.match(/^start-([a-z0-9]+)$/)))return {name:'start',id:mm[1]};
@@ -654,6 +682,7 @@ function render(){
   else if(r.name==='oefenen')html=vOefenen();
   else if(r.name==='uitleg')html=vUitleg();
   else if(r.name==='beheer')html=vBeheer();
+  else if(r.name==='live')html=vLive();
   else if(r.name==='team')html=vTeam(r.id);
   else if(r.name==='teaminfo')html=vTeamInfo(r.id);
   else if(r.name==='start')html=vStart(r.id,r.beker);
@@ -977,6 +1006,68 @@ function newNight(t,st){
   return {id:uid(),kind:'avond',schedId:st.from||'',type:st.type,round:st.type==='Divisie'?(st.round||''):'',venue:st.type==='Divisie'?(st.venue||''):'',teamId:t.id,teamName:t.name,division:t.division||'',opponent:(st.opponent||'').trim()||'Gast',date:st.date||today(),createdAt:Date.now(),status:'open',games};
 }
 
+/* ---------- 180's en high finishes per partij ---------- */
+function hfMin(){return (S.settings&&+S.settings.hf)||100}
+function highlights(g){
+  const r={c180:[0,0],hf:[]};
+  if(!g||g.kind==='tactic'||!g.legs)return r;
+  g.legs.forEach(l=>{if(!l.turns)return;x01State(g,l).entries.forEach(e=>{
+    if(e.s===180&&!e.bust)r.c180[e.side]++;
+    if(e.out&&e.s>=hfMin())r.hf.push({side:e.side,v:e.s});
+  })});
+  return r;
+}
+function hlChips(g){
+  const h=highlights(g);let out='';
+  [0,1].forEach(s=>{if(h.c180[s])out+='<span class="hl c'+s+'">180'+(h.c180[s]>1?' ×'+h.c180[s]:'')+'</span>'});
+  h.hf.forEach(x=>{out+='<span class="hl c'+x.side+'">HF '+x.v+'</span>'});
+  return out?'<span class="hls">'+out+'</span>':'';
+}
+function hlSummary(m){
+  const t180=[0,0],hfs=[];
+  m.games.forEach(g=>{const h=highlights(g);t180[0]+=h.c180[0];t180[1]+=h.c180[1];h.hf.forEach(x=>hfs.push({...x,n:g.n}))});
+  if(!t180[0]&&!t180[1]&&!hfs.length)return '';
+  const g0=m.games[0];
+  let h='<div class="hlsum"><span><b>180\'s</b> <span class="c0">'+esc(sideLabel(m,g0,0))+' '+t180[0]+'</span> · <span class="c1">'+esc(sideLabel(m,g0,1))+' '+t180[1]+'</span></span>';
+  if(hfs.length)h+='<span><b>High finishes</b> '+hfs.map(x=>'<span class="c'+x.side+'">'+x.v+'</span> <small>(partij '+x.n+')</small>').join(', ')+'</span>';
+  return h+'<span class="meta">Geheugensteun voor het wedstrijdformulier · HF vanaf '+hfMin()+'</span></div>';
+}
+/* ---------- gegevens van een avond aanpassen ---------- */
+function editNightDialog(){
+  const e=S.ui.editNight;if(!e)return '';
+  return '<div class="cover"><div class="dialog resdlg"><h3>Gegevens aanpassen</h3>'+
+    '<div class="form-grid"><label class="f">Tegenstander<input class="in" id="en-opp" data-en="opponent" value="'+esc(e.opponent)+'"></label>'+
+    '<label class="f">Datum<input type="date" class="in" id="en-date" data-en="date" value="'+esc(e.date)+'"></label></div>'+
+    (e.type==='Divisie'?'<div class="form-grid"><label class="f">Speelronde<input class="in" id="en-round" data-en="round" value="'+esc(e.round)+'" inputmode="numeric" placeholder="–"></label>'+
+    '<label class="f">Thuis of uit<span class="seg">'+['Thuis','Uit'].map(x=>'<button data-a="enset" data-v="'+x+'" class="'+(e.venue===x?'on':'')+'">'+x+'</button>').join('')+'</span></label></div>':'')+
+    '<p class="meta" style="margin:0">De partijen en scores blijven zoals ze zijn.</p>'+
+    '<div class="row" style="justify-content:flex-end"><button class="btn" data-a="encancel">Annuleer</button><button class="btn primary" data-a="ensave">Opslaan</button></div></div></div>';
+}
+/* ---------- live-weergave (alleen beheer-apparaten) ---------- */
+function liveCard(m){
+  const w=matchScore(m),lt=legTotal(m);
+  const cur=m.games.find(g=>g.winner==null&&gameStarted(g))||m.games.find(g=>g.winner==null);
+  let body='<div class="lc-none">Alle partijen gespeeld</div>';
+  if(cur){
+    const lw=legsWon(cur),g0=sideLabel(m,cur,0),g1=sideLabel(m,cur,1);
+    let v0='–',v1='–',sub='';
+    if(!gameStarted(cur))sub='Nog niet begonnen';
+    else if(cur.kind==='tactic'){const l=cur.legs[cur.legs.length-1]||newTacLeg();v0=l.pts[0];v1=l.pts[1];sub='punten · dicht '+TARGETS.filter(t=>l.marks[0][t]>=3).length+'–'+TARGETS.filter(t=>l.marks[1][t]>=3).length}
+    else{const st=x01State(cur,cur.legs[cur.legs.length-1]);v0=st.rem[0];v1=st.rem[1];sub='rest · '+esc(g0)+' '+(st.next.side===0?'gooit':'')+(st.next.side===1?esc(g1)+' gooit':'')}
+    body='<div class="lc-game">Partij '+cur.n+' · '+KIND_LABEL[cur.kind]+' '+(cur.size===2?'koppel':'enkel')+' · legs '+lw[0]+'–'+lw[1]+'</div>'+
+      '<div class="lc-big"><b class="c0">'+v0+'</b><b class="c1">'+v1+'</b></div><div class="lc-sub">'+sub+'</div>';
+  }
+  return '<div class="lcard"><div class="lc-head"><span class="c0">'+esc(m.teamName)+'</span><span class="lc-score">'+w[0]+'–'+w[1]+'</span><span class="c1">'+esc(m.opponent)+'</span></div>'+
+    '<div class="lc-meta">'+(m.type==='Beker'?'Beker':m.round?'SpR '+esc(m.round):'Competitie')+' · legs '+lt[0]+'–'+lt[1]+'</div>'+body+hlSummary(m)+'</div>';
+}
+function vLive(){
+  if(!S.isAdmin)return '<div class="page"><div class="empty"><strong>Alleen op beheer-apparaten</strong><span>De live-weergave is (nog) niet voor iedereen beschikbaar.</span><button class="btn" data-go="">Naar overzicht</button></div></div>';
+  const nights=Object.values(S.matches).filter(m=>m.kind==='avond'&&!m.manual&&(m.status!=='klaar'||m.date===today())).sort((a,b)=>(a.teamName||'').localeCompare(b.teamName||'','nl',{numeric:true}));
+  let h='<div class="live"><div class="gbar"><button class="btn ghost sm" data-go="beheer">← Beheer</button><span class="title">Live<small>alleen kijken · '+nights.length+' '+(nights.length===1?'avond':'avonden')+'</small></span><span class="spacer"></span><button class="btn sm ghost" data-a="fs">Volledig scherm</button>'+syncPill()+'</div>';
+  h+=nights.length?'<div class="lgrid">'+nights.map(liveCard).join('')+'</div>':'<div class="empty"><span>Er wordt op dit moment niet gespeeld.</span></div>';
+  return h+'</div>';
+}
+
 /* ---------- speelavond: de partijen op volgorde ---------- */
 function vAvond(id){
   const m=S.matches[id]||S.archived[id];if(!m||m.kind!=='avond')return notFound();
@@ -986,18 +1077,19 @@ function vAvond(id){
   h+='<div class="meta">'+(m.type==='Beker'?'Bekeravond · ':'')+(m.round?'Speelronde '+esc(m.round)+(m.venue?' ('+(m.venue==='Uit'?'uit':'thuis')+')':''):esc(m.type))+' · '+fmtDate(m.date)+(m.division?' · '+esc(m.division):'')+(m.status==='klaar'?' · afgerond':'')+'</div>';
   h+='<div class="tot"><div class="side"><span>'+esc(m.teamName)+'</span><span class="big c0">'+w[0]+'</span></div><span class="meta" style="font-size:1.4rem">–</span><div class="side"><span>'+esc(m.opponent)+'</span><span class="big c1">'+w[1]+'</span></div><span class="meta">partijen</span><span class="legtot"><span class="meta">Legs</span><b><span class="c0">'+lt[0]+'</span> – <span class="c1">'+lt[1]+'</span></b></span><span class="spacer"></span>'+
     (next&&m.status!=='klaar'?'<button class="btn primary" data-go="partij-'+m.id+'-'+next.n+'">Partij '+next.n+' spelen</button>':'')+'</div>';
+  h+=hlSummary(m);
   h+='<ol class="order">';
   m.games.forEach(g=>{
     const lw=legsWon(g),done=g.winner===0||g.winner===1,started=gameStarted(g),isNext=next===g&&m.status!=='klaar';
     const status=done?'Gewonnen door '+esc(sideLabel(m,g,g.winner)):started?'Bezig':isNext?'Volgende':'Nog te spelen';
     h+='<li class="og'+(isNext?' next':'')+(done?' won'+g.winner:'')+'"><span class="num">'+g.n+'</span>'+
-      '<span class="what">'+KIND_LABEL[g.kind]+' · '+(g.size===2?'koppel (2 tegen 2)':'enkel (1 tegen 1)')+'<small>best of '+(g.bestOf||3)+' · '+status+'</small></span>'+
+      '<span class="what">'+KIND_LABEL[g.kind]+' · '+(g.size===2?'koppel (2 tegen 2)':'enkel (1 tegen 1)')+'<small>best of '+(g.bestOf||3)+' · '+status+'</small>'+hlChips(g)+'</span>'+
       '<span class="res">'+(started?lw[0]+' – '+lw[1]:'–')+'<small>legs</small></span>'+
       '<span class="go"><button class="btn '+(isNext||(!done&&started)?'primary':'')+'" data-go="partij-'+m.id+'-'+g.n+'">'+(done?'Bekijken':started?'Verder':'Spelen')+'</button></span></li>';
   });
   h+='</ol>';
-  if(!readOnly)h+='<div class="row">'+(m.status==='klaar'?(next?'<button class="btn" data-a="reopen">Avond heropenen</button>':''):'<button class="btn" data-a="finish">Avond afronden</button>')+'<span class="spacer"></span>'+confirmBtn('delmatch','Speelavond verwijderen','delmatch')+'</div>';
-  return h+'</div>';
+  if(!readOnly)h+='<div class="row">'+(m.status==='klaar'?(next?'<button class="btn" data-a="reopen">Avond heropenen</button>':''):'<button class="btn" data-a="finish">Avond afronden</button>')+'<button class="btn" data-a="editnight">Gegevens aanpassen</button><span class="spacer"></span>'+confirmBtn('delmatch','Speelavond verwijderen','delmatch')+'</div>';
+  return h+'</div>'+editNightDialog();
 }
 
 /* ---------- losse partij ---------- */
@@ -1157,7 +1249,7 @@ function endLos(m,g){
   S.ui.losCache=clone(m);removeDoc('matches',m.id);return true;
 }
 function afterX01(m,g,res){
-  if(!endLos(m,g))persist('matches',m);
+  if(!endLos(m,g))persist('matches',m,g.n);
   if(res&&res.leg!=null)toast('Leg voor '+sideLabel(m,g,res.leg)+'. Nieuwe leg.');
   render();
 }
@@ -1184,7 +1276,7 @@ function undoX01(){
   if(g.winner!=null){g.winner=null;l.turns.pop()}
   else if(!l.turns.length){if(g.legs.length>1){g.legs.pop();g.legs[g.legs.length-1].turns.pop()}else return}
   else l.turns.pop();
-  persist('matches',m);toast('Beurt teruggedraaid.');render();
+  persist('matches',m,g.n);toast('Beurt teruggedraaid.');render();
 }
 /* tac-tic acties: elke wijziging bewaart eerst een kopie voor 'ongedaan maken' */
 function tacEdit(fn){
@@ -1193,7 +1285,7 @@ function tacEdit(fn){
   if(!g.legs.length)g.legs.push(newTacLeg());
   const l=g.legs[g.legs.length-1];
   const msg=fn(g,l,m);
-  if(!endLos(m,g))persist('matches',m);if(msg)toast(msg);render();
+  if(!endLos(m,g))persist('matches',m,g.n);if(msg)toast(msg);render();
 }
 function tacAward(g,l,s){
   l.winner=s;const w=legsWon(g);
@@ -1201,7 +1293,7 @@ function tacAward(g,l,s){
   g.legs.push(newTacLeg(1-(l.starter||0)));return 'Leg gewonnen. Nieuwe leg.';
 }
 function manageWake(){
-  const want=S.route&&S.route.name==='partij';
+  const want=S.gate==='ok'&&document.visibilityState==='visible';
   if(want&&!wakeLock&&navigator.wakeLock){navigator.wakeLock.request('screen').then(w=>{wakeLock=w;w.addEventListener('release',()=>{wakeLock=null})}).catch(()=>{})}
   if(!want&&wakeLock){wakeLock.release().catch(()=>{});wakeLock=null}
 }
@@ -1280,8 +1372,8 @@ function act(el){
     case 'pick':{const s=(S.teams[S.route.id].schedule||[]).find(x=>x.id===v);if(s)S.ui.start={type:s.type,opponent:s.type==='Divisie'?s.opponent||'':'',date:s.date,round:s.round||'',venue:s.venue||'',from:s.id};render();return}
     case 'stype':S.ui.start.type=v;if(v!=='Divisie'){S.ui.start.round='';S.ui.start.venue=''}render();return;
     case 'startnight':{const t=S.teams[el.dataset.id];if(!t)return;S.ui.start.type=v;const m=newNight(t,S.ui.start);persist('matches',m);go('avond-'+m.id);return}
-    case 'finish':{const m=S.matches[S.route.id];m.status='klaar';m.autoKlaar=false;persist('matches',m);toast('Speelavond afgerond.');render();return}
-    case 'reopen':{const m=S.matches[S.route.id];m.status='open';persist('matches',m);render();return}
+    case 'finish':{const m=S.matches[S.route.id];m.status='klaar';m.autoKlaar=false;persist('matches',m,-1);toast('Speelavond afgerond.');render();return}
+    case 'reopen':{const m=S.matches[S.route.id];m.status='open';persist('matches',m,-1);render();return}
     case 'lkind':S.ui.los.kind=v;render();return;
     case 'lsize':{const was=S.ui.los.size;S.ui.los.size=+v;if((was===0)!==(+v===0))S.ui.los.bo=3;render();return}
     case 'guide':S.ui.guide={id:v,step:0};render();return;
@@ -1297,8 +1389,8 @@ function act(el){
     }
     case 'fs':{const d=document.documentElement;try{if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});else if(d.requestFullscreen)d.requestFullscreen().catch(()=>toast('Volledig scherm is hier niet beschikbaar.'));else toast('Volledig scherm is hier niet beschikbaar.')}catch(err){toast('Volledig scherm is hier niet beschikbaar.')}return}
     /* 501/701 */
-    case 'starter':{const {m,g}=curGame();g.legs=[{starter:+v,turns:[]}];g.winner=null;persist('matches',m);render();return}
-    case 'swapstart':{const {m,g}=curGame();if(!g.legs.length)g.legs=[{starter:0,turns:[]}];const l=g.legs[g.legs.length-1];if(!l.turns.length){l.starter=1-l.starter;persist('matches',m);render()}return}
+    case 'starter':{const {m,g}=curGame();g.legs=[{starter:+v,turns:[]}];g.winner=null;persist('matches',m,g.n);render();return}
+    case 'swapstart':{const {m,g}=curGame();if(!g.legs.length)g.legs=[{starter:0,turns:[]}];const l=g.legs[g.legs.length-1];if(!l.turns.length){l.starter=1-l.starter;persist('matches',m,g.n);render()}return}
     case 'key':if((S.ui.buf||'').length<3){S.ui.buf=(S.ui.buf==='0'?'':S.ui.buf||'')+v;render()}return;
     case 'bk':S.ui.buf=(S.ui.buf||'').slice(0,-1);render();return;
     case 'ok':if(!S.ui.buf){toast('Tik eerst een score in (0 voor geen punten).');return}commitX01(+S.ui.buf);return;
@@ -1339,6 +1431,14 @@ function act(el){
     case 'resset':S.ui.res[el.dataset.k]=v;render();return;
     case 'rescancel':S.ui.res=null;render();return;
     case 'ressave':saveResult();return;
+    case 'editnight':{const m=S.matches[S.route.id]||S.archived[S.route.id];if(m)S.ui.editNight={opponent:m.opponent||'',date:m.date||'',round:m.round||'',venue:m.venue||'',type:m.type};render();return}
+    case 'enset':S.ui.editNight.venue=v;render();return;
+    case 'encancel':S.ui.editNight=null;render();return;
+    case 'ensave':{const m=S.matches[S.route.id]||S.archived[S.route.id],e=S.ui.editNight;if(!m||!e)return;
+      if(!e.date){toast('Vul de datum in.');return}
+      m.opponent=(e.opponent||'').trim()||m.opponent;m.date=e.date;if(m.type==='Divisie'){m.round=String(e.round||'').replace(/\D/g,'');m.venue=e.venue}
+      S.ui.editNight=null;persist('matches',m,-1);toast('Gegevens aangepast.');render();return}
+    case 'sethf':setDoc(doc(fs,'settings','format'),{hf:+v,updatedAt:Date.now()},{merge:true}).then(()=>toast('High finish vanaf '+v+'.'),()=>toast('Opslaan lukte niet.'));S.settings=Object.assign({},S.settings||{},{hf:+v});render();return;
     case 'openseason':S.ui.openSeason=S.ui.openSeason===v?null:v;render();return;
     case 'restore':restoreDoc(el.dataset.k,v);return;
     case 'appupdate':applyUpdate();return;
@@ -1349,11 +1449,12 @@ function act(el){
 function tacUndo(){
   const {m,g}=curGame();if(!m||!g||readOnly)return;
   if(!S.tundo||!S.tundo.length){toast('Niets om ongedaan te maken op deze tablet.');return}
-  const prev=S.tundo.pop();g.legs=prev.legs;g.winner=prev.winner;persist('matches',m);render();
+  const prev=S.tundo.pop();g.legs=prev.legs;g.winner=prev.winner;persist('matches',m,g.n);render();
 }
 document.addEventListener('input',e=>{
   const t=e.target,ds=t.dataset;
   if(ds.bodiv&&S.ui.bo){S.ui.bo[ds.bodiv][ds.bokind]=+t.value;return}
+  if(ds.en&&S.ui.editNight){S.ui.editNight[ds.en]=t.value;return}
   if(ds.seasonname){S.ui.season=t.value;return}
   if(ds.fc&&S.ui.draft){S.ui.draft[ds.fc]=t.checked;return}
   if(ds.res&&S.ui.res){let v=t.value;if(/^[gl][01]$/.test(ds.res)){v=v.replace(/\D/g,'').slice(0,2);t.value=v}S.ui.res[ds.res]=v;const w=document.getElementById('res-warn');if(w)w.textContent=resWarn(S.ui.res);return}
@@ -1378,7 +1479,7 @@ document.addEventListener('keydown',e=>{
 });
 
 /* ================= start ================= */
-if(typeof window!=='undefined'&&window.__DC_TEST__){window.__DC_TEST__({S,x01State,normalizeX01,legsWon,validX01,canCheckout,need,boFor,newTacLeg,tacVerdict,tacAward,closedAll,matchScore,legTotal,newNight,seasonLine,soloStats,render,vHome,vTeamInfo,vAvond,vX01,vTac,vLos,vOefenen,vUitleg,vBeheer,resultDialog,openResult,place,findAny,removeDoc,FORMAT_BLOCKS,TARGETS,DOOD});return}
+if(typeof window!=='undefined'&&window.__DC_TEST__){window.__DC_TEST__({S,x01State,normalizeX01,legsWon,validX01,canCheckout,need,boFor,newTacLeg,tacVerdict,tacAward,closedAll,matchScore,legTotal,newNight,seasonLine,soloStats,render,vHome,vTeamInfo,vAvond,vX01,vTac,vLos,vOefenen,vUitleg,vBeheer,resultDialog,openResult,place,findAny,removeDoc,toRemote,fromRemote,highlights,hlSummary,vLive,FORMAT_BLOCKS,TARGETS,DOOD});return}
 lsLoad();
 S.route=parseRoute();S.ui={buf:''};S.tundo=[];
 render();manageWake();
@@ -1397,7 +1498,7 @@ const auth=getAuth(fbApp);
 const wrap=s=>({docs:s.docs.map(d=>({id:d.id,data:()=>d.data()})),docChanges:()=>s.docChanges().map(c=>({type:c.type,doc:{id:c.doc.id,data:()=>c.doc.data()}})),metadata:s.metadata});
 function makeDb(){
   const mk=q=>({orderBy:(f,d)=>mk(query(q,orderBy(f,d))),limit:n=>mk(query(q,limit(n))),onSnapshot:(n,e)=>onSnapshot(q,s=>n(wrap(s)),e)});
-  return {doc:p=>({set:b=>setDoc(doc(fs,p),b),delete:()=>deleteDoc(doc(fs,p))}),collection:c=>mk(collection(fs,c))};
+  return {doc:p=>({set:b=>setDoc(doc(fs,p),b),update:b=>updateDoc(doc(fs,p),b),delete:()=>deleteDoc(doc(fs,p))}),collection:c=>mk(collection(fs,c))};
 }
 async function seedIfEmpty(){
   try{
@@ -1430,7 +1531,7 @@ async function initDb(){
   await seedIfEmpty();
   applySchedules();
   onSnapshot(doc(fs,'settings','format'),d=>{S.settings=d.exists()?d.data():null;if(!(S.route&&S.route.name==='beheer'))render()},()=>{});
-  checkAdmin();touchDevice();
+  checkAdmin();touchDevice();manageWake();
   db.collection('teams').onSnapshot(s=>mergeSnap('teams',s),()=>setSync('fout'));
   subMatches();
 }
@@ -1453,7 +1554,7 @@ function subMatches(){
   const id=r.id,p='matches/'+id;
   matchUnsub=onSnapshot(doc(fs,'matches',id),d=>{
     if(!d.exists()){if(!pend[p]&&!busy[p]&&!(S.ui.losCache&&S.ui.losCache.id===id))place('matches',id,null)}
-    else{const v=d.data(),loc=findAny('matches',id);if(!loc||(v.rev||0)>=(loc.rev||0))place('matches',id,clone(v))}
+    else{const v=fromRemote('matches',d.data()),loc=findAny('matches',id);if(!loc||(v.rev||0)>=(loc.rev||0))place('matches',id,clone(v))}
     lsSave();render();
   },()=>setSync('fout'));
 }
@@ -1502,6 +1603,8 @@ function vBeheer(){
     h+='<tr><td class="d">'+d+'</td>'+['501','701','tactic'].map(k=>'<td><select class="in" id="bo-'+i+'-'+k+'" data-bodiv="'+d+'" data-bokind="'+k+'">'+[1,3,5,7,9,11].map(n=>'<option value="'+n+'"'+(S.ui.bo[d][k]===n?' selected':'')+'>Bo'+n+'</option>').join('')+'</select></td>').join('')+'</tr>';
   });
   h+='</tbody></table></div><div class="row"><button class="btn primary" data-a="bosave">Opslaan</button><button class="btn" data-a="boreset">Standaard herstellen</button></div></section>';
+  h+='<section class="section"><h2 class="sec">High finish <small>vanaf welke finish een HF in het avondoverzicht komt</small></h2><div class="row"><span class="seg">'+[100,101,110,121].map(n=>'<button data-a="sethf" data-v="'+n+'" class="'+(hfMin()===n?'on':'')+'">'+n+'+</button>').join('')+'</span></div></section>';
+  h+='<section class="section"><h2 class="sec">Live-weergave <small>alleen op beheer-apparaten</small></h2><p class="meta" style="margin:0">Alle avonden van vandaag naast elkaar, alleen om mee te kijken. Bedoeld voor een scherm achter de bar.</p><div class="row"><button class="btn primary" data-go="live">Live-weergave openen</button></div></section>';
   // ---- prullenbak
   const tm=Object.values(S.trash).map(m=>({k:'matches',id:m.id,at:m.deleted.at,by:m.deleted.by,label:(m.manual?'Uitslag':'Speelavond')+' '+fmtDate(m.date)+' · '+(m.teamName||'')+' tegen '+(m.opponent||'')}))
     .concat(Object.values(S.trashTeams).map(t=>({k:'teams',id:t.id,at:t.deleted.at,by:t.deleted.by,label:'Team '+(t.name||'')}))).sort((a,b)=>b.at-a.at);
@@ -1560,7 +1663,7 @@ async function closeSeason(){
       const o=clone(t);o.archive=o.archive||{};o.archive[season]={schedule:o.schedule||[],scheduleNote:o.scheduleNote||''};
       o.schedule=[];o.scheduleNote='';o.rev=(o.rev||0)+1;o.updatedAt=Date.now();b.set(doc(fs,'teams',t.id),o);n++;
     });
-    Object.values(S.matches).filter(m=>m.kind==='avond').forEach(m=>{const o=clone(m);o.archived=season;o.rev=(o.rev||0)+1;o.updatedAt=Date.now();b.set(doc(fs,'matches',m.id),o);n++});
+    Object.values(S.matches).filter(m=>m.kind==='avond').forEach(m=>{const o=clone(m);o.archived=season;o.rev=(o.rev||0)+1;o.updatedAt=Date.now();b.set(doc(fs,'matches',m.id),toRemote('matches',o));n++});
     await b.commit();
     toast('Seizoen '+season+' afgesloten.');
   }catch(e){toast(e&&e.code==='permission-denied'?'Geen beheerrechten op deze tablet.':'Afsluiten lukte niet. Controleer de internetverbinding.')}
@@ -1595,7 +1698,7 @@ async function touchDevice(){
 }
 async function saveBo(reset){
   const bo=reset?null:S.ui.bo;
-  try{await setDoc(doc(fs,'settings','format'),{bo:bo||{},updatedAt:Date.now()});S.ui.bo=null;toast(reset?'Standaardinstellingen hersteld.':'Opgeslagen. Geldt voor nieuwe speelavonden.')}
+  try{await setDoc(doc(fs,'settings','format'),{bo:bo||{},updatedAt:Date.now()},{merge:!reset});S.ui.bo=null;toast(reset?'Standaardinstellingen hersteld.':'Opgeslagen. Geldt voor nieuwe speelavonden.')}
   catch(e){toast(e&&e.code==='permission-denied'?'Geen beheerrechten op deze tablet.':'Opslaan mislukt. Controleer de internetverbinding.')}
   render();
 }
