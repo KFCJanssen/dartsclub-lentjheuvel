@@ -28,9 +28,14 @@ jobs:
           echo "{\"v\":\"$V\"}" > public/version.json
           echo "Versie $V"
       - uses: FirebaseExtended/action-hosting-deploy@v0
+        id: deploy
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DARTSCLUB_LENTJHEUVEL }}
           projectId: dartsclub-lentjheuvel
           channelId: ${{ github.ref_name == 'main' && 'live' || 'test' }}
           expires: 30d
+      - name: Adres tonen
+        run: |
+          echo "::notice title=Adres::${{ steps.deploy.outputs.details_url }}"
+          echo "### Online op: ${{ steps.deploy.outputs.details_url }}" >> "$GITHUB_STEP_SUMMARY"
