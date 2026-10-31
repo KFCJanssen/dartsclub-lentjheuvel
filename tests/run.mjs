@@ -160,6 +160,28 @@ test('ingevoerde uitslag telt mee in stand en legs', () => {
   assert.deepEqual(app.legTotal(mm), [11, 15]);
 });
 
+console.log('Prullenbak en archief');
+test('verwijderen gaat naar de prullenbak en terugzetten werkt', () => {
+  const S = app.S; S.matches = {}; S.trash = {}; S.archived = {};
+  const m = {id: 'x1', kind: 'avond', teamId: 't', games: [], status: 'klaar'};
+  app.place('matches', 'x1', m);
+  app.removeDoc('matches', 'x1');
+  assert.ok(!S.matches.x1, 'nog zichtbaar na verwijderen');
+  assert.ok(S.trash.x1 && S.trash.x1.deleted.at > 0, 'niet in de prullenbak');
+  delete S.trash.x1.deleted; app.place('matches', 'x1', S.trash.x1);
+  assert.ok(S.matches.x1 && !S.trash.x1, 'terugzetten mislukt');
+});
+test('oefenpartij verwijderen gaat niet naar de prullenbak', () => {
+  const S = app.S; S.matches = {lo: {id: 'lo', kind: 'los', games: []}}; S.trash = {};
+  app.removeDoc('matches', 'lo');
+  assert.ok(!S.matches.lo && !S.trash.lo);
+});
+test('gearchiveerde avond verdwijnt uit het huidige seizoen', () => {
+  const S = app.S; S.matches = {}; S.archived = {};
+  app.place('matches', 'a1', {id: 'a1', kind: 'avond', archived: '2026-2027', games: []});
+  assert.ok(!S.matches.a1 && S.archived.a1);
+});
+
 console.log('Speelschema\'s');
 test('schedules.json is geldig', () => {
   const list = JSON.parse(fs.readFileSync(path.join(root, 'public/schedules.json'), 'utf8'));
@@ -198,6 +220,12 @@ test('alle schermen zijn op te bouwen zonder fouten', () => {
     app.vX01(night, night.games[0]), app.vTac(night, night.games[6]),
     app.vX01(los, los.games[0]), app.vOefenen(), app.vUitleg(), app.vBeheer()
   ];
+  S.isAdmin = true; S.ui.devicesLoaded = true; S.ui.purged = true; S.ui.devices = {list: [{id: 'd1', name: 'Tablet bar', createdAt: 1793000000000, lastSeen: 1793100000000}], admins: new Set(['d1'])};
+  S.trash = {z: {id: 'z', kind: 'avond', teamName: 'L5', opponent: 'X', date: '2026-10-01', games: [], deleted: {at: 1793000000000, by: 'Tablet bar'}}};
+  S.archived = {q: {id: 'q', kind: 'avond', teamId: 't1', archived: '2025-2026', opponent: 'Y', date: '2026-05-01', status: 'klaar', games: []}};
+  S.ui.openSeason = '2025-2026';
+  out.push(app.vBeheer(), app.vTeamInfo('t1'));
+  S.isAdmin = false;
   S.route = {name: 'los'}; out.push(app.vLos());
   S.route = {name: 'teaminfo', id: 't1'}; app.openResult(t, t.schedule[0], null); out.push(app.resultDialog());
   for (const h of out) { assert.equal(typeof h, 'string'); assert.ok(h.length > 50); assert.ok(!/undefined|NaN/.test(h.replace(/data-[a-z]+="[^"]*"/g, '')), 'tekst "undefined" of "NaN" op het scherm'); }

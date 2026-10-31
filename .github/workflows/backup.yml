@@ -1,0 +1,38 @@
+# Wekelijkse kopie van alle clubgegevens naar de branch "backups" van deze (privé) repository.
+# Codes worden niet meegekopieerd. Handmatig starten kan via Actions → Backup → Run workflow.
+name: Backup
+on:
+  schedule:
+    - cron: '17 3 * * 1'   # elke maandag rond 04:17 Nederlandse tijd
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Gegevens ophalen
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DARTSCLUB_LENTJHEUVEL }}
+        run: |
+          npm install --no-save --no-audit --no-fund firebase-admin@12
+          node scripts/backup.mjs
+      - name: Opslaan op de branch "backups"
+        run: |
+          mv backup-out /tmp/backup-out
+          git config user.name "dartsclub-backup"
+          git config user.email "actions@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin backups >/dev/null; then
+            git fetch --depth 1 origin backups && git checkout -B backups FETCH_HEAD
+          else
+            git checkout --orphan backups && git rm -rf -q . && rm -rf node_modules
+          fi
+          cp -r /tmp/backup-out/* .
+          rm -rf laatste && cp -r "/tmp/backup-out/$(ls /tmp/backup-out | tail -1)" laatste
+          git add -A
+          git commit -q -m "Backup $(date -u +%Y-%m-%d)" || echo "Geen wijzigingen"
+          git push -q origin backups

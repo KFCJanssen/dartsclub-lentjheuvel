@@ -9,26 +9,65 @@ service cloud.firestore {
       return registered() &&
         exists(/databases/$(database)/documents/admins/$(request.auth.uid));
     }
-    match /config/{doc} { allow read, write: if false; }
+    // Veld blijft gelijk (ook als het nog niet bestond)
+    function same(f) {
+      return request.resource.data.get(f, null) == resource.data.get(f, null);
+    }
+
+    // Clubcode en beheercode: nooit leesbaar. De clubcode mag alleen een beheerder wijzigen.
+    match /config/{doc} {
+      allow read: if false;
+      allow write: if doc == 'access' && admin();
+    }
+
+    // Gekoppelde apparaten
     match /devices/{uid} {
       allow create: if request.auth != null && request.auth.uid == uid
         && request.resource.data.code ==
            get(/databases/$(database)/documents/config/access).data.code;
-      allow read: if request.auth != null && request.auth.uid == uid;
-      allow update, delete: if false;
+      allow read: if request.auth != null && (request.auth.uid == uid || admin());
+      // een tablet mag alleen zijn eigen naam en 'laatst actief' bijwerken
+      allow update: if request.auth != null && request.auth.uid == uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['lastSeen', 'name']);
+      // ontkoppelen: alleen een beheerder
+      allow delete: if admin();
     }
+
+    // Beheer-apparaten
     match /admins/{uid} {
       allow create: if registered() && request.auth.uid == uid
         && request.resource.data.code ==
            get(/databases/$(database)/documents/config/admin).data.code;
-      allow read: if request.auth != null && request.auth.uid == uid;
-      allow update, delete: if false;
+      allow read: if request.auth != null && (request.auth.uid == uid || admin());
+      allow update: if false;
+      allow delete: if admin();
     }
+
     match /settings/{id} {
       allow read: if registered();
       allow write: if admin();
     }
-    match /teams/{id}   { allow read, write: if registered(); }
-    match /matches/{id} { allow read, write: if registered(); }
+
+    // Teams: captains mogen naam, divisie, spelers en instellingen aanpassen.
+    // Speelschema, archief en verwijderen: alleen een beheerder.
+    // (Uitzondering: een nieuw meegeleverd speelschema, herkenbaar aan een nieuwe scheduleVersion.)
+    match /teams/{id} {
+      allow read: if registered();
+      allow create: if registered();
+      allow update: if admin() || (registered()
+        && same('deleted') && same('archive')
+        && ((same('schedule') && same('scheduleNote')) || !same('scheduleVersion')));
+      allow delete: if admin();
+    }
+
+    // Speelavonden en uitslagen: iedereen mag spelen en naar de prullenbak verplaatsen;
+    // terugzetten, archiveren en definitief verwijderen alleen een beheerder.
+    match /matches/{id} {
+      allow read: if registered();
+      allow create: if registered() && request.resource.data.get('archived', null) == null;
+      allow update: if admin() || (registered() && same('archived')
+        && (same('deleted') || resource.data.get('deleted', null) == null));
+      allow delete: if admin();
+    }
   }
 }

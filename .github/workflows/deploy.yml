@@ -14,8 +14,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Automatische controles
+      - name: Automatische controles (spelregels en schermen)
         run: node tests/run.mjs
+      - name: Database-regels controleren
+        run: |
+          npm ci --no-audit --no-fund
+          npm run test:rules
   online-zetten:
     needs: controleren
     runs-on: ubuntu-latest
