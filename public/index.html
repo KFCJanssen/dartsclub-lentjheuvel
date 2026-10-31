@@ -469,22 +469,32 @@ function persist(coll,obj){
   }
   obj.rev=(obj.rev||0)+1;obj.updatedAt=Date.now();
   S[coll][obj.id]=obj;lsSave();
+  if(coll==='matches'&&obj.kind==='los')return; /* oefenpartijen blijven op deze tablet */
   if(db&&!readOnly){const p=coll+'/'+obj.id;pend[p]=clone(obj);flush(p)}
 }
-function removeDoc(coll,id){delete S[coll][id];lsSave();if(db&&!readOnly)db.doc(coll+'/'+id).delete().catch(()=>setSync('fout'))}
+function removeDoc(coll,id){const local=coll==='matches'&&S.matches[id]&&S.matches[id].kind==='los';delete S[coll][id];lsSave();if(local)return;if(db&&!readOnly)db.doc(coll+'/'+id).delete().catch(()=>setSync('fout'))}
 function setSync(s){if(S.sync===s)return;S.sync=s;const el=document.getElementById('syncpill');if(el)el.outerHTML=syncPill()}
 function syncPill(cls){
   const m={laden:['','Verbinden…'],ok:['ok','Live'],lokaal:['lokaal','Alleen dit apparaat'],offline:['lokaal','Offline · wordt bewaard'],fout:['fout','Opslaan mislukt'],ro:['ro','Alleen lezen']}[S.sync]||['',''];
   return '<span id="syncpill" class="pill '+m[0]+' '+(cls||'')+'" title="'+(S.sync==='ro'?'Je hebt geen bewerkrechten. Vraag de eigenaar om je als bewerker toe te voegen.':S.sync==='lokaal'?'Geen verbinding met de gedeelde opslag. Gegevens blijven op deze tablet.':S.sync==='offline'?'Geen internet. Scores worden op deze tablet bewaard en later gesynchroniseerd.':'')+'"><i></i>'+m[1]+'</span>';
 }
 const firstSnap={teams:true,matches:true};
+/* oefenpartijen van oudere app-versies stonden nog online: die negeren we en ruimen we één keer op */
+const cleaned=new Set();
+function remoteLos(coll,id,data){
+  if(coll!=='matches'||!data||data.kind!=='los')return false;
+  if(db&&!readOnly&&!cleaned.has(id)&&!(S.matches[id]&&S.matches[id].kind==='los')){cleaned.add(id);db.doc('matches/'+id).delete().catch(()=>{})}
+  return true;
+}
 function mergeSnap(coll,snap){
-  if(firstSnap[coll]){firstSnap[coll]=false;const fresh={};snap.docs.forEach(d=>{fresh[d.id]=clone(d.data())});
-    Object.keys(S[coll]).forEach(id=>{const p=coll+'/'+id;if((pend[p]||busy[p])&&!fresh[id])fresh[id]=S[coll][id]});
+  if(firstSnap[coll]){firstSnap[coll]=false;const fresh={};snap.docs.forEach(d=>{const v=d.data();if(remoteLos(coll,d.id,v))return;fresh[d.id]=clone(v)});
+    Object.keys(S[coll]).forEach(id=>{const p=coll+'/'+id,o=S[coll][id];if(((pend[p]||busy[p])||(coll==='matches'&&o&&o.kind==='los'))&&!fresh[id])fresh[id]=o});
     S[coll]=fresh;
   }else{
     snap.docChanges().forEach(c=>{
       const id=c.doc.id,p=coll+'/'+id;
+      if(coll==='matches'&&S.matches[id]&&S.matches[id].kind==='los')return;
+      if(c.type!=='removed'&&remoteLos(coll,id,c.doc.data()))return;
       if(c.type==='removed'){if(!pend[p]&&!busy[p])delete S[coll][id];return}
       const v=c.doc.data(),loc=S[coll][id];
       if(!loc||(v.rev||0)>=(loc.rev||0))S[coll][id]=clone(v);
@@ -1272,9 +1282,12 @@ async function initDb(){
 let matchUnsub=null,matchKey='';
 function subMatches(){
   if(!db)return;
-  const r=S.route||{},one=r.name==='partij'||r.name==='avond',key=one?'doc:'+r.id:'coll';
+  const r=S.route||{},one=r.name==='partij'||r.name==='avond';
+  const local=one&&((S.matches[r.id]&&S.matches[r.id].kind==='los')||(S.ui.losCache&&S.ui.losCache.id===r.id));
+  const key=local?'local':one?'doc:'+r.id:'coll';
   if(key===matchKey)return;
   matchKey=key;if(matchUnsub){matchUnsub();matchUnsub=null}
+  if(local)return; /* oefenpartij: niets online te volgen */
   if(!one){
     firstSnap.matches=true;
     matchUnsub=onSnapshot(query(collection(fs,'matches'),orderBy('createdAt','desc'),limit(80)),q=>mergeSnap('matches',wrap(q)),()=>setSync('fout'));
