@@ -1,0 +1,20 @@
+name: Sleutelcontrole (tijdelijk)
+on:
+  push:
+    branches: [keycheck]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Firebase-sleutel testen vanaf verschillende adressen
+        run: |
+          K=AIzaSyByJAFbf5KGqsp4K9lQrXd6ZXCxg74Ry-Q
+          for R in "" "https://dartsclub-lentjheuvel.web.app/" "https://dartsclub-lentjheuvel.firebaseapp.com/" "https://dartsclub-lentjheuvel--test-fgakqiwy.web.app/" "https://voorbeeld-vreemd.example.com/"; do
+            H=(); [ -n "$R" ] && H=(-H "Referer: $R")
+            OUT=$(curl -s -w ' HTTP%{http_code}' "${H[@]}" -H 'Content-Type: application/json' \
+              -d '{"identifier":"controle@example.com","continueUri":"http://localhost"}' \
+              "https://identitytoolkit.googleapis.com/v1/accounts:createAuthUri?key=$K")
+            CODE=$(echo "$OUT" | grep -o 'HTTP[0-9]*$')
+            REASON=$(echo "$OUT" | grep -o '"reason": *"[A-Z_]*"' | head -1)
+            echo "::notice title=${R:-geen adres}::$CODE $REASON"
+          done
