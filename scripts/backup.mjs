@@ -16,6 +16,7 @@ fs.mkdirSync(out, {recursive: true});
 
 const plain = v => JSON.parse(JSON.stringify(v, (k, x) => (x && typeof x.toDate === 'function') ? x.toDate().toISOString() : x));
 const summary = {};
+try {
 for (const name of ['teams', 'matches', 'settings', 'devices', 'admins']) {
   const snap = await db.collection(name).get();
   const docs = snap.docs.map(d => {
@@ -25,6 +26,10 @@ for (const name of ['teams', 'matches', 'settings', 'devices', 'admins']) {
   });
   fs.writeFileSync(`${out}/${name}.json`, JSON.stringify(docs, null, 1));
   summary[name] = docs.length;
+}
+} catch (e) {
+  console.log('::error title=Backup mislukt::' + (e && (e.code + ' ' + e.message)).replace(/\n/g, ' '));
+  process.exit(1);
 }
 fs.writeFileSync(`${out}/samenvatting.json`, JSON.stringify({datum: day, aantallen: summary}, null, 1));
 console.log('Backup', day, summary);
