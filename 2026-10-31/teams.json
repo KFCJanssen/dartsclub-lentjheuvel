@@ -1,0 +1,2179 @@
+[
+ {
+  "id": "mvsbp16tjlav6o",
+  "name": "Lentjheuvel 5",
+  "updatedAt": 1793485224222,
+  "division": "3e divisie",
+  "scheduleNote": "Speelronde 19, 20, 21 en 22 mogen niet uitgesteld worden, maar mogen wel vooruit gespeeld worden.",
+  "trackAway": true,
+  "players": [
+   {
+    "name": "Patrick",
+    "nr": "1433",
+    "id": "mvsbp16tuwl1k1",
+    "role": "C"
+   },
+   {
+    "role": "VC",
+    "name": "Jordy",
+    "nr": "6111",
+    "id": "mvsbp16txthb9f"
+   },
+   {
+    "id": "mvsbp16tesb5e7",
+    "nr": "6110",
+    "role": "",
+    "name": "Devin"
+   },
+   {
+    "role": "",
+    "id": "mvsbp16tal1apv",
+    "nr": "4207",
+    "name": "Kai"
+   },
+   {
+    "name": "Wouter",
+    "nr": "6108",
+    "id": "mvsbpk04dxcpit",
+    "role": ""
+   },
+   {
+    "name": "Milan",
+    "role": "",
+    "id": "mvsbplocw2ube9",
+    "nr": "6129"
+   },
+   {
+    "name": "Nick",
+    "role": "",
+    "nr": "6109",
+    "id": "mvsbpnd13eeuay"
+   }
+  ],
+  "schedule": [
+   {
+    "id": "s00",
+    "date": "2026-09-04",
+    "opponent": "Captainsmeeting Treebeek Trefcentrum",
+    "venue": "",
+    "address": "",
+    "round": "",
+    "type": "Info"
+   },
+   {
+    "round": "",
+    "id": "s01",
+    "type": "Info",
+    "date": "2026-09-11",
+    "venue": "",
+    "opponent": "Toernooi koppel 701",
+    "address": ""
+   },
+   {
+    "opponent": "Heksenberg 3",
+    "address": "",
+    "venue": "Thuis",
+    "date": "2026-09-18",
+    "type": "Divisie",
+    "round": "1",
+    "id": "s02"
+   },
+   {
+    "opponent": "Flying Darts 5",
+    "id": "s03",
+    "date": "2026-09-25",
+    "round": "2",
+    "venue": "Uit",
+    "address": "Pius XII Plein 38, 6433 CZ Hoensbroek",
+    "type": "Divisie"
+   },
+   {
+    "date": "2026-10-02",
+    "id": "s04",
+    "round": "3",
+    "address": "",
+    "venue": "Thuis",
+    "opponent": "De Burcht 13",
+    "type": "Divisie"
+   },
+   {
+    "opponent": "Bekerronde 1 L128",
+    "address": "",
+    "venue": "",
+    "date": "2026-10-09",
+    "id": "s05",
+    "type": "Beker",
+    "round": ""
+   },
+   {
+    "venue": "Uit",
+    "type": "Divisie",
+    "address": "Klaverstraat 17, 6135 GR Sittard",
+    "round": "4",
+    "opponent": "DC Brandtaveerne 1",
+    "id": "s06",
+    "date": "2026-10-16"
+   },
+   {
+    "venue": "",
+    "type": "Info",
+    "opponent": "Vrije week / Inhaalweek",
+    "address": "",
+    "round": "",
+    "id": "s07",
+    "date": "2026-10-23"
+   },
+   {
+    "date": "2026-10-30",
+    "id": "s08",
+    "opponent": "Treebeekse Treffers 2",
+    "venue": "Thuis",
+    "type": "Divisie",
+    "round": "5",
+    "address": ""
+   },
+   {
+    "round": "6",
+    "date": "2026-11-06",
+    "address": "Kerkstraat 23, 6439 AN Doenrade",
+    "opponent": "Bullys 2",
+    "type": "Divisie",
+    "id": "s09",
+    "venue": "Uit"
+   },
+   {
+    "id": "s10",
+    "venue": "",
+    "opponent": "Bekerronde 2 L64",
+    "date": "2026-11-13",
+    "address": "",
+    "type": "Beker",
+    "round": ""
+   },
+   {
+    "round": "7",
+    "opponent": "Hoekje 4",
+    "id": "s11",
+    "type": "Divisie",
+    "address": "",
+    "date": "2026-11-20",
+    "venue": "Thuis"
+   },
+   {
+    "opponent": "Kunt Jod",
+    "round": "8",
+    "type": "Divisie",
+    "venue": "Thuis",
+    "id": "s12",
+    "address": "",
+    "date": "2026-11-27"
+   },
+   {
+    "address": "",
+    "venue": "",
+    "type": "Info",
+    "id": "s13",
+    "round": "",
+    "date": "2026-12-04",
+    "opponent": "Vrije week / Inhaalweek"
+   },
+   {
+    "round": "9",
+    "type": "Divisie",
+    "id": "s14",
+    "address": "Wilhelminastraat 1, 6161 SX Geleen",
+    "opponent": "Reunie 5",
+    "date": "2026-12-11",
+    "venue": "Uit"
+   },
+   {
+    "id": "s15",
+    "venue": "",
+    "date": "2026-12-18",
+    "address": "",
+    "round": "",
+    "opponent": "Bekerronde 3 L32 · laatste kans op terugval naar eigen divisie",
+    "type": "Beker"
+   },
+   {
+    "type": "Info",
+    "round": "",
+    "address": "",
+    "id": "s16",
+    "opponent": "Toernooi koppel Tac-Tic",
+    "date": "2027-01-08",
+    "venue": ""
+   },
+   {
+    "id": "s17",
+    "venue": "Thuis",
+    "date": "2027-01-15",
+    "address": "",
+    "opponent": "DC Carboon 1",
+    "round": "10",
+    "type": "Divisie"
+   },
+   {
+    "date": "2027-01-22",
+    "opponent": "Lucky Ducks",
+    "id": "s18",
+    "address": "Gravin van Schonbornlaan 4, 6433 AZ Hoensbroek",
+    "round": "11",
+    "type": "Divisie",
+    "venue": "Uit"
+   },
+   {
+    "venue": "Uit",
+    "type": "Divisie",
+    "id": "s19",
+    "address": "Roebroekweg 44, 6414 BC Heerlen",
+    "date": "2027-01-29",
+    "round": "12",
+    "opponent": "Heksenberg 3"
+   },
+   {
+    "date": "2027-02-05",
+    "address": "",
+    "venue": "",
+    "type": "Info",
+    "id": "s20",
+    "round": "",
+    "opponent": "Vrije week i.v.m. carnaval"
+   },
+   {
+    "round": "",
+    "address": "",
+    "id": "s21",
+    "type": "Beker",
+    "venue": "",
+    "date": "2027-02-12",
+    "opponent": "Bekerronde 4 L16"
+   },
+   {
+    "type": "Divisie",
+    "venue": "Thuis",
+    "address": "",
+    "opponent": "Flying Darts 5",
+    "round": "13",
+    "date": "2027-02-19",
+    "id": "s22"
+   },
+   {
+    "id": "s23",
+    "date": "2027-02-26",
+    "venue": "",
+    "opponent": "Vrije week / Inhaalweek",
+    "address": "",
+    "type": "Info",
+    "round": ""
+   },
+   {
+    "round": "14",
+    "opponent": "De Burcht 13",
+    "type": "Divisie",
+    "venue": "Uit",
+    "address": "Wieenweg 18, 6445 CD Brunssum",
+    "id": "s24",
+    "date": "2027-03-05"
+   },
+   {
+    "venue": "Thuis",
+    "id": "s25",
+    "date": "2027-03-12",
+    "address": "",
+    "type": "Divisie",
+    "opponent": "DC Brandtaveerne 1",
+    "round": "15"
+   },
+   {
+    "id": "s26",
+    "opponent": "Treebeekse Treffers 2",
+    "date": "2027-03-19",
+    "venue": "Uit",
+    "address": "Maanstraat 20, 6446 XE Brunssum",
+    "round": "16",
+    "type": "Divisie"
+   },
+   {
+    "opponent": "Bekerronde 5 kwartfinale",
+    "address": "",
+    "round": "",
+    "date": "2027-03-26",
+    "id": "s27",
+    "type": "Beker",
+    "venue": ""
+   },
+   {
+    "opponent": "Bullys 2",
+    "address": "",
+    "date": "2027-04-02",
+    "round": "17",
+    "id": "s28",
+    "venue": "Thuis",
+    "type": "Divisie"
+   },
+   {
+    "round": "18",
+    "opponent": "Hoekje 4",
+    "type": "Divisie",
+    "address": "Kerkstraat 75, 6137 SM Sittard",
+    "id": "s29",
+    "date": "2027-04-09",
+    "venue": "Uit"
+   },
+   {
+    "venue": "",
+    "type": "Beker",
+    "id": "s30",
+    "address": "",
+    "date": "2027-04-16",
+    "round": "",
+    "opponent": "Bekerronde 6 halve finale"
+   },
+   {
+    "id": "s31",
+    "venue": "",
+    "type": "Info",
+    "round": "",
+    "date": "2027-04-23",
+    "address": "",
+    "opponent": "Vrije week / Inhaalweek"
+   },
+   {
+    "round": "19",
+    "opponent": "Kunt Jod",
+    "type": "Divisie",
+    "address": "Terbruggen 5, 6471 JS Eygelshoven",
+    "id": "s32",
+    "date": "2027-04-30",
+    "venue": "Uit"
+   },
+   {
+    "id": "s33",
+    "date": "2027-05-07",
+    "venue": "Thuis",
+    "address": "",
+    "type": "Divisie",
+    "round": "20",
+    "opponent": "Reunie 5"
+   },
+   {
+    "opponent": "DC Carboon 1",
+    "address": "Ganzeweiden 38, 6413 GG Heerlen",
+    "round": "21",
+    "date": "2027-05-14",
+    "id": "s34",
+    "type": "Divisie",
+    "venue": "Uit"
+   },
+   {
+    "date": "2027-05-21",
+    "round": "22",
+    "type": "Divisie",
+    "address": "",
+    "opponent": "Lucky Ducks",
+    "venue": "Thuis",
+    "id": "s35"
+   },
+   {
+    "round": "",
+    "id": "s36",
+    "address": "",
+    "type": "Info",
+    "venue": "",
+    "opponent": "Ben Rozemeijer Memorial single 501 toernooi",
+    "date": "2027-05-28"
+   },
+   {
+    "address": "",
+    "venue": "",
+    "date": "2027-06-04",
+    "opponent": "Algemene ledenvergadering",
+    "id": "s37",
+    "type": "Info",
+    "round": ""
+   },
+   {
+    "venue": "",
+    "type": "Info",
+    "address": "",
+    "opponent": "Bekerfinales 1e, 2e en 3e divisie",
+    "id": "s38",
+    "round": "",
+    "date": "2027-06-11"
+   },
+   {
+    "type": "Info",
+    "venue": "",
+    "id": "s39",
+    "address": "",
+    "round": "",
+    "date": "2027-06-12",
+    "opponent": "Bekerfinale algemene ronde"
+   },
+   {
+    "venue": "",
+    "date": "2027-06-18",
+    "id": "s40",
+    "opponent": "Divisiekampioenschappen",
+    "address": "",
+    "round": "",
+    "type": "Info"
+   },
+   {
+    "venue": "",
+    "address": "",
+    "id": "s41",
+    "type": "Info",
+    "round": "",
+    "date": "2027-06-25",
+    "opponent": "Feestavond"
+   }
+  ],
+  "rev": 8
+ },
+ {
+  "id": "mvsf87qe54n8dm",
+  "name": "Lentjheuvel 4",
+  "division": "4e divisie",
+  "updatedAt": 1793405103768,
+  "players": [
+   {
+    "nr": "1498",
+    "role": "C",
+    "id": "mvsf87qeudn5lp",
+    "name": "Tanja"
+   },
+   {
+    "id": "mvsf87qe2f1xcb",
+    "name": "John",
+    "role": "VC",
+    "nr": "1497"
+   },
+   {
+    "name": "Robert-Paul",
+    "id": "mvsf87qemosvw5",
+    "role": "",
+    "nr": "3653"
+   },
+   {
+    "id": "mvsf87qecg2gvb",
+    "role": "",
+    "name": "Jacques",
+    "nr": "4505"
+   },
+   {
+    "name": "Monique",
+    "nr": "3730",
+    "id": "mvsf8ofigotpcq",
+    "role": ""
+   },
+   {
+    "nr": "5927",
+    "name": "Bo",
+    "id": "mvsf8rbgkbgtz6",
+    "role": ""
+   },
+   {
+    "role": "",
+    "id": "mvsjkdaos406nu",
+    "nr": "1301",
+    "name": "Daisy"
+   }
+  ],
+  "scheduleVersion": "2026-2027-v1",
+  "schedule": [
+   {
+    "address": "",
+    "round": "",
+    "opponent": "Captainsmeeting Treebeek Trefcentrum",
+    "venue": "",
+    "type": "Info",
+    "date": "2026-09-04",
+    "id": "l4s00"
+   },
+   {
+    "opponent": "Toernooi koppel 701",
+    "round": "",
+    "type": "Info",
+    "date": "2026-09-11",
+    "address": "",
+    "id": "l4s01",
+    "venue": ""
+   },
+   {
+    "opponent": "Dart Siders",
+    "address": "Heicarisborgweg 19, 6414 NL Heerlen",
+    "round": "1",
+    "type": "Divisie",
+    "id": "l4s02",
+    "date": "2026-09-18",
+    "venue": "Uit"
+   },
+   {
+    "date": "2026-09-25",
+    "opponent": "Bullys 3",
+    "type": "Divisie",
+    "address": "",
+    "venue": "Thuis",
+    "id": "l4s03",
+    "round": "2"
+   },
+   {
+    "type": "Divisie",
+    "address": "Musschenberg 26A, 6176 BD Spaubeek",
+    "opponent": "Raodhoes 2",
+    "id": "l4s04",
+    "date": "2026-10-02",
+    "venue": "Uit",
+    "round": "3"
+   },
+   {
+    "address": "",
+    "type": "Beker",
+    "venue": "",
+    "opponent": "Bekerronde 1 L128",
+    "date": "2026-10-09",
+    "round": "",
+    "id": "l4s05"
+   },
+   {
+    "address": "",
+    "id": "l4s06",
+    "date": "2026-10-16",
+    "opponent": "DC Carboon 3",
+    "round": "4",
+    "type": "Divisie",
+    "venue": "Thuis"
+   },
+   {
+    "id": "l4s07",
+    "type": "Info",
+    "venue": "",
+    "round": "",
+    "opponent": "Vrije week / Inhaalweek",
+    "date": "2026-10-23",
+    "address": ""
+   },
+   {
+    "opponent": "Beegter Bouncers",
+    "round": "5",
+    "id": "l4s08",
+    "address": "Raadhuisstraat 2A, 6127 BL Grevenbicht",
+    "venue": "Uit",
+    "type": "Divisie",
+    "date": "2026-10-30"
+   },
+   {
+    "address": "",
+    "id": "l4s09",
+    "date": "2026-11-06",
+    "round": "6",
+    "venue": "Thuis",
+    "opponent": "Treebeekse Treffers 3",
+    "type": "Divisie"
+   },
+   {
+    "type": "Beker",
+    "date": "2026-11-13",
+    "opponent": "Bekerronde 2 L64",
+    "address": "",
+    "venue": "",
+    "round": "",
+    "id": "l4s10"
+   },
+   {
+    "address": "In de Camp 20, 6137 TG Sittard",
+    "round": "7",
+    "opponent": "Oos Cafeke 1",
+    "venue": "Uit",
+    "date": "2026-11-20",
+    "id": "l4s11",
+    "type": "Divisie"
+   },
+   {
+    "address": "",
+    "opponent": "Robin Hood 1",
+    "round": "8",
+    "venue": "Thuis",
+    "date": "2026-11-27",
+    "type": "Divisie",
+    "id": "l4s12"
+   },
+   {
+    "id": "l4s13",
+    "round": "",
+    "venue": "",
+    "type": "Info",
+    "opponent": "Vrije week / Inhaalweek",
+    "address": "",
+    "date": "2026-12-04"
+   },
+   {
+    "date": "2026-12-11",
+    "address": "Florence Nightingalestraat 6, 6441 HW Brunssum",
+    "id": "l4s14",
+    "round": "9",
+    "type": "Divisie",
+    "venue": "Uit",
+    "opponent": "Klaver Vier 5"
+   },
+   {
+    "date": "2026-12-18",
+    "address": "",
+    "type": "Beker",
+    "opponent": "Bekerronde 3 L32 · laatste kans op terugval naar eigen divisie",
+    "venue": "",
+    "id": "l4s15",
+    "round": ""
+   },
+   {
+    "venue": "",
+    "id": "l4s16",
+    "date": "2027-01-08",
+    "round": "",
+    "type": "Info",
+    "address": "",
+    "opponent": "Toernooi koppel Tac-Tic"
+   },
+   {
+    "round": "10",
+    "venue": "Thuis",
+    "opponent": "De Sjpas Piele",
+    "address": "",
+    "date": "2027-01-15",
+    "type": "Divisie",
+    "id": "l4s17"
+   },
+   {
+    "type": "Divisie",
+    "venue": "Uit",
+    "id": "l4s18",
+    "round": "11",
+    "address": "Kerkstraat 23, 6439 AN Doenrade",
+    "date": "2027-01-22",
+    "opponent": "Bullys 4"
+   },
+   {
+    "id": "l4s19",
+    "opponent": "Dart Siders",
+    "type": "Divisie",
+    "venue": "Thuis",
+    "round": "12",
+    "address": "",
+    "date": "2027-01-29"
+   },
+   {
+    "date": "2027-02-05",
+    "type": "Info",
+    "venue": "",
+    "id": "l4s20",
+    "address": "",
+    "round": "",
+    "opponent": "Vrije week i.v.m. carnaval"
+   },
+   {
+    "address": "",
+    "id": "l4s21",
+    "type": "Beker",
+    "date": "2027-02-12",
+    "opponent": "Bekerronde 4 L16",
+    "venue": "",
+    "round": ""
+   },
+   {
+    "type": "Divisie",
+    "address": "Kerkstraat 23, 6439 AN Doenrade",
+    "venue": "Uit",
+    "round": "13",
+    "date": "2027-02-19",
+    "id": "l4s22",
+    "opponent": "Bullys 3"
+   },
+   {
+    "venue": "",
+    "type": "Info",
+    "round": "",
+    "date": "2027-02-26",
+    "id": "l4s23",
+    "address": "",
+    "opponent": "Vrije week / Inhaalweek"
+   },
+   {
+    "address": "",
+    "type": "Divisie",
+    "venue": "Thuis",
+    "round": "14",
+    "date": "2027-03-05",
+    "id": "l4s24",
+    "opponent": "Raodhoes 2"
+   },
+   {
+    "opponent": "DC Carboon 3",
+    "venue": "Uit",
+    "type": "Divisie",
+    "id": "l4s25",
+    "round": "15",
+    "date": "2027-03-12",
+    "address": "Ganzeweiden 38, 6413 GG Heerlen"
+   },
+   {
+    "type": "Divisie",
+    "opponent": "Beegter Bouncers",
+    "date": "2027-03-19",
+    "venue": "Thuis",
+    "round": "16",
+    "id": "l4s26",
+    "address": ""
+   },
+   {
+    "type": "Beker",
+    "date": "2027-03-26",
+    "venue": "",
+    "address": "",
+    "round": "",
+    "opponent": "Bekerronde 5 kwartfinale",
+    "id": "l4s27"
+   },
+   {
+    "id": "l4s28",
+    "type": "Divisie",
+    "venue": "Uit",
+    "round": "17",
+    "address": "Maanstraat 20, 6446 XE Brunssum",
+    "date": "2027-04-02",
+    "opponent": "Treebeekse Treffers 3"
+   },
+   {
+    "opponent": "Oos Cafeke 1",
+    "type": "Divisie",
+    "address": "",
+    "id": "l4s29",
+    "date": "2027-04-09",
+    "venue": "Thuis",
+    "round": "18"
+   },
+   {
+    "opponent": "Bekerronde 6 halve finale",
+    "date": "2027-04-16",
+    "address": "",
+    "id": "l4s30",
+    "type": "Beker",
+    "venue": "",
+    "round": ""
+   },
+   {
+    "date": "2027-04-23",
+    "id": "l4s31",
+    "type": "Info",
+    "venue": "",
+    "opponent": "Vrije week / Inhaalweek",
+    "address": "",
+    "round": ""
+   },
+   {
+    "venue": "Uit",
+    "date": "2027-04-30",
+    "address": "Heicarisborgweg 19, 6414 NL Heerlen",
+    "type": "Divisie",
+    "round": "19",
+    "id": "l4s32",
+    "opponent": "Robin Hood 1"
+   },
+   {
+    "round": "20",
+    "id": "l4s33",
+    "opponent": "Klaver Vier 5",
+    "venue": "Thuis",
+    "type": "Divisie",
+    "address": "",
+    "date": "2027-05-07"
+   },
+   {
+    "address": "Patronaatstraat 2, 6466 HR Kerkrade",
+    "venue": "Uit",
+    "opponent": "De Sjpas Piele",
+    "type": "Divisie",
+    "round": "21",
+    "id": "l4s34",
+    "date": "2027-05-14"
+   },
+   {
+    "type": "Divisie",
+    "venue": "Thuis",
+    "round": "22",
+    "date": "2027-05-21",
+    "opponent": "Bullys 4",
+    "address": "",
+    "id": "l4s35"
+   },
+   {
+    "round": "",
+    "address": "",
+    "venue": "",
+    "id": "l4s36",
+    "type": "Info",
+    "opponent": "Ben Rozemeijer Memorial single 501 toernooi",
+    "date": "2027-05-28"
+   },
+   {
+    "venue": "",
+    "date": "2027-06-04",
+    "type": "Info",
+    "round": "",
+    "address": "",
+    "id": "l4s37",
+    "opponent": "Algemene ledenvergadering"
+   },
+   {
+    "opponent": "Bekerfinales 1e, 2e en 3e divisie",
+    "id": "l4s38",
+    "round": "",
+    "type": "Info",
+    "address": "",
+    "venue": "",
+    "date": "2027-06-11"
+   },
+   {
+    "date": "2027-06-12",
+    "venue": "",
+    "type": "Info",
+    "round": "",
+    "id": "l4s39",
+    "address": "",
+    "opponent": "Bekerfinale algemene ronde"
+   },
+   {
+    "type": "Info",
+    "date": "2027-06-18",
+    "address": "",
+    "opponent": "Divisiekampioenschappen",
+    "id": "l4s40",
+    "venue": "",
+    "round": ""
+   },
+   {
+    "id": "l4s41",
+    "address": "",
+    "opponent": "Feestavond",
+    "date": "2027-06-25",
+    "round": "",
+    "venue": "",
+    "type": "Info"
+   }
+  ],
+  "rev": 7,
+  "scheduleNote": "Speelronde 19, 20, 21 en 22 mogen niet uitgesteld worden, maar mogen wel vooruit gespeeld worden."
+ },
+ {
+  "id": "mvsfaq24a2xdur",
+  "updatedAt": 1793294246071,
+  "rev": 4,
+  "division": "1e divisie",
+  "scheduleVersion": "2026-2027-v1",
+  "name": "Lentjheuvel 2",
+  "players": [
+   {
+    "name": "B. Ramakers",
+    "nr": "",
+    "id": "mvsjn261rbq01z",
+    "role": "C"
+   },
+   {
+    "name": "E. Slagter",
+    "role": "",
+    "id": "mvsjn2pj1fzx5d",
+    "nr": ""
+   },
+   {
+    "name": "Harry",
+    "nr": "",
+    "id": "mvsjn374vxvq30",
+    "role": ""
+   },
+   {
+    "name": "Jo",
+    "role": "",
+    "nr": "",
+    "id": "mvsjn4m32h2t59"
+   },
+   {
+    "id": "mvsjn5lagjr3fx",
+    "nr": "",
+    "role": "",
+    "name": "Kevin"
+   },
+   {
+    "nr": "",
+    "id": "mvsjn695knqrr6",
+    "name": "Mino",
+    "role": ""
+   },
+   {
+    "role": "",
+    "id": "mvsjn6yd711okq",
+    "name": "Rob",
+    "nr": ""
+   },
+   {
+    "role": "",
+    "name": "Stefano",
+    "nr": "",
+    "id": "mvsjn7jxl88ecg"
+   }
+  ],
+  "schedule": [
+   {
+    "round": "",
+    "type": "Info",
+    "venue": "",
+    "date": "2026-09-04",
+    "opponent": "Captainsmeeting Treebeek Trefcentrum",
+    "address": "",
+    "id": "l2s00"
+   },
+   {
+    "id": "l2s01",
+    "round": "",
+    "date": "2026-09-11",
+    "type": "Info",
+    "address": "",
+    "venue": "",
+    "opponent": "Toernooi koppel 701"
+   },
+   {
+    "round": "1",
+    "address": "",
+    "id": "l2s02",
+    "venue": "Thuis",
+    "opponent": "Time Out 1",
+    "date": "2026-09-18",
+    "type": "Divisie"
+   },
+   {
+    "round": "2",
+    "opponent": "Schaesbergerveld",
+    "venue": "Uit",
+    "type": "Divisie",
+    "id": "l2s03",
+    "date": "2026-09-25",
+    "address": "Schaesbergerweg 138, 6415 AK Heerlen"
+   },
+   {
+    "round": "3",
+    "address": "",
+    "opponent": "I Gen Dorp 1",
+    "id": "l2s04",
+    "venue": "Thuis",
+    "date": "2026-10-02",
+    "type": "Divisie"
+   },
+   {
+    "date": "2026-10-09",
+    "type": "Beker",
+    "id": "l2s05",
+    "venue": "",
+    "address": "",
+    "round": "",
+    "opponent": "Bekerronde 1 L128"
+   },
+   {
+    "round": "4",
+    "id": "l2s06",
+    "opponent": "Fido Dido",
+    "date": "2026-10-16",
+    "address": "Goswijnstraat 3, 6367 EB Voerendaal",
+    "type": "Divisie",
+    "venue": "Uit"
+   },
+   {
+    "type": "Info",
+    "address": "",
+    "date": "2026-10-23",
+    "round": "",
+    "id": "l2s07",
+    "venue": "",
+    "opponent": "Vrije week / Inhaalweek"
+   },
+   {
+    "date": "2026-10-30",
+    "opponent": "DV De Sjerpe Piel",
+    "type": "Divisie",
+    "id": "l2s08",
+    "round": "5",
+    "address": "",
+    "venue": "Thuis"
+   },
+   {
+    "opponent": "Hoekje 3",
+    "type": "Divisie",
+    "date": "2026-11-06",
+    "round": "6",
+    "address": "Kerkstraat 75, 6137 SM Sittard",
+    "id": "l2s09",
+    "venue": "Uit"
+   },
+   {
+    "date": "2026-11-13",
+    "type": "Beker",
+    "id": "l2s10",
+    "venue": "",
+    "opponent": "Bekerronde 2 L64",
+    "round": "",
+    "address": ""
+   },
+   {
+    "id": "l2s11",
+    "round": "7",
+    "date": "2026-11-20",
+    "type": "Divisie",
+    "address": "",
+    "venue": "Thuis",
+    "opponent": "Klaver Vier 2"
+   },
+   {
+    "venue": "Uit",
+    "address": "Bokstraat 53, 6413 AS Heerlen",
+    "id": "l2s12",
+    "date": "2026-11-27",
+    "round": "8",
+    "type": "Divisie",
+    "opponent": "De Bok 4"
+   },
+   {
+    "address": "",
+    "id": "l2s13",
+    "date": "2026-12-04",
+    "opponent": "Vrije week / Inhaalweek",
+    "type": "Info",
+    "round": "",
+    "venue": ""
+   },
+   {
+    "date": "2026-12-11",
+    "venue": "Thuis",
+    "id": "l2s14",
+    "type": "Divisie",
+    "address": "",
+    "round": "9",
+    "opponent": "Fratelli United"
+   },
+   {
+    "venue": "",
+    "round": "",
+    "type": "Beker",
+    "id": "l2s15",
+    "opponent": "Bekerronde 3 L32 · laatste kans op terugval naar eigen divisie",
+    "address": "",
+    "date": "2026-12-18"
+   },
+   {
+    "id": "l2s16",
+    "date": "2027-01-08",
+    "opponent": "Toernooi koppel Tac-Tic",
+    "venue": "",
+    "type": "Info",
+    "round": "",
+    "address": ""
+   },
+   {
+    "id": "l2s17",
+    "venue": "Uit",
+    "date": "2027-01-15",
+    "opponent": "'t Pumpje",
+    "type": "Divisie",
+    "address": "Markt 49, 6461 ED Kerkrade",
+    "round": "10"
+   },
+   {
+    "opponent": "Flying Darts 3",
+    "round": "11",
+    "date": "2027-01-22",
+    "type": "Divisie",
+    "id": "l2s18",
+    "address": "",
+    "venue": "Thuis"
+   },
+   {
+    "round": "12",
+    "date": "2027-01-29",
+    "type": "Divisie",
+    "id": "l2s19",
+    "opponent": "Time Out 1",
+    "address": "Gravin van Schonbornlaan 4, 6433 AZ Hoensbroek",
+    "venue": "Uit"
+   },
+   {
+    "round": "",
+    "address": "",
+    "opponent": "Vrije week i.v.m. carnaval",
+    "id": "l2s20",
+    "venue": "",
+    "date": "2027-02-05",
+    "type": "Info"
+   },
+   {
+    "round": "",
+    "id": "l2s21",
+    "date": "2027-02-12",
+    "type": "Beker",
+    "venue": "",
+    "opponent": "Bekerronde 4 L16",
+    "address": ""
+   },
+   {
+    "venue": "Thuis",
+    "id": "l2s22",
+    "address": "",
+    "round": "13",
+    "opponent": "Schaesbergerveld",
+    "date": "2027-02-19",
+    "type": "Divisie"
+   },
+   {
+    "date": "2027-02-26",
+    "type": "Info",
+    "id": "l2s23",
+    "round": "",
+    "address": "",
+    "opponent": "Vrije week / Inhaalweek",
+    "venue": ""
+   },
+   {
+    "round": "14",
+    "address": "Kornerstraat 26, 6363 BX Wijnandsrade",
+    "venue": "Uit",
+    "id": "l2s24",
+    "type": "Divisie",
+    "opponent": "I Gen Dorp 1",
+    "date": "2027-03-05"
+   },
+   {
+    "venue": "Thuis",
+    "round": "15",
+    "opponent": "Fido Dido",
+    "type": "Divisie",
+    "id": "l2s25",
+    "date": "2027-03-12",
+    "address": ""
+   },
+   {
+    "date": "2027-03-19",
+    "type": "Divisie",
+    "opponent": "DV De Sjerpe Piel",
+    "id": "l2s26",
+    "round": "16",
+    "address": "De Gronckelstraat 1, 6141 AG Limbricht",
+    "venue": "Uit"
+   },
+   {
+    "date": "2027-03-26",
+    "venue": "",
+    "address": "",
+    "type": "Beker",
+    "id": "l2s27",
+    "opponent": "Bekerronde 5 kwartfinale",
+    "round": ""
+   },
+   {
+    "address": "",
+    "venue": "Thuis",
+    "opponent": "Hoekje 3",
+    "id": "l2s28",
+    "type": "Divisie",
+    "date": "2027-04-02",
+    "round": "17"
+   },
+   {
+    "date": "2027-04-09",
+    "type": "Divisie",
+    "round": "18",
+    "id": "l2s29",
+    "address": "Florence Nightingalestraat 6, 6441 HW Brunssum",
+    "opponent": "Klaver Vier 2",
+    "venue": "Uit"
+   },
+   {
+    "round": "",
+    "address": "",
+    "id": "l2s30",
+    "opponent": "Bekerronde 6 halve finale",
+    "date": "2027-04-16",
+    "type": "Beker",
+    "venue": ""
+   },
+   {
+    "address": "",
+    "round": "",
+    "id": "l2s31",
+    "date": "2027-04-23",
+    "venue": "",
+    "type": "Info",
+    "opponent": "Vrije week / Inhaalweek"
+   },
+   {
+    "type": "Divisie",
+    "address": "",
+    "round": "19",
+    "date": "2027-04-30",
+    "opponent": "De Bok 4",
+    "id": "l2s32",
+    "venue": "Thuis"
+   },
+   {
+    "round": "20",
+    "id": "l2s33",
+    "opponent": "Fratelli United",
+    "venue": "Uit",
+    "address": "Kerkstraat 274, 6441 BL Brunssum",
+    "date": "2027-05-07",
+    "type": "Divisie"
+   },
+   {
+    "round": "21",
+    "address": "",
+    "opponent": "'t Pumpje",
+    "venue": "Thuis",
+    "id": "l2s34",
+    "type": "Divisie",
+    "date": "2027-05-14"
+   },
+   {
+    "id": "l2s35",
+    "date": "2027-05-21",
+    "address": "Pius XII Plein 38, 6433 CZ Hoensbroek",
+    "round": "22",
+    "type": "Divisie",
+    "opponent": "Flying Darts 3",
+    "venue": "Uit"
+   },
+   {
+    "opponent": "Ben Rozemeijer Memorial single 501 toernooi",
+    "type": "Info",
+    "venue": "",
+    "date": "2027-05-28",
+    "id": "l2s36",
+    "round": "",
+    "address": ""
+   },
+   {
+    "type": "Info",
+    "date": "2027-06-04",
+    "round": "",
+    "id": "l2s37",
+    "opponent": "Algemene ledenvergadering",
+    "venue": "",
+    "address": ""
+   },
+   {
+    "date": "2027-06-11",
+    "id": "l2s38",
+    "type": "Info",
+    "venue": "",
+    "opponent": "Bekerfinales 1e, 2e en 3e divisie",
+    "address": "",
+    "round": ""
+   },
+   {
+    "type": "Info",
+    "venue": "",
+    "date": "2027-06-12",
+    "id": "l2s39",
+    "address": "",
+    "round": "",
+    "opponent": "Bekerfinale algemene ronde"
+   },
+   {
+    "id": "l2s40",
+    "venue": "",
+    "address": "",
+    "date": "2027-06-18",
+    "type": "Info",
+    "round": "",
+    "opponent": "Divisiekampioenschappen"
+   },
+   {
+    "id": "l2s41",
+    "venue": "",
+    "address": "",
+    "round": "",
+    "opponent": "Feestavond",
+    "date": "2027-06-25",
+    "type": "Info"
+   }
+  ],
+  "scheduleNote": "Speelronde 19, 20, 21 en 22 mogen niet uitgesteld worden, maar mogen wel vooruit gespeeld worden."
+ },
+ {
+  "id": "mvsfazf6tp3q7b",
+  "scheduleVersion": "2026-2027-v1",
+  "name": "Lentjheuvel 3",
+  "updatedAt": 1793294868257,
+  "scheduleNote": "Speelronde 19, 20, 21 en 22 mogen niet uitgesteld worden, maar mogen wel vooruit gespeeld worden.",
+  "schedule": [
+   {
+    "date": "2026-09-04",
+    "type": "Info",
+    "id": "l3s00",
+    "round": "",
+    "opponent": "Captainsmeeting Treebeek Trefcentrum",
+    "address": "",
+    "venue": ""
+   },
+   {
+    "date": "2026-09-11",
+    "type": "Info",
+    "id": "l3s01",
+    "round": "",
+    "address": "",
+    "opponent": "Toernooi koppel 701",
+    "venue": ""
+   },
+   {
+    "venue": "Uit",
+    "opponent": "Joe Place",
+    "type": "Divisie",
+    "address": "Brommelen 16, 6363 CS Wijnandsrade",
+    "round": "1",
+    "date": "2026-09-18",
+    "id": "l3s02"
+   },
+   {
+    "venue": "Thuis",
+    "id": "l3s03",
+    "address": "",
+    "round": "2",
+    "opponent": "Bullys 1",
+    "date": "2026-09-25",
+    "type": "Divisie"
+   },
+   {
+    "type": "Divisie",
+    "address": "Oranje Nassaustraat 33, 6411 LE Heerlen",
+    "date": "2026-10-02",
+    "venue": "Uit",
+    "opponent": "Matchpoint Darts",
+    "id": "l3s04",
+    "round": "3"
+   },
+   {
+    "opponent": "Bekerronde 1 L128",
+    "venue": "",
+    "address": "",
+    "round": "",
+    "id": "l3s05",
+    "type": "Beker",
+    "date": "2026-10-09"
+   },
+   {
+    "round": "4",
+    "address": "",
+    "opponent": "Heksenberg 1",
+    "venue": "Thuis",
+    "type": "Divisie",
+    "id": "l3s06",
+    "date": "2026-10-16"
+   },
+   {
+    "venue": "",
+    "opponent": "Vrije week / Inhaalweek",
+    "address": "",
+    "type": "Info",
+    "id": "l3s07",
+    "date": "2026-10-23",
+    "round": ""
+   },
+   {
+    "type": "Divisie",
+    "round": "5",
+    "date": "2026-10-30",
+    "address": "Heicarisborgweg 19, 6414 NL Heerlen",
+    "opponent": "The Matrix",
+    "id": "l3s08",
+    "venue": "Uit"
+   },
+   {
+    "address": "",
+    "round": "6",
+    "venue": "Thuis",
+    "opponent": "Triple One",
+    "id": "l3s09",
+    "type": "Divisie",
+    "date": "2026-11-06"
+   },
+   {
+    "date": "2026-11-13",
+    "id": "l3s10",
+    "round": "",
+    "type": "Beker",
+    "address": "",
+    "opponent": "Bekerronde 2 L64",
+    "venue": ""
+   },
+   {
+    "id": "l3s11",
+    "venue": "Uit",
+    "address": "Terbruggen 3, 6471 JS Eygelshoven",
+    "opponent": "Der Toeere 1",
+    "round": "7",
+    "date": "2026-11-20",
+    "type": "Divisie"
+   },
+   {
+    "type": "Divisie",
+    "date": "2026-11-27",
+    "venue": "Uit",
+    "opponent": "Dartteam Friends 4 Life",
+    "id": "l3s12",
+    "address": "Dennestraat 2, 6413 PV Heerlen",
+    "round": "8"
+   },
+   {
+    "address": "",
+    "venue": "",
+    "id": "l3s13",
+    "date": "2026-12-04",
+    "round": "",
+    "opponent": "Vrije week / Inhaalweek",
+    "type": "Info"
+   },
+   {
+    "round": "9",
+    "address": "",
+    "id": "l3s14",
+    "venue": "Thuis",
+    "opponent": "Flying Darts 045",
+    "date": "2026-12-11",
+    "type": "Divisie"
+   },
+   {
+    "address": "",
+    "round": "",
+    "opponent": "Bekerronde 3 L32 · laatste kans op terugval naar eigen divisie",
+    "id": "l3s15",
+    "venue": "",
+    "date": "2026-12-18",
+    "type": "Beker"
+   },
+   {
+    "opponent": "Toernooi koppel Tac-Tic",
+    "id": "l3s16",
+    "address": "",
+    "round": "",
+    "date": "2027-01-08",
+    "type": "Info",
+    "venue": ""
+   },
+   {
+    "venue": "Uit",
+    "address": "Raadhuisstraat 64, 6129 CE Urmond",
+    "opponent": "Bie Jenny",
+    "id": "l3s17",
+    "type": "Divisie",
+    "date": "2027-01-15",
+    "round": "10"
+   },
+   {
+    "address": "",
+    "opponent": "De Aftrap 1",
+    "type": "Divisie",
+    "venue": "Thuis",
+    "date": "2027-01-22",
+    "round": "11",
+    "id": "l3s18"
+   },
+   {
+    "type": "Divisie",
+    "address": "",
+    "date": "2027-01-29",
+    "venue": "Thuis",
+    "opponent": "Joe Place",
+    "id": "l3s19",
+    "round": "12"
+   },
+   {
+    "opponent": "Vrije week i.v.m. carnaval",
+    "venue": "",
+    "address": "",
+    "id": "l3s20",
+    "date": "2027-02-05",
+    "round": "",
+    "type": "Info"
+   },
+   {
+    "venue": "",
+    "type": "Beker",
+    "date": "2027-02-12",
+    "round": "",
+    "opponent": "Bekerronde 4 L16",
+    "address": "",
+    "id": "l3s21"
+   },
+   {
+    "type": "Divisie",
+    "opponent": "Bullys 1",
+    "date": "2027-02-19",
+    "venue": "Uit",
+    "id": "l3s22",
+    "address": "Kerkstraat 23, 6439 AN Doenrade",
+    "round": "13"
+   },
+   {
+    "type": "Info",
+    "date": "2027-02-26",
+    "venue": "",
+    "address": "",
+    "opponent": "Vrije week / Inhaalweek",
+    "id": "l3s23",
+    "round": ""
+   },
+   {
+    "round": "14",
+    "id": "l3s24",
+    "opponent": "Matchpoint Darts",
+    "date": "2027-03-05",
+    "venue": "Thuis",
+    "type": "Divisie",
+    "address": ""
+   },
+   {
+    "round": "15",
+    "id": "l3s25",
+    "address": "Roebroekweg 44, 6414 BC Heerlen",
+    "date": "2027-03-12",
+    "type": "Divisie",
+    "venue": "Uit",
+    "opponent": "Heksenberg 1"
+   },
+   {
+    "address": "",
+    "type": "Divisie",
+    "venue": "Thuis",
+    "date": "2027-03-19",
+    "opponent": "The Matrix",
+    "id": "l3s26",
+    "round": "16"
+   },
+   {
+    "round": "",
+    "id": "l3s27",
+    "opponent": "Bekerronde 5 kwartfinale",
+    "address": "",
+    "date": "2027-03-26",
+    "venue": "",
+    "type": "Beker"
+   },
+   {
+    "address": "De Insel 23, 6442 AJ Brunssum",
+    "opponent": "Triple One",
+    "round": "17",
+    "type": "Divisie",
+    "venue": "Uit",
+    "date": "2027-04-02",
+    "id": "l3s28"
+   },
+   {
+    "id": "l3s29",
+    "date": "2027-04-09",
+    "venue": "Thuis",
+    "type": "Divisie",
+    "round": "18",
+    "opponent": "Der Toeere 1",
+    "address": ""
+   },
+   {
+    "opponent": "Bekerronde 6 halve finale",
+    "venue": "",
+    "address": "",
+    "type": "Beker",
+    "date": "2027-04-16",
+    "round": "",
+    "id": "l3s30"
+   },
+   {
+    "address": "",
+    "type": "Info",
+    "date": "2027-04-23",
+    "round": "",
+    "opponent": "Vrije week / Inhaalweek",
+    "id": "l3s31",
+    "venue": ""
+   },
+   {
+    "venue": "Thuis",
+    "opponent": "Dartteam Friends 4 Life",
+    "address": "",
+    "id": "l3s32",
+    "round": "19",
+    "date": "2027-04-30",
+    "type": "Divisie"
+   },
+   {
+    "address": "Pius XII Plein 38, 6433 CZ Hoensbroek",
+    "id": "l3s33",
+    "round": "20",
+    "date": "2027-05-07",
+    "type": "Divisie",
+    "opponent": "Flying Darts 045",
+    "venue": "Uit"
+   },
+   {
+    "type": "Divisie",
+    "venue": "Thuis",
+    "date": "2027-05-14",
+    "address": "",
+    "opponent": "Bie Jenny",
+    "id": "l3s34",
+    "round": "21"
+   },
+   {
+    "opponent": "De Aftrap 1",
+    "round": "22",
+    "address": "Markt 49, 6461 ED Kerkrade",
+    "venue": "Uit",
+    "type": "Divisie",
+    "id": "l3s35",
+    "date": "2027-05-21"
+   },
+   {
+    "round": "",
+    "opponent": "Ben Rozemeijer Memorial single 501 toernooi",
+    "address": "",
+    "venue": "",
+    "id": "l3s36",
+    "type": "Info",
+    "date": "2027-05-28"
+   },
+   {
+    "round": "",
+    "id": "l3s37",
+    "opponent": "Algemene ledenvergadering",
+    "venue": "",
+    "date": "2027-06-04",
+    "address": "",
+    "type": "Info"
+   },
+   {
+    "id": "l3s38",
+    "round": "",
+    "date": "2027-06-11",
+    "type": "Info",
+    "address": "",
+    "venue": "",
+    "opponent": "Bekerfinales 1e, 2e en 3e divisie"
+   },
+   {
+    "id": "l3s39",
+    "venue": "",
+    "opponent": "Bekerfinale algemene ronde",
+    "round": "",
+    "date": "2027-06-12",
+    "address": "",
+    "type": "Info"
+   },
+   {
+    "round": "",
+    "opponent": "Divisiekampioenschappen",
+    "type": "Info",
+    "id": "l3s40",
+    "date": "2027-06-18",
+    "venue": "",
+    "address": ""
+   },
+   {
+    "opponent": "Feestavond",
+    "type": "Info",
+    "round": "",
+    "date": "2027-06-25",
+    "venue": "",
+    "address": "",
+    "id": "l3s41"
+   }
+  ],
+  "players": [
+   {
+    "name": "Dave",
+    "role": "",
+    "id": "mvsjkua5wbmjip",
+    "nr": ""
+   },
+   {
+    "role": "VC",
+    "name": "Dennis",
+    "nr": "",
+    "id": "mvsjladvkciayz"
+   },
+   {
+    "name": "Lucas",
+    "id": "mvsjlaucvfig78",
+    "role": "",
+    "nr": ""
+   },
+   {
+    "name": "Rivo",
+    "nr": "",
+    "role": "C",
+    "id": "mvsjlbahcbhphn"
+   },
+   {
+    "role": "",
+    "nr": "",
+    "id": "mvsjlbr7j6x4z8",
+    "name": "R. de Vries"
+   },
+   {
+    "nr": "",
+    "role": "",
+    "id": "mvsjlc77b4grrk",
+    "name": "R. op den Camp"
+   }
+  ],
+  "rev": 5,
+  "division": "1e divisie"
+ },
+ {
+  "id": "mvsfb7n4wd4pjy",
+  "players": [
+   {
+    "name": "Danny",
+    "id": "mvsjopjt22fn2v",
+    "nr": "",
+    "role": ""
+   },
+   {
+    "name": "Dennie",
+    "id": "mvsjopztbf41ax",
+    "role": "VC",
+    "nr": ""
+   },
+   {
+    "role": "",
+    "name": "Fabio",
+    "id": "mvsjoqf4qmydyc",
+    "nr": ""
+   },
+   {
+    "role": "",
+    "id": "mvsjoqtqiuz55i",
+    "name": "Melvin",
+    "nr": ""
+   },
+   {
+    "role": "",
+    "nr": "",
+    "id": "mvsjor7u8jud64",
+    "name": "P. Viguurs"
+   },
+   {
+    "name": "Ricky",
+    "id": "mvsjorjfalmcyc",
+    "nr": "",
+    "role": ""
+   },
+   {
+    "role": "",
+    "name": "Rob",
+    "nr": "",
+    "id": "mvsjrsmxjotwy9"
+   },
+   {
+    "name": "R. Maintz",
+    "id": "mvsjs54gsbplx5",
+    "role": "",
+    "nr": ""
+   },
+   {
+    "name": "Thimo",
+    "role": "",
+    "id": "mvsjs89yiaok1h",
+    "nr": ""
+   }
+  ],
+  "division": "Hoofdklasse",
+  "updatedAt": 1793294345043,
+  "schedule": [
+   {
+    "opponent": "Captainsmeeting Treebeek Trefcentrum",
+    "id": "scs00",
+    "round": "",
+    "date": "2026-09-04",
+    "address": "",
+    "type": "Info",
+    "venue": ""
+   },
+   {
+    "round": "",
+    "address": "",
+    "opponent": "Toernooi koppel 701",
+    "venue": "",
+    "id": "scs01",
+    "type": "Info",
+    "date": "2026-09-11"
+   },
+   {
+    "opponent": "Lucky Darts",
+    "round": "1",
+    "address": "Gravin van Schonbornlaan 4, 6433 AZ Hoensbroek",
+    "id": "scs02",
+    "type": "Divisie",
+    "date": "2026-09-18",
+    "venue": "Uit"
+   },
+   {
+    "id": "scs03",
+    "opponent": "Reunie 1",
+    "date": "2026-09-25",
+    "type": "Divisie",
+    "venue": "Thuis",
+    "address": "",
+    "round": "2"
+   },
+   {
+    "date": "2026-10-02",
+    "type": "Divisie",
+    "id": "scs04",
+    "venue": "Uit",
+    "opponent": "Dartcafé Nouveau 33",
+    "address": "Rumpenerstraat 34, 6443 CE Brunssum",
+    "round": "3"
+   },
+   {
+    "opponent": "Bekerronde 1 L128",
+    "type": "Beker",
+    "date": "2026-10-09",
+    "address": "",
+    "round": "",
+    "id": "scs05",
+    "venue": ""
+   },
+   {
+    "type": "Divisie",
+    "date": "2026-10-16",
+    "opponent": "Volkshuis 1",
+    "venue": "Thuis",
+    "address": "",
+    "id": "scs06",
+    "round": "4"
+   },
+   {
+    "venue": "",
+    "id": "scs07",
+    "opponent": "Vrije week / Inhaalweek",
+    "round": "",
+    "date": "2026-10-23",
+    "address": "",
+    "type": "Info"
+   },
+   {
+    "address": "Anjelierstraat 32, 6414 EV Heerlen",
+    "id": "scs08",
+    "round": "5",
+    "date": "2026-10-30",
+    "type": "Divisie",
+    "opponent": "DC Nieuweinde",
+    "venue": "Uit"
+   },
+   {
+    "venue": "Thuis",
+    "type": "Divisie",
+    "date": "2026-11-06",
+    "opponent": "Triple Trouble",
+    "address": "",
+    "round": "6",
+    "id": "scs09"
+   },
+   {
+    "opponent": "Bekerronde 2 L64",
+    "address": "",
+    "id": "scs10",
+    "venue": "",
+    "date": "2026-11-13",
+    "type": "Beker",
+    "round": ""
+   },
+   {
+    "opponent": "Dartcafé Nouveau 1",
+    "venue": "Uit",
+    "type": "Divisie",
+    "address": "Rumpenerstraat 34, 6443 CE Brunssum",
+    "date": "2026-11-20",
+    "id": "scs11",
+    "round": "7"
+   },
+   {
+    "venue": "Uit",
+    "id": "scs12",
+    "round": "8",
+    "address": "Markt 49, 6461 ED Kerkrade",
+    "date": "2026-11-27",
+    "type": "Divisie",
+    "opponent": "Yes 94"
+   },
+   {
+    "venue": "",
+    "address": "",
+    "opponent": "Vrije week / Inhaalweek",
+    "round": "",
+    "type": "Info",
+    "date": "2026-12-04",
+    "id": "scs13"
+   },
+   {
+    "address": "",
+    "id": "scs14",
+    "round": "9",
+    "date": "2026-12-11",
+    "venue": "Thuis",
+    "opponent": "Hoekje 1",
+    "type": "Divisie"
+   },
+   {
+    "type": "Beker",
+    "venue": "",
+    "address": "",
+    "date": "2026-12-18",
+    "opponent": "Bekerronde 3 L32 · laatste kans op terugval naar eigen divisie",
+    "round": "",
+    "id": "scs15"
+   },
+   {
+    "venue": "",
+    "address": "",
+    "opponent": "Toernooi koppel Tac-Tic",
+    "round": "",
+    "id": "scs16",
+    "type": "Info",
+    "date": "2027-01-08"
+   },
+   {
+    "round": "10",
+    "id": "scs17",
+    "venue": "Uit",
+    "opponent": "Foreign Affair",
+    "address": "Heicarisborgweg 19, 6414 NL Heerlen",
+    "date": "2027-01-15",
+    "type": "Divisie"
+   },
+   {
+    "date": "2027-01-22",
+    "address": "Musschenberg 26A, 6176 BD Spaubeek",
+    "round": "11",
+    "type": "Divisie",
+    "id": "scs18",
+    "venue": "Uit",
+    "opponent": "DC 't Raodhoes"
+   },
+   {
+    "venue": "Thuis",
+    "address": "",
+    "opponent": "Lucky Darts",
+    "type": "Divisie",
+    "date": "2027-01-29",
+    "round": "12",
+    "id": "scs19"
+   },
+   {
+    "address": "",
+    "round": "",
+    "type": "Info",
+    "date": "2027-02-05",
+    "opponent": "Vrije week i.v.m. carnaval",
+    "venue": "",
+    "id": "scs20"
+   },
+   {
+    "round": "",
+    "id": "scs21",
+    "address": "",
+    "venue": "",
+    "date": "2027-02-12",
+    "opponent": "Bekerronde 4 L16",
+    "type": "Beker"
+   },
+   {
+    "venue": "Uit",
+    "id": "scs22",
+    "address": "Wilhelminastraat 1, 6161 SX Geleen",
+    "date": "2027-02-19",
+    "type": "Divisie",
+    "round": "13",
+    "opponent": "Reunie 1"
+   },
+   {
+    "id": "scs23",
+    "round": "",
+    "address": "",
+    "venue": "",
+    "opponent": "Vrije week / Inhaalweek",
+    "date": "2027-02-26",
+    "type": "Info"
+   },
+   {
+    "venue": "Thuis",
+    "address": "",
+    "type": "Divisie",
+    "date": "2027-03-05",
+    "round": "14",
+    "id": "scs24",
+    "opponent": "Dartcafé Nouveau 33"
+   },
+   {
+    "address": "Dennestraat 2, 6413 PV Heerlen",
+    "date": "2027-03-12",
+    "id": "scs25",
+    "type": "Divisie",
+    "round": "15",
+    "opponent": "Volkshuis 1",
+    "venue": "Uit"
+   },
+   {
+    "venue": "Thuis",
+    "opponent": "DC Nieuweinde",
+    "address": "",
+    "round": "16",
+    "id": "scs26",
+    "type": "Divisie",
+    "date": "2027-03-19"
+   },
+   {
+    "id": "scs27",
+    "round": "",
+    "opponent": "Bekerronde 5 kwartfinale",
+    "address": "",
+    "date": "2027-03-26",
+    "venue": "",
+    "type": "Beker"
+   },
+   {
+    "round": "17",
+    "address": "Heicarisborgweg 19, 6414 NL Heerlen",
+    "venue": "Uit",
+    "opponent": "Triple Trouble",
+    "id": "scs28",
+    "type": "Divisie",
+    "date": "2027-04-02"
+   },
+   {
+    "date": "2027-04-09",
+    "id": "scs29",
+    "type": "Divisie",
+    "venue": "Thuis",
+    "address": "",
+    "round": "18",
+    "opponent": "Dartcafé Nouveau 1"
+   },
+   {
+    "address": "",
+    "round": "",
+    "opponent": "Bekerronde 6 halve finale",
+    "type": "Beker",
+    "venue": "",
+    "date": "2027-04-16",
+    "id": "scs30"
+   },
+   {
+    "address": "",
+    "type": "Info",
+    "date": "2027-04-23",
+    "round": "",
+    "id": "scs31",
+    "venue": "",
+    "opponent": "Vrije week / Inhaalweek"
+   },
+   {
+    "id": "scs32",
+    "round": "19",
+    "opponent": "Yes 94",
+    "date": "2027-04-30",
+    "type": "Divisie",
+    "venue": "Thuis",
+    "address": ""
+   },
+   {
+    "id": "scs33",
+    "opponent": "Hoekje 1",
+    "address": "Kerkstraat 75, 6137 SM Sittard",
+    "date": "2027-05-07",
+    "venue": "Uit",
+    "type": "Divisie",
+    "round": "20"
+   },
+   {
+    "round": "21",
+    "address": "",
+    "opponent": "Foreign Affair",
+    "venue": "Thuis",
+    "type": "Divisie",
+    "date": "2027-05-14",
+    "id": "scs34"
+   },
+   {
+    "address": "",
+    "round": "22",
+    "opponent": "DC 't Raodhoes",
+    "id": "scs35",
+    "venue": "Thuis",
+    "date": "2027-05-21",
+    "type": "Divisie"
+   },
+   {
+    "round": "",
+    "id": "scs36",
+    "date": "2027-05-28",
+    "opponent": "Ben Rozemeijer Memorial single 501 toernooi",
+    "type": "Info",
+    "address": "",
+    "venue": ""
+   },
+   {
+    "date": "2027-06-04",
+    "type": "Info",
+    "id": "scs37",
+    "venue": "",
+    "address": "",
+    "opponent": "Algemene ledenvergadering",
+    "round": ""
+   },
+   {
+    "opponent": "Bekerfinales 1e, 2e en 3e divisie",
+    "round": "",
+    "address": "",
+    "id": "scs38",
+    "type": "Info",
+    "venue": "",
+    "date": "2027-06-11"
+   },
+   {
+    "date": "2027-06-12",
+    "type": "Info",
+    "id": "scs39",
+    "venue": "",
+    "address": "",
+    "round": "",
+    "opponent": "Bekerfinale algemene ronde"
+   },
+   {
+    "round": "",
+    "address": "",
+    "opponent": "Divisiekampioenschappen",
+    "venue": "",
+    "id": "scs40",
+    "type": "Info",
+    "date": "2027-06-18"
+   },
+   {
+    "opponent": "Feestavond",
+    "round": "",
+    "address": "",
+    "type": "Info",
+    "venue": "",
+    "date": "2027-06-25",
+    "id": "scs41"
+   }
+  ],
+  "name": "Scorpions",
+  "scheduleVersion": "2026-2027-v1",
+  "rev": 4,
+  "scheduleNote": "Speelronde 19, 20, 21 en 22 mogen niet uitgesteld worden, maar mogen wel vooruit gespeeld worden."
+ }
+]

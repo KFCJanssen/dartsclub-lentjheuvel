@@ -1,0 +1,52 @@
+[
+ {
+  "id": "5HPaf2vydPSbVFJ6yciXWwTLELX2",
+  "name": "Admin iPad",
+  "device": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.3 Safari/605.1.15",
+  "createdAt": "2026-10-28T19:13:06.786Z"
+ },
+ {
+  "id": "DsuU06HAs0cwbhCKYL3qf5mTjc53",
+  "name": "Tablet_2",
+  "device": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+  "createdAt": "2026-10-30T23:53:03.718Z"
+ },
+ {
+  "id": "JhPhNglANLbJQSCXHQ90F64glQz2",
+  "name": "Admin iPad",
+  "device": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.3 Safari/605.1.15",
+  "createdAt": "2026-10-31T22:02:03.797Z"
+ },
+ {
+  "id": "SOItR5QwwvX2MckrCGKwKHBrt0q1",
+  "name": "admintestphone",
+  "device": "Mozilla/5.0 (iPhone; CPU iPhone OS 26_7_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) GSA/444.2.1001595231 M",
+  "createdAt": "2026-10-31T22:26:06.828Z",
+  "lastSeen": 1793485566947
+ },
+ {
+  "id": "UWOtvVZZZbftpavVFBkuQdep0TF2",
+  "name": "Admin iPad",
+  "device": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.3 Safari/605.1.15",
+  "createdAt": "2026-10-31T22:02:41.825Z"
+ },
+ {
+  "id": "WszMttWBgxPPZRk75Sbc4vjVwt33",
+  "name": "Admin iPad",
+  "device": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.3 Mobile/15",
+  "createdAt": "2026-10-29T00:12:13.898Z",
+  "lastSeen": 1793486234026
+ },
+ {
+  "id": "c9hBLoPFZBS21S72pZIy2Ln8Jlq2",
+  "name": "Admin iPad",
+  "device": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.3 Mobile/15",
+  "createdAt": "2026-10-29T00:11:25.005Z"
+ },
+ {
+  "id": "gNBjzg1Vs8cZy1EeCVFlDZLtA6q1",
+  "name": "Tablet_1",
+  "device": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+  "createdAt": "2026-10-30T23:18:14.830Z"
+ }
+]
