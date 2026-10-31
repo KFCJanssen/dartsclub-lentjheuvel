@@ -28,5 +28,5 @@ De code hoeft per tablet maar één keer. Koppel altijd vanuit het icoon, niet v
 ## Beheer
 - Tablet ontkoppelen: Firebase-console → Firestore → `devices` → verwijder het document van die tablet.
 - Clubcode wijzigen: Firestore → `config` → `access` → veld `code`.
-- Beheerpagina (best of per divisie): houd de titel 2 seconden ingedrukt en voer de beheercode in (`config` → `admin` → `code`).
+- Beheerpagina: op een beheer-apparaat de titel 2 seconden ingedrukt houden. Een nieuw apparaat (ook de app op het beginscherm) wordt beheerder door de titel 6 seconden ingedrukt te houden en de beheercode in te voeren (`config` → `admin` → `code`), of via het adres …/#beheer.
 - Beheerrechten intrekken: Firestore → `admins` → verwijder het document van die tablet.

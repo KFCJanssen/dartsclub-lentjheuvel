@@ -1314,7 +1314,9 @@ document.addEventListener('pointerdown',e=>{
   if(el&&!el.disabled&&el.hasAttribute('data-a')&&el.closest('.game')&&el.dataset.a!=='fs'){e.preventDefault();act(el);return}
   if(el&&!el.disabled)downEl=el;
   downX=e.clientX;downY=e.clientY;
-  if(e.target.closest('.brand')&&S.isAdmin){holdT=setTimeout(()=>{holdFired=true;downEl=null;go('beheer')},2000);return}
+  /* titel ingedrukt houden: beheer-apparaat 2 s naar Beheer; ander apparaat 6 s naar het beheercode-scherm
+     (werkt ook in de app op het beginscherm, waar je geen adres kunt intypen) */
+  if(e.target.closest('.brand')){holdT=setTimeout(()=>{holdFired=true;downEl=null;go('beheer')},S.isAdmin?2000:6000);return}
   const card=e.target.closest('[data-hold]');
   if(card&&!readOnly&&(!el||el===card)){
     const id=card.dataset.hold;
