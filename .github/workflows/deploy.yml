@@ -1,17 +1,36 @@
-# Zet de app automatisch online bij elke wijziging op de main-branch.
+# Elke wijziging wordt eerst automatisch gecontroleerd.
+# - branch "test": komt online op de testversie (apart adres, zelfde database)
+# - branch "main": komt online op de echte app voor alle tablets
 name: Online zetten (Firebase Hosting)
 on:
   push:
-    branches: [main]
+    branches: [main, test]
   workflow_dispatch:
 jobs:
-  deploy:
+  controleren:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Automatische controles
+        run: node tests/run.mjs
+  online-zetten:
+    needs: controleren
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Versienummer invullen
+        run: |
+          V="$(date -u +%Y%m%d-%H%M)-${GITHUB_SHA::7}"
+          sed -i "s/__APP_VERSION__/$V/" public/index.html
+          echo "{\"v\":\"$V\"}" > public/version.json
+          echo "Versie $V"
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DARTSCLUB_LENTJHEUVEL }}
-          channelId: live
           projectId: dartsclub-lentjheuvel
+          channelId: ${{ github.ref_name == 'main' && 'live' || 'test' }}
+          expires: 30d

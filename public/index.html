@@ -234,6 +234,10 @@ input.in:focus,select.in:focus{border-color:var(--brass);outline:none}
 .stable td.rs{white-space:nowrap;text-align:right}
 .rslink{border:0;background:transparent;padding:4px 6px;font-family:var(--font-display);font-weight:900;font-size:1.25rem;color:var(--chalk);cursor:pointer}
 .stable tr.band td.rs .rslink{color:inherit}
+.updbanner{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--brass-soft);border:2px solid var(--brass);border-radius:var(--r);padding:12px 16px;cursor:pointer}
+.updbanner span:first-child{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.updbanner small{color:var(--muted);font-size:.85rem}
+.updgo{background:var(--brass);color:#1c1606;font-weight:800;border-radius:8px;padding:10px 16px;flex:none}
 .tabs{display:flex;gap:4px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:4px;align-self:flex-start}
 .tab{border:0;background:transparent;border-radius:9px;padding:10px 22px;font-weight:700;font-size:1.05rem;min-height:48px;color:var(--muted)}
 .tab.on{background:var(--chalk);color:#111}
@@ -436,6 +440,7 @@ import {getAuth,signInAnonymously,onAuthStateChanged} from "https://www.gstatic.
 const SEED_TEAMS=[{"division": "3e divisie", "id": "mvsbp16tjlav6o", "name": "Lentjheuvel 5", "players": [{"id": "mvsbp16tuwl1k1", "name": "Patrick", "role": "C"}, {"id": "mvsbp16txthb9f", "name": "Jordy", "role": "VC"}, {"id": "mvsbp16tesb5e7", "name": "Devin", "role": ""}, {"id": "mvsbp16tal1apv", "name": "Kai", "role": ""}, {"id": "mvsbpk04dxcpit", "name": "Wouter", "role": ""}, {"id": "mvsbplocw2ube9", "name": "Milan", "role": ""}, {"id": "mvsbpnd13eeuay", "name": "Nick", "role": ""}], "schedule": [{"address": "", "date": "2026-09-04", "id": "s00", "opponent": "Captainsmeeting Treebeek Trefcentrum", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2026-09-11", "id": "s01", "opponent": "Toernooi koppel 701", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2026-09-18", "id": "s02", "opponent": "Heksenberg 3", "round": "1", "type": "Divisie", "venue": "Thuis"}, {"address": "Pius XII Plein 38, 6433 CZ Hoensbroek", "date": "2026-09-25", "id": "s03", "opponent": "Flying Darts 5", "round": "2", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2026-10-02", "id": "s04", "opponent": "De Burcht 13", "round": "3", "type": "Divisie", "venue": "Thuis"}, {"address": "", "date": "2026-10-09", "id": "s05", "opponent": "Bekerronde 1 L128", "round": "", "type": "Beker", "venue": ""}, {"address": "Klaverstraat 17, 6135 GR Sittard", "date": "2026-10-16", "id": "s06", "opponent": "DC Brandtaveerne 1", "round": "4", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2026-10-23", "id": "s07", "opponent": "Vrije week / Inhaalweek", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2026-10-30", "id": "s08", "opponent": "Treebeekse Treffers 2", "round": "5", "type": "Divisie", "venue": "Thuis"}, {"address": "Kerkstraat 23, 6439 AN Doenrade", "date": "2026-11-06", "id": "s09", "opponent": "Bullys 2", "round": "6", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2026-11-13", "id": "s10", "opponent": "Bekerronde 2 L64", "round": "", "type": "Beker", "venue": ""}, {"address": "", "date": "2026-11-20", "id": "s11", "opponent": "Hoekje 4", "round": "7", "type": "Divisie", "venue": "Thuis"}, {"address": "", "date": "2026-11-27", "id": "s12", "opponent": "Kunt Jod", "round": "8", "type": "Divisie", "venue": "Thuis"}, {"address": "", "date": "2026-12-04", "id": "s13", "opponent": "Vrije week / Inhaalweek", "round": "", "type": "Info", "venue": ""}, {"address": "Wilhelminastraat 1, 6161 SX Geleen", "date": "2026-12-11", "id": "s14", "opponent": "Reunie 5", "round": "9", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2026-12-18", "id": "s15", "opponent": "Bekerronde 1 L32 · laatste kans op terugval naar eigen divisie", "round": "", "type": "Beker", "venue": ""}, {"address": "", "date": "2027-01-08", "id": "s16", "opponent": "Toernooi koppel Tac-Tic", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2027-01-15", "id": "s17", "opponent": "DC Carboon 1", "round": "10", "type": "Divisie", "venue": "Thuis"}, {"address": "Gravin van Schonbornlaan 4, 6433 AZ Hoensbroek", "date": "2027-01-22", "id": "s18", "opponent": "Lucky Ducks", "round": "11", "type": "Divisie", "venue": "Uit"}, {"address": "Roebroekweg 44, 6414 BC Heerlen", "date": "2027-01-29", "id": "s19", "opponent": "Heksenberg 3", "round": "12", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2027-02-05", "id": "s20", "opponent": "Vrije week i.v.m. carnaval", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2027-02-12", "id": "s21", "opponent": "Bekerronde 1 L16", "round": "", "type": "Beker", "venue": ""}, {"address": "", "date": "2027-02-19", "id": "s22", "opponent": "Flying Darts 5", "round": "13", "type": "Divisie", "venue": "Thuis"}, {"address": "", "date": "2027-02-26", "id": "s23", "opponent": "Vrije week / Inhaalweek", "round": "", "type": "Info", "venue": ""}, {"address": "Wieenweg 18, 6445 CD Brunssum", "date": "2027-03-05", "id": "s24", "opponent": "De Burcht 13", "round": "14", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2027-03-12", "id": "s25", "opponent": "DC Brandtaveerne 1", "round": "15", "type": "Divisie", "venue": "Thuis"}, {"address": "Maanstraat 20, 6446 XE Brunssum", "date": "2027-03-19", "id": "s26", "opponent": "Treebeekse Treffers 2", "round": "16", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2027-03-26", "id": "s27", "opponent": "Bekerronde 1 kwartfinale", "round": "", "type": "Beker", "venue": ""}, {"address": "", "date": "2027-04-02", "id": "s28", "opponent": "Bullys 2", "round": "17", "type": "Divisie", "venue": "Thuis"}, {"address": "Kerkstraat 75, 6137 SM Sittard", "date": "2027-04-09", "id": "s29", "opponent": "Hoekje 4", "round": "18", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2027-04-16", "id": "s30", "opponent": "Bekerronde 1 halve finale", "round": "", "type": "Beker", "venue": ""}, {"address": "", "date": "2027-04-23", "id": "s31", "opponent": "Vrije week / Inhaalweek", "round": "", "type": "Info", "venue": ""}, {"address": "Terbruggen 5, 6471 JS Eygelshoven", "date": "2027-04-30", "id": "s32", "opponent": "Kunt Jod", "round": "19", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2027-05-07", "id": "s33", "opponent": "Reunie 5", "round": "20", "type": "Divisie", "venue": "Thuis"}, {"address": "Ganzeweiden 38, 6413 GG Heerlen", "date": "2027-05-14", "id": "s34", "opponent": "DC Carboon 1", "round": "21", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2027-05-21", "id": "s35", "opponent": "Lucky Ducks", "round": "22", "type": "Divisie", "venue": "Thuis"}, {"address": "", "date": "2027-05-28", "id": "s36", "opponent": "Ben Rozemeijer Memorial single 501 toernooi", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2027-06-04", "id": "s37", "opponent": "Algemene ledenvergadering", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2027-06-11", "id": "s38", "opponent": "Bekerfinales 1e, 2e en 3e divisie", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2027-06-12", "id": "s39", "opponent": "Bekerfinale algemene ronde", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2027-06-18", "id": "s40", "opponent": "Divisiekampioenschappen", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2027-06-25", "id": "s41", "opponent": "Feestavond", "round": "", "type": "Info", "venue": ""}], "scheduleNote": "Speelronde 19, 20, 21 en 22 mogen niet uitgesteld worden, maar mogen wel vooruit gespeeld worden."}, {"division": "4e divisie", "id": "mvsf87qe54n8dm", "name": "Lentjheuvel 4", "players": [{"id": "mvsf87qeudn5lp", "name": "Tanja", "nr": "", "role": "C"}, {"id": "mvsf87qe2f1xcb", "name": "John", "nr": "", "role": "VC"}, {"id": "mvsf87qemosvw5", "name": "Robert-Paul", "nr": "", "role": ""}, {"id": "mvsf87qecg2gvb", "name": "Jacques", "nr": "", "role": ""}, {"id": "mvsf8ofigotpcq", "name": "Monique", "nr": "", "role": ""}, {"id": "mvsf8rbgkbgtz6", "name": "Bo", "nr": "", "role": ""}], "schedule": [], "scheduleNote": ""}, {"division": "1e divisie", "id": "mvsfaq24a2xdur", "name": "Lentjheuvel 2", "players": [], "schedule": [], "scheduleNote": ""}, {"division": "1e divisie", "id": "mvsfazf6tp3q7b", "name": "Lentjheuvel 3", "players": [], "schedule": [], "scheduleNote": ""}, {"division": "Hoofdklasse", "id": "mvsfb7n4wd4pjy", "name": "Scorpions", "players": [], "schedule": [], "scheduleNote": ""}];
 (function(){
 'use strict';
+const APP_VERSION='__APP_VERSION__'; /* wordt bij het online zetten vervangen door de versie */
 
 /* ================= constanten ================= */
 const FORMAT_BLOCKS=[
@@ -723,9 +728,28 @@ function nightRow(m){
 }
 function divRank(t){const i=DIVISIONS.indexOf(t.division);return i<0?99:i}
 function liveNight(t){return Object.values(S.matches).filter(m=>m.kind==='avond'&&m.teamId===t.id&&m.status!=='klaar').sort((a,b)=>(b.createdAt||0)-(a.createdAt||0))[0]}
+/* ---------- nieuwe versie: alleen melden op het teamoverzicht, nooit tijdens een partij ---------- */
+let lastVersionCheck=0;
+async function checkVersion(force){
+  if(APP_VERSION.startsWith('__'))return;
+  if(!force&&Date.now()-lastVersionCheck<60000)return;
+  lastVersionCheck=Date.now();
+  try{
+    const r=await fetch('version.json',{cache:'no-store'});if(!r.ok)return;
+    const j=await r.json();const nv=!!(j&&j.v&&j.v!==APP_VERSION);
+    if(nv!==!!S.newVersion){S.newVersion=nv;if(S.route&&S.route.name==='home')render()}
+  }catch(e){}
+}
+async function applyUpdate(){
+  try{const reg=navigator.serviceWorker&&await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
+  location.reload();
+}
+setInterval(()=>{if(document.visibilityState==='visible'&&S.route&&S.route.name==='home')checkVersion()},5*60000);
 function vHome(){
+  checkVersion();
   const teams=Object.values(S.teams).sort((a,b)=>(a.name||'').localeCompare(b.name||'','nl',{numeric:true,sensitivity:'base'}));
   let h='<div class="page">'+homeTop('comp');
+  if(S.newVersion)h+='<button class="updbanner" data-a="appupdate"><span><b>Nieuwe versie beschikbaar</b><small>Tik om bij te werken. Duurt een paar seconden.</small></span><span class="updgo">Bijwerken</span></button>';
   if(!teams.length)h+='<div class="empty"><strong>Nog geen teams</strong><span>Maak een team aan met de spelers, wie captain en vice-captain is en in welke divisie jullie spelen. Daarna kun je per team competitie- en bekeravonden starten.</span>'+(readOnly?'':'<button class="btn primary" data-go="teamedit-nieuw">Eerste team aanmaken</button>')+'</div>';
   else{
     h+='<p class="meta" style="margin:0">Kies je team om een competitie- of bekeravond te starten.</p><div class="tlist">';
@@ -1147,7 +1171,7 @@ function manageWake(){
   if(want&&!wakeLock&&navigator.wakeLock){navigator.wakeLock.request('screen').then(w=>{wakeLock=w;w.addEventListener('release',()=>{wakeLock=null})}).catch(()=>{})}
   if(!want&&wakeLock){wakeLock.release().catch(()=>{});wakeLock=null}
 }
-document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')manageWake()});
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'){manageWake();if(S.route&&S.route.name==='home')checkVersion(true)}});
 
 /* snelle invoer overal: knoppen reageren bij het loslaten van de vinger (scorebord al bij neerdrukken),
    ook als het scherm tussen twee tikken opnieuw is opgebouwd. Scrollen annuleert de tik. */
@@ -1277,6 +1301,7 @@ function act(el){
     case 'resset':S.ui.res[el.dataset.k]=v;render();return;
     case 'rescancel':S.ui.res=null;render();return;
     case 'ressave':saveResult();return;
+    case 'appupdate':applyUpdate();return;
     case 'delheld':{const id=S.ui.delAsk;S.ui.delAsk=null;if(id){removeDoc('matches',id);toast('Verwijderd.')}render();return}
     case 'delcancel':S.ui.delAsk=null;render();return;
   }
@@ -1312,6 +1337,7 @@ document.addEventListener('keydown',e=>{
 });
 
 /* ================= start ================= */
+if(typeof window!=='undefined'&&window.__DC_TEST__){window.__DC_TEST__({S,x01State,normalizeX01,legsWon,validX01,canCheckout,need,boFor,newTacLeg,tacVerdict,tacAward,closedAll,matchScore,legTotal,newNight,seasonLine,soloStats,render,vHome,vTeamInfo,vAvond,vX01,vTac,vLos,vOefenen,vUitleg,vBeheer,resultDialog,openResult,FORMAT_BLOCKS,TARGETS,DOOD});return}
 lsLoad();
 S.route=parseRoute();S.ui={buf:''};S.tundo=[];
 render();manageWake();

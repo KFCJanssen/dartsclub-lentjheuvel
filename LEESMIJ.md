@@ -5,17 +5,18 @@ Scorebord-app voor de dartsclub: teams, competitie- en bekeravonden, live scores
 **Adres:** https://dartsclub-lentjheuvel.web.app
 
 ## Hoe updates online komen
-Elke wijziging op de `main`-branch wordt automatisch online gezet door GitHub Actions
-(`.github/workflows/deploy.yml`). Volg het onder het tabblad **Actions** op GitHub.
-Na ongeveer een minuut halen de tablets de nieuwe versie op bij de volgende keer openen.
+Elke wijziging wordt eerst automatisch gecontroleerd (`tests/run.mjs`). Faalt een controle, dan gaat er niets online.
 
-Handmatig online zetten vanaf de pc kan nog steeds:
+- **Testversie:** wijzigingen op de branch `test` komen op een apart testadres
+  (te zien onder **Actions** bij de laatste run). Die gebruikt dezelfde database als de echte app:
+  test risicovolle dingen met een oefenpartij.
+- **Echte app:** wijzigingen op `main` komen online voor alle tablets.
+  Op het teamoverzicht verschijnt dan "Nieuwe versie beschikbaar"; tik erop om bij te werken.
+  Tijdens een partij verschijnt die melding nooit.
+
+De database-regels (`firestore.rules`) gaan niet automatisch mee. Na een wijziging daarin, vanaf de pc:
 ```
 cd $HOME\Coding\dartsclub-lentjheuvel
-firebase deploy --only hosting
-```
-De database-regels (`firestore.rules`) gaan niet automatisch mee. Na een wijziging daarin:
-```
 firebase deploy --only firestore:rules
 ```
 
