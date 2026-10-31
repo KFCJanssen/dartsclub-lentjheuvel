@@ -217,6 +217,23 @@ input.in:focus,select.in:focus{border-color:var(--brass);outline:none}
 .chip.a1{opacity:.85}.chip.a2{opacity:.7}.chip.a3{opacity:.58}.chip.a4{opacity:.46}
 .chip.a0.out{border-color:var(--brass)}
 .pl .nm .newest{color:var(--chalk);font-weight:800}
+.toggle{display:flex;gap:12px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;cursor:pointer}
+.toggle input{width:24px;height:24px;margin:2px 0 0;accent-color:var(--brass);flex:none}
+.toggle span{display:flex;flex-direction:column;gap:2px;min-width:0}
+.toggle small{color:var(--muted);font-size:.85rem}
+.seasonline{display:flex;flex-wrap:wrap;gap:6px 18px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:10px 14px;font-size:.95rem;color:var(--muted)}
+.seasonline b{color:var(--chalk);font-family:var(--font-display);font-size:1.3rem;font-variant-numeric:tabular-nums}
+.seasonline .sw b{color:var(--green)} .seasonline .sl b{color:var(--red)}
+.dialog.resdlg{text-align:left}
+.resnum::placeholder{color:var(--line)}
+.resgrid{display:grid;grid-template-columns:auto minmax(0,1fr) auto minmax(0,1fr);gap:8px 10px;align-items:center}
+.resgrid>span{font-weight:700;font-size:.9rem;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.resgrid .rl{color:var(--muted)}
+.resgrid .dash{font-family:var(--font-display);font-weight:900;font-size:1.6rem;color:var(--muted)}
+.resnum{font-family:var(--font-display)!important;font-weight:900;font-size:2rem!important;text-align:center;min-height:58px!important}
+.stable td.rs{white-space:nowrap;text-align:right}
+.rslink{border:0;background:transparent;padding:4px 6px;font-family:var(--font-display);font-weight:900;font-size:1.25rem;color:var(--chalk);cursor:pointer}
+.stable tr.band td.rs .rslink{color:inherit}
 .tabs{display:flex;gap:4px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:4px;align-self:flex-start}
 .tab{border:0;background:transparent;border-radius:9px;padding:10px 22px;font-weight:700;font-size:1.05rem;min-height:48px;color:var(--muted)}
 .tab.on{background:var(--chalk);color:#111}
@@ -569,8 +586,8 @@ function playerLabel(m,g,side,pi){
   if(m.kind==='los'){const x=(side===0?g.home:g.away)[pi];return (typeof x==='object'&&x?x.name:x)||'';}
   return g.size===2?'Speler '+(pi+1):'';
 }
-function legTotal(m){const w=[0,0];m.games.forEach(g=>{const l=legsWon(g);w[0]+=l[0];w[1]+=l[1]});return w}
-function matchScore(m){const w=[0,0];m.games.forEach(g=>{if(g.winner===0||g.winner===1)w[g.winner]++});return w}
+function legTotal(m){if(m.manual&&m.result)return m.result.legs.slice();const w=[0,0];m.games.forEach(g=>{const l=legsWon(g);w[0]+=l[0];w[1]+=l[1]});return w}
+function matchScore(m){if(m.manual&&m.result)return m.result.games.slice();const w=[0,0];m.games.forEach(g=>{if(g.winner===0||g.winner===1)w[g.winner]++});return w}
 
 /* ================= routes ================= */
 function parseRoute(){
@@ -698,10 +715,10 @@ function nextPlay(t){return (t.schedule||[]).filter(s=>isPlay(s)&&s.date>=today(
 function nightRow(m){
   const w=matchScore(m),lt=legTotal(m),played=m.games.filter(g=>g.winner===0||g.winner===1).length;
   const klaar=m.status==='klaar';
-  const sub=(m.round?'SpR '+esc(m.round)+(m.venue?' · '+(m.venue==='Uit'?'uit':'thuis'):''):m.type==='Beker'?'Beker':'Competitie');
+  const sub=(m.round?'SpR '+esc(m.round)+(m.venue?' · '+(m.venue==='Uit'?'uit':'thuis'):''):(m.type==='Beker'?'Beker':'Competitie')+(m.venue?' · '+(m.venue==='Uit'?'uit':'thuis'):''));
   return '<div class="nrow hold'+(klaar?'':' live')+'" data-hold="'+m.id+'" data-go="avond-'+m.id+'" role="button" tabindex="0">'+
     '<span class="nd">'+fmtDate(m.date)+'<small>'+sub+'</small></span>'+
-    '<span class="nop">'+esc(m.opponent)+'<small>'+(klaar?'Afgerond':played?'Bezig · '+played+' van '+m.games.length+' gespeeld':'Nog niet begonnen')+'</small></span>'+
+    '<span class="nop">'+esc(m.opponent)+'<small>'+(m.manual?'Ingevoerd':klaar?'Afgerond':played?'Bezig · '+played+' van '+m.games.length+' gespeeld':'Nog niet begonnen')+'</small></span>'+
     '<span class="nsc"><b><span class="c0">'+w[0]+'</span>–<span class="c1">'+w[1]+'</span></b><small>legs '+lt[0]+'–'+lt[1]+'</small></span></div>';
 }
 function divRank(t){const i=DIVISIONS.indexOf(t.division);return i<0?99:i}
@@ -749,6 +766,7 @@ function vTeam(id){
   h+='<h2 class="sec">'+(S.ui.isNew?'Nieuw team':'Team bewerken')+'</h2>';
   h+='<div class="form-grid"><label class="f">Teamnaam<input class="in" id="t-name" data-f="name" value="'+esc(d.name)+'" placeholder="bijv. Lentjheuvel 5"'+dis+'></label>'+
      '<label class="f">Divisie<select class="in" id="t-div" data-f="division"'+dis+'>'+DIVISIONS.map(x=>'<option'+(x===d.division?' selected':'')+'>'+x+'</option>').join('')+'</select></label></div>';
+  h+='<label class="toggle"><input type="checkbox" id="t-away" data-fc="trackAway"'+(d.trackAway?' checked':'')+dis+'><span><b>Uitslagen van uitwedstrijden bijhouden</b><small>Toont bij gespeelde rondes in het schema een knop om de eindstand (partijen en legs) in te voeren. Ook handig voor avonden van vóór de app.</small></span></label>';
   h+='<section class="section"><h2 class="sec">Spelers <small>'+d.players.length+'</small></h2><div class="plist"><div class="prow head"><span>Naam</span><span>Lidnr.</span><span>Rol</span><span></span></div>';
   d.players.forEach((p,i)=>{
     h+='<div class="prow"><input class="in" id="p-n-'+i+'" data-p="'+i+'" data-pf="name" value="'+esc(p.name)+'" placeholder="Naam speler"'+dis+'>'+
@@ -793,23 +811,87 @@ function vTeamInfo(id){
   if(!readOnly)h+='<div class="startbtns"><button class="startbtn" data-go="start-'+t.id+'"><b>Competitieavond</b><span>10 partijen</span></button><button class="startbtn beker" data-go="startbeker-'+t.id+'"><b>Bekeravond</b><span>9 partijen · geen gelijkspel</span></button></div>';
   if(np)h+='<div class="tb-next"><span class="badge">Volgende</span><span><b>'+fmtDate(np.date)+'</b> · '+schedWhat(np)+(np.opponent?' · '+esc(np.opponent):'')+(np.address?' <span class="meta">· '+esc(np.address)+'</span>':'')+'</span></div>';
   if(live.length)h+='<section class="section"><h2 class="sec">Bezig</h2><div class="nlist">'+live.map(nightRow).join('')+'</div></section>';
-  h+='<section class="section"><h2 class="sec">Uitslagen <small>'+done.length+' gespeeld</small></h2>';
+  h+='<section class="section"><h2 class="sec">Uitslagen <small>'+done.length+' gespeeld</small>'+(t.trackAway&&!readOnly?'<span class="spacer"></span><button class="btn sm" data-a="resnew" data-v="'+t.id+'">+ Uitslag invoeren</button>':'')+'</h2>';
+  h+=seasonLine(done);
   h+=done.length?'<div class="nlist">'+doneShown.map(nightRow).join('')+'</div>'+(done.length>5?'<button class="btn ghost sm" data-a="showall" data-v="'+t.id+'">'+(showAll?'Minder tonen':'Alle '+done.length+' uitslagen tonen')+'</button>':''):'<div class="meta">Nog geen avonden afgerond.</div>';
   if(nights.length&&!readOnly)h+='<p class="meta" style="margin:0">Houd een avond ingedrukt om hem te verwijderen.</p>';
   h+='</section><section class="section"><h2 class="sec">Spelers <small>'+ps.length+'</small></h2>';
   h+=ps.length?'<ul class="roster">'+ps.map(p=>'<li><span class="lnr">'+(p.nr?esc(p.nr):'····')+'</span><span class="pn">'+esc(p.name)+'</span>'+(p.role?'<span class="badge'+(p.role==='VC'?' vc':'')+'" title="'+(p.role==='C'?'Captain':'Vice-captain')+'">'+p.role+'</span>':'')+'</li>').join('')+'</ul>':'<div class="empty"><span>Nog geen spelers. Voeg ze toe via Team bewerken.</span></div>';
   h+='</section><section class="section"><h2 class="sec">Speelschema</h2>';
   if(sch.length){
-    h+='<div class="tablewrap"><table class="stable"><thead><tr><th>Datum</th><th>SpR</th><th>Tegenstander</th><th>Adres</th></tr></thead><tbody>';
+    h+='<div class="tablewrap"><table class="stable"><thead><tr><th>Datum</th><th>SpR</th><th>Tegenstander</th><th>Adres</th><th>Uitslag</th></tr></thead><tbody>';
+    const resCell=s=>{
+      if(!isPlay(s))return '<td></td>';
+      const m=nightForSched(t,s);
+      if(m&&m.status==='klaar'){const w=matchScore(m);return '<td class="rs"><button class="rslink" data-go="avond-'+m.id+'"><b class="c0">'+w[0]+'</b>–<b class="c1">'+w[1]+'</b></button></td>'}
+      if(m)return '<td class="rs"><button class="rslink" data-go="avond-'+m.id+'">bezig</button></td>';
+      if(t.trackAway&&!readOnly&&s.date<=today())return '<td class="rs"><button class="btn sm" data-a="resfor" data-v="'+s.id+'">Invoeren</button></td>';
+      return '<td></td>';
+    };
     sch.forEach(s=>{
-      const past=s.date<today(),isNext=np&&s===np;
-      if(s.type==='Divisie')h+='<tr class="'+(past?'past':'')+(isNext?' next':'')+'"><td class="d">'+fmtDate(s.date)+'</td><td>'+esc(s.round||'')+' '+(s.venue==='Uit'?'uit':'thuis')+'</td><td class="op">'+esc(s.opponent||'')+(isNext?' <span class="badge">Volgende</span>':'')+'</td><td class="ad">'+esc(s.address||'')+'</td></tr>';
-      else h+='<tr class="band '+(s.type==='Beker'?'beker':'info')+(past?' past':'')+(isNext?' next':'')+'"><td class="d">'+fmtDate(s.date)+'</td><td colspan="3">'+esc(s.opponent||'')+(isNext?' <span class="badge">Volgende</span>':'')+'</td></tr>';
+      const isNext=np&&s===np,m=isPlay(s)&&nightForSched(t,s),past=s.date<today()&&!(t.trackAway&&isPlay(s)&&!m);
+      if(s.type==='Divisie')h+='<tr class="'+(past&&!m?'past':'')+(isNext?' next':'')+'"><td class="d">'+fmtDate(s.date)+'</td><td>'+esc(s.round||'')+' '+(s.venue==='Uit'?'uit':'thuis')+'</td><td class="op">'+esc(s.opponent||'')+(isNext?' <span class="badge">Volgende</span>':'')+'</td><td class="ad">'+esc(s.address||'')+'</td>'+resCell(s)+'</tr>';
+      else if(s.type==='Beker')h+='<tr class="band beker'+(past&&!m?' past':'')+(isNext?' next':'')+'"><td class="d">'+fmtDate(s.date)+'</td><td colspan="3">'+esc(s.opponent||'')+(isNext?' <span class="badge">Volgende</span>':'')+'</td>'+resCell(s)+'</tr>';
+      else h+='<tr class="band info'+(past?' past':'')+'"><td class="d">'+fmtDate(s.date)+'</td><td colspan="4">'+esc(s.opponent||'')+'</td></tr>';
     });
     h+='</tbody></table></div>';
     if(t.scheduleNote)h+='<p class="meta" style="margin:0">'+esc(t.scheduleNote)+'</p>';
   }else h+='<div class="empty"><span>Nog geen speelschema ingevoerd.</span></div>';
-  return h+'</section></div>'+delDialog();
+  return h+'</section></div>'+delDialog()+resultDialog();
+}
+
+/* ---------- handmatige uitslagen (uitwedstrijden en avonden van vóór de app) ---------- */
+function nightForSched(t,s){return Object.values(S.matches).find(m=>m.kind==='avond'&&m.teamId===t.id&&(m.schedId===s.id||(!m.schedId&&m.date===s.date)))}
+function seasonLine(done){
+  if(!done.length)return '';
+  let w=0,d=0,l=0,lf=0,la=0;
+  done.forEach(m=>{const s=matchScore(m),lt=legTotal(m);lf+=lt[0];la+=lt[1];if(s[0]>s[1])w++;else if(s[0]<s[1])l++;else d++});
+  return '<div class="seasonline"><span><b>'+done.length+'</b> gespeeld</span><span class="sw"><b>'+w+'</b> gewonnen</span><span><b>'+d+'</b> gelijk</span><span class="sl"><b>'+l+'</b> verloren</span><span>legs <b>'+lf+'–'+la+'</b></span></div>';
+}
+function openResult(t,s,m){
+  if(m)S.ui.res={teamId:m.teamId,id:m.id,schedId:m.schedId||'',date:m.date,type:m.type||'Divisie',round:m.round||'',venue:m.venue||'',opponent:m.opponent||'',g0:String(m.result.games[0]),g1:String(m.result.games[1]),l0:String(m.result.legs[0]),l1:String(m.result.legs[1])};
+  else S.ui.res={teamId:t.id,id:null,schedId:s?s.id:'',date:s?s.date:today(),type:s&&s.type==='Beker'?'Beker':'Divisie',round:s?s.round||'':'',venue:s?s.venue||'':'Uit',opponent:s&&s.type==='Divisie'?s.opponent||'':'',g0:'',g1:'',l0:'',l1:''};
+}
+function resWarn(r){
+  const g0=parseInt(r.g0,10),g1=parseInt(r.g1,10);
+  if(isNaN(g0)||isNaN(g1))return '';
+  const n=r.type==='Beker'?9:10;
+  return g0+g1!==n?'Let op: dat zijn '+(g0+g1)+' partijen, normaal zijn het er '+n+'. Opslaan kan wel.':'';
+}
+function resultDialog(){
+  const r=S.ui.res;if(!r)return '';
+  const t=S.teams[r.teamId],tn=t?t.name:'Wij';
+  const num=(k,ph)=>'<input class="in resnum" id="res-'+k+'" data-res="'+k+'" value="'+esc(r[k])+'" inputmode="numeric" maxlength="2" placeholder="'+ph+'" aria-label="'+({g0:'Partijen wij',g1:'Partijen zij',l0:'Legs wij',l1:'Legs zij'})[k]+'">';
+  return '<div class="cover"><div class="dialog resdlg"><h3>'+(r.id?'Uitslag wijzigen':'Uitslag invoeren')+'</h3>'+
+    '<div class="form-grid"><label class="f">Datum<input type="date" class="in" id="res-date" data-res="date" value="'+esc(r.date)+'"></label>'+
+    '<label class="f">Tegenstander<input class="in" id="res-opp" data-res="opponent" value="'+esc(r.opponent)+'" placeholder="Naam tegenstander"></label></div>'+
+    '<div class="form-grid"><label class="f">Soort<span class="seg">'+['Divisie','Beker'].map(x=>'<button data-a="resset" data-k="type" data-v="'+x+'" class="'+(r.type===x?'on':'')+'">'+(x==='Divisie'?'Competitie':'Beker')+'</button>').join('')+'</span></label>'+
+    '<label class="f">Thuis of uit<span class="seg">'+['Thuis','Uit'].map(x=>'<button data-a="resset" data-k="venue" data-v="'+x+'" class="'+(r.venue===x?'on':'')+'">'+x+'</button>').join('')+'</span></label></div>'+
+    '<div class="resgrid"><span></span><span class="c0">'+esc(tn)+'</span><span></span><span class="c1">'+esc(r.opponent||'Tegenstander')+'</span>'+
+    '<span class="rl">Partijen</span>'+num('g0','–')+'<span class="dash">–</span>'+num('g1','–')+
+    '<span class="rl">Legs</span>'+num('l0','–')+'<span class="dash">–</span>'+num('l1','–')+'</div>'+
+    '<p class="meta" id="res-warn" style="margin:0;color:var(--brass)">'+esc(resWarn(r))+'</p>'+
+    '<div class="row" style="justify-content:flex-end"><button class="btn" data-a="rescancel">Annuleer</button><button class="btn primary" data-a="ressave">Opslaan</button></div></div></div>';
+}
+function saveResult(){
+  const r=S.ui.res,t=S.teams[r.teamId];
+  const n=k=>parseInt(r[k],10);
+  if([n('g0'),n('g1'),n('l0'),n('l1')].some(x=>isNaN(x)||x<0)){toast('Vul de partijen en de legs voor beide teams in.');return}
+  if(!r.date){toast('Vul de datum in.');return}
+  const old=r.id&&S.matches[r.id];
+  const m=old?old:{id:uid(),kind:'avond',manual:true,teamId:r.teamId,createdAt:Date.now(),games:[]};
+  Object.assign(m,{type:r.type,round:r.type==='Divisie'?r.round:'',venue:r.venue,schedId:r.schedId||'',teamName:t?t.name:(m.teamName||''),division:t?t.division||'':(m.division||''),
+    opponent:(r.opponent||'').trim()||'Tegenstander',date:r.date,status:'klaar',result:{games:[n('g0'),n('g1')],legs:[n('l0'),n('l1')]}});
+  persist('matches',m);S.ui.res=null;toast('Uitslag opgeslagen.');render();
+}
+function vManual(m){
+  const s=m.result.games,l=m.result.legs,t=S.teams[m.teamId];
+  let h='<div class="page"><div class="topbar"><button class="btn ghost sm" data-go="'+(t?'team-'+m.teamId:'')+'">← '+esc(t?t.name:'Teams')+'</button><span class="spacer"></span>'+syncPill()+'</div>';
+  h+='<div class="meta">'+(m.type==='Beker'?'Bekeravond':m.round?'Speelronde '+esc(m.round):'Competitie')+(m.venue?' ('+(m.venue==='Uit'?'uit':'thuis')+')':'')+' · '+fmtDate(m.date)+' · <span class="badge vc">ingevoerd</span></div>';
+  h+='<div class="tot"><div class="side"><span>'+esc(m.teamName)+'</span><span class="big c0">'+s[0]+'</span></div><span class="meta" style="font-size:1.4rem">–</span><div class="side"><span>'+esc(m.opponent)+'</span><span class="big c1">'+s[1]+'</span></div><span class="meta">partijen</span><span class="legtot"><span class="meta">Legs</span><b><span class="c0">'+l[0]+'</span> – <span class="c1">'+l[1]+'</span></b></span></div>';
+  h+='<p class="meta" style="margin:0">Deze uitslag is achteraf ingevoerd, zonder de losse partijen.</p>';
+  if(!readOnly)h+='<div class="row"><button class="btn primary" data-a="resedit">Wijzigen</button><span class="spacer"></span>'+confirmBtn('delmatch','Uitslag verwijderen','delmatch')+'</div>';
+  return h+'</div>'+resultDialog();
 }
 
 /* ---------- speelavond starten ---------- */
@@ -834,12 +916,13 @@ function newNight(t,st){
   const games=[];let n=0;
   FORMAT_BLOCKS.forEach((b,bi)=>{for(let i=0;i<b.count;i++)games.push({n:++n,block:bi,kind:b.kind,size:b.size,bestOf:boFor(t.division,b.kind),home:[],away:[],legs:[],winner:null})});
   if(st.type==='Beker')games.pop();
-  return {id:uid(),kind:'avond',type:st.type,round:st.type==='Divisie'?(st.round||''):'',venue:st.type==='Divisie'?(st.venue||''):'',teamId:t.id,teamName:t.name,division:t.division||'',opponent:(st.opponent||'').trim()||'Gast',date:st.date||today(),createdAt:Date.now(),status:'open',games};
+  return {id:uid(),kind:'avond',schedId:st.from||'',type:st.type,round:st.type==='Divisie'?(st.round||''):'',venue:st.type==='Divisie'?(st.venue||''):'',teamId:t.id,teamName:t.name,division:t.division||'',opponent:(st.opponent||'').trim()||'Gast',date:st.date||today(),createdAt:Date.now(),status:'open',games};
 }
 
 /* ---------- speelavond: de partijen op volgorde ---------- */
 function vAvond(id){
   const m=S.matches[id];if(!m||m.kind!=='avond')return notFound();
+  if(m.manual&&m.result)return vManual(m);
   const w=matchScore(m),lt=legTotal(m),next=m.games.find(g=>g.winner==null);
   let h='<div class="page"><div class="topbar"><button class="btn ghost sm" data-go="'+(S.teams[m.teamId]?'team-'+m.teamId:'')+'">← '+esc(S.teams[m.teamId]?m.teamName:'Teams')+'</button><span class="spacer"></span>'+syncPill()+'</div>';
   h+='<div class="meta">'+(m.type==='Beker'?'Bekeravond · ':'')+(m.round?'Speelronde '+esc(m.round)+(m.venue?' ('+(m.venue==='Uit'?'uit':'thuis')+')':''):esc(m.type))+' · '+fmtDate(m.date)+(m.division?' · '+esc(m.division):'')+(m.status==='klaar'?' · afgerond':'')+'</div>';
@@ -1115,7 +1198,7 @@ function act(el){
       S.ui.confirm=null;
       if(el.dataset.do==='clearsched'){S.ui.draft.schedule=[];S.ui.draft.scheduleNote='';toast('Schema gewist. Vergeet niet op te slaan.');render();return}
       if(el.dataset.do==='delteam'){removeDoc('teams',S.ui.draft.id);toast('Team verwijderd.');go('')}
-      if(el.dataset.do==='delmatch'){removeDoc('matches',S.route.id);toast('Speelavond verwijderd.');go('')}
+      if(el.dataset.do==='delmatch'){const dm=S.matches[S.route.id];removeDoc('matches',S.route.id);toast(dm&&dm.manual?'Uitslag verwijderd.':'Speelavond verwijderd.');go(dm&&S.teams[dm.teamId]?'team-'+dm.teamId:'')}
       return;
     }
     case 'addplayer':S.ui.draft.players.push({id:uid(),name:'',nr:'',role:''});S.ui.focus='#p-n-'+(S.ui.draft.players.length-1);render();return;
@@ -1188,6 +1271,12 @@ function act(el){
     case 'treplay':tacEdit((g,l)=>{const nl=newTacLeg();l.marks=nl.marks;l.pts=nl.pts;l.replays=(l.replays||0)+1;return 'Leg wordt overgegooid.'});return;
     case 'tundo':tacUndo();return;
     case 'tstarter':tacEdit((g,l)=>{l.starter=1-(l.starter||0);return null});return;
+    case 'resnew':openResult(S.teams[v],null,null);render();return;
+    case 'resfor':{const t=S.teams[S.route.id];const s=(t.schedule||[]).find(x=>x.id===v);openResult(t,s,null);render();return}
+    case 'resedit':openResult(null,null,S.matches[S.route.id]);render();return;
+    case 'resset':S.ui.res[el.dataset.k]=v;render();return;
+    case 'rescancel':S.ui.res=null;render();return;
+    case 'ressave':saveResult();return;
     case 'delheld':{const id=S.ui.delAsk;S.ui.delAsk=null;if(id){removeDoc('matches',id);toast('Verwijderd.')}render();return}
     case 'delcancel':S.ui.delAsk=null;render();return;
   }
@@ -1200,6 +1289,8 @@ function tacUndo(){
 document.addEventListener('input',e=>{
   const t=e.target,ds=t.dataset;
   if(ds.bodiv&&S.ui.bo){S.ui.bo[ds.bodiv][ds.bokind]=+t.value;return}
+  if(ds.fc&&S.ui.draft){S.ui.draft[ds.fc]=t.checked;return}
+  if(ds.res&&S.ui.res){let v=t.value;if(/^[gl][01]$/.test(ds.res)){v=v.replace(/\D/g,'').slice(0,2);t.value=v}S.ui.res[ds.res]=v;const w=document.getElementById('res-warn');if(w)w.textContent=resWarn(S.ui.res);return}
   if(ds.f&&S.ui.draft){S.ui.draft[ds.f]=t.value;return}
   if(ds.pf&&S.ui.draft){const p=S.ui.draft.players[+ds.p];if(!p)return;
     if(ds.pf==='role'){if(t.value)S.ui.draft.players.forEach(q=>{if(q!==p&&q.role===t.value)q.role=''});p.role=t.value;render();return}
@@ -1290,7 +1381,7 @@ function subMatches(){
   if(local)return; /* oefenpartij: niets online te volgen */
   if(!one){
     firstSnap.matches=true;
-    matchUnsub=onSnapshot(query(collection(fs,'matches'),orderBy('createdAt','desc'),limit(80)),q=>mergeSnap('matches',wrap(q)),()=>setSync('fout'));
+    matchUnsub=onSnapshot(query(collection(fs,'matches'),orderBy('createdAt','desc'),limit(400)),q=>mergeSnap('matches',wrap(q)),()=>setSync('fout'));
     return;
   }
   const id=r.id,p='matches/'+id;
