@@ -1,4 +1,4 @@
-name: Gegevenscontrole (tijdelijk, alleen lezen)
+name: Testavond naar prullenbak (tijdelijk)
 on:
   push:
     branches: [keycheck]
@@ -19,19 +19,11 @@ jobs:
           import {getFirestore} from 'firebase-admin/firestore';
           initializeApp({credential: cert(JSON.parse(process.env.SA))});
           const db = getFirestore();
-          const since = Date.parse('2026-10-31T23:00:00Z');
-          for (const c of ['matches','teams','settings']) {
-            const s = await db.collection(c).get();
-            for (const d of s.docs) {
-              const v = d.data();
-              const ts = Math.max(v.updatedAt||0, v.createdAt||0);
-              if (ts < since) continue;
-              const games = v.gm ? Object.values(v.gm) : (v.games||[]);
-              const played = games.filter(g => g && g.legs && g.legs.length).length;
-              const info = c==='matches' ? `${v.kind} ${v.teamName||''} vs ${v.opponent||''} datum=${v.date} status=${v.status} gespeeld=${played} aangemaakt=${new Date(v.createdAt||0).toISOString()} gewijzigd=${new Date(v.updatedAt||0).toISOString()}${v.deleted?' (in prullenbak)':''}${v.manual?' (ingevoerd)':''}`
-                : `${v.name||d.id} gewijzigd=${new Date(v.updatedAt||0).toISOString()}`;
-              console.log(`::notice title=${c}/${d.id}::${info}`);
-            }
-          }
+          const ref = db.collection('matches').doc('mvvmq6f7kisam9');
+          const d = await ref.get();
+          const v = d.data();
+          if (!d.exists || v.teamName !== 'Lentjheuvel 4' || v.date !== '2026-11-06' || v.deleted) { console.log('::error title=Gestopt::document niet zoals verwacht'); process.exit(1); }
+          await ref.update({deleted: {at: Date.now(), by: 'Claude (testavond opgeruimd)'}, rev: (v.rev||0) + 1, updatedAt: Date.now()});
+          console.log('::notice title=Klaar::testavond Lentjheuvel 4 vs Treebeekse Treffers 3 (6 nov) naar de prullenbak verplaatst');
           JS
           node c.mjs
