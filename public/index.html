@@ -254,7 +254,8 @@ input.in:focus,select.in:focus{border-color:var(--brass);outline:none}
 .lc-head{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:center;font-weight:800;font-size:1.15rem}
 .lc-head span:last-child{text-align:right}
 .lc-head span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.lc-score{font-family:var(--font-display);font-weight:900;font-size:2.6rem;line-height:1}
+.lc-score{font-family:var(--font-display);font-weight:900;font-size:2.6rem;line-height:1;text-align:center}
+.lc-score small{display:block;font-family:var(--font-body);font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .lc-meta,.lc-game,.lc-sub{color:var(--muted);font-size:.9rem;font-weight:600}
 .lc-big{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .lc-big b{font-family:var(--font-display);font-weight:900;font-size:clamp(3rem,9vw,6rem);line-height:.9;text-align:center;background:var(--bg);border-radius:10px;padding:8px 0}
@@ -1054,11 +1055,13 @@ function liveCard(m){
     if(!gameStarted(cur))sub='Nog niet begonnen';
     else if(cur.kind==='tactic'){const l=cur.legs[cur.legs.length-1]||newTacLeg();v0=l.pts[0];v1=l.pts[1];sub='punten · dicht '+TARGETS.filter(t=>l.marks[0][t]>=3).length+'–'+TARGETS.filter(t=>l.marks[1][t]>=3).length}
     else{const st=x01State(cur,cur.legs[cur.legs.length-1]);v0=st.rem[0];v1=st.rem[1];sub='rest · '+esc(g0)+' '+(st.next.side===0?'gooit':'')+(st.next.side===1?esc(g1)+' gooit':'')}
-    body='<div class="lc-game">Partij '+cur.n+' · '+KIND_LABEL[cur.kind]+' '+(cur.size===2?'koppel':'enkel')+' · legs '+lw[0]+'–'+lw[1]+'</div>'+
+    body='<div class="lc-game">Partij '+cur.n+' · '+KIND_LABEL[cur.kind]+' '+(cur.size===2?'koppel':'enkel')+'</div>'+
       '<div class="lc-big"><b class="c0">'+v0+'</b><b class="c1">'+v1+'</b></div><div class="lc-sub">'+sub+'</div>';
   }
-  return '<div class="lcard"><div class="lc-head"><span class="c0">'+esc(m.teamName)+'</span><span class="lc-score">'+w[0]+'–'+w[1]+'</span><span class="c1">'+esc(m.opponent)+'</span></div>'+
-    '<div class="lc-meta">'+(m.type==='Beker'?'Beker':m.round?'SpR '+esc(m.round):'Competitie')+' · legs '+lt[0]+'–'+lt[1]+'</div>'+body+hlSummary(m)+'</div>';
+  /* midden bovenaan: legs van de partij die nu bezig is (anders de partijstand) */
+  const top=cur?legsWon(cur):w,topLbl=cur?'legs':'partijen';
+  return '<div class="lcard"><div class="lc-head"><span class="c0">'+esc(m.teamName)+'</span><span class="lc-score">'+top[0]+'–'+top[1]+'<small>'+topLbl+'</small></span><span class="c1">'+esc(m.opponent)+'</span></div>'+
+    '<div class="lc-meta">'+(m.type==='Beker'?'Beker':m.round?'SpR '+esc(m.round):'Competitie')+' · tussenstand '+w[0]+'–'+w[1]+'</div>'+body+hlSummary(m)+'</div>';
 }
 function vLive(){
   if(!S.isAdmin)return '<div class="page"><div class="empty"><strong>Alleen op beheer-apparaten</strong><span>De live-weergave is (nog) niet voor iedereen beschikbaar.</span><button class="btn" data-go="">Naar overzicht</button></div></div>';
