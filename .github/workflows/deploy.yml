@@ -1,6 +1,6 @@
 # Elke wijziging wordt eerst automatisch gecontroleerd.
-# - branch "test": komt online op de testversie (apart adres, zelfde database)
-# - branch "main": komt online op de echte app voor alle tablets
+# - branch "test": testversie op een apart adres, met een verse kopie van de echte gegevens
+# - branch "main": de echte app voor alle tablets
 name: Online zetten (Firebase Hosting)
 on:
   push:
@@ -20,8 +20,46 @@ jobs:
         run: |
           npm ci --no-audit --no-fund
           npm run test:rules
-  online-zetten:
+
+  # De database-regels gelden voor de echte app én de testversie. Ze gaan pas online
+  # nadat de controles hierboven (in de Firestore-emulator) geslaagd zijn.
+  regels:
     needs: controleren
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Database-regels online zetten
+        env:
+          SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DARTSCLUB_LENTJHEUVEL }}
+        run: |
+          echo "$SA" > "$RUNNER_TEMP/sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
+          npm ci --no-audit --no-fund
+          npx firebase deploy --only firestore:rules --project dartsclub-lentjheuvel --non-interactive
+          rm -f "$RUNNER_TEMP/sa.json"
+
+  testgegevens:
+    needs: regels
+    if: github.ref_name == 'test'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Verse kopie van de echte gegevens naar de testversie
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DARTSCLUB_LENTJHEUVEL }}
+        run: |
+          npm install --no-save --no-audit --no-fund firebase-admin@12
+          node scripts/testdata.mjs
+
+  online-zetten:
+    needs: [regels, testgegevens]
+    if: ${{ !failure() && !cancelled() }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

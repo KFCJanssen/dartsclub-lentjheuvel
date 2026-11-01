@@ -262,6 +262,7 @@ input.in:focus,select.in:focus{border-color:var(--brass);outline:none}
 .lc-head .turn{font-style:normal;color:var(--brass);margin:0 .35em;font-size:.9em}
 .lc-big b.on{box-shadow:inset 0 0 0 3px var(--brass)}
 .lc-none{color:var(--muted);font-weight:700;padding:16px 0}
+.testbadge{background:#7a3cff;color:#fff;font-weight:800;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;padding:5px 10px;border-radius:6px}
 .tabs{display:flex;gap:4px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:4px;align-self:flex-start}
 .tab{border:0;background:transparent;border-radius:9px;padding:10px 22px;font-weight:700;font-size:1.05rem;min-height:48px;color:var(--muted)}
 .tab.on{background:var(--chalk);color:#111}
@@ -464,7 +465,11 @@ import {getAuth,signInAnonymously,onAuthStateChanged} from "https://www.gstatic.
 const SEED_TEAMS=[{"division": "3e divisie", "id": "mvsbp16tjlav6o", "name": "Lentjheuvel 5", "players": [{"id": "mvsbp16tuwl1k1", "name": "Patrick", "role": "C"}, {"id": "mvsbp16txthb9f", "name": "Jordy", "role": "VC"}, {"id": "mvsbp16tesb5e7", "name": "Devin", "role": ""}, {"id": "mvsbp16tal1apv", "name": "Kai", "role": ""}, {"id": "mvsbpk04dxcpit", "name": "Wouter", "role": ""}, {"id": "mvsbplocw2ube9", "name": "Milan", "role": ""}, {"id": "mvsbpnd13eeuay", "name": "Nick", "role": ""}], "schedule": [{"address": "", "date": "2026-09-04", "id": "s00", "opponent": "Captainsmeeting Treebeek Trefcentrum", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2026-09-11", "id": "s01", "opponent": "Toernooi koppel 701", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2026-09-18", "id": "s02", "opponent": "Heksenberg 3", "round": "1", "type": "Divisie", "venue": "Thuis"}, {"address": "Pius XII Plein 38, 6433 CZ Hoensbroek", "date": "2026-09-25", "id": "s03", "opponent": "Flying Darts 5", "round": "2", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2026-10-02", "id": "s04", "opponent": "De Burcht 13", "round": "3", "type": "Divisie", "venue": "Thuis"}, {"address": "", "date": "2026-10-09", "id": "s05", "opponent": "Bekerronde 1 L128", "round": "", "type": "Beker", "venue": ""}, {"address": "Klaverstraat 17, 6135 GR Sittard", "date": "2026-10-16", "id": "s06", "opponent": "DC Brandtaveerne 1", "round": "4", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2026-10-23", "id": "s07", "opponent": "Vrije week / Inhaalweek", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2026-10-30", "id": "s08", "opponent": "Treebeekse Treffers 2", "round": "5", "type": "Divisie", "venue": "Thuis"}, {"address": "Kerkstraat 23, 6439 AN Doenrade", "date": "2026-11-06", "id": "s09", "opponent": "Bullys 2", "round": "6", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2026-11-13", "id": "s10", "opponent": "Bekerronde 2 L64", "round": "", "type": "Beker", "venue": ""}, {"address": "", "date": "2026-11-20", "id": "s11", "opponent": "Hoekje 4", "round": "7", "type": "Divisie", "venue": "Thuis"}, {"address": "", "date": "2026-11-27", "id": "s12", "opponent": "Kunt Jod", "round": "8", "type": "Divisie", "venue": "Thuis"}, {"address": "", "date": "2026-12-04", "id": "s13", "opponent": "Vrije week / Inhaalweek", "round": "", "type": "Info", "venue": ""}, {"address": "Wilhelminastraat 1, 6161 SX Geleen", "date": "2026-12-11", "id": "s14", "opponent": "Reunie 5", "round": "9", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2026-12-18", "id": "s15", "opponent": "Bekerronde 1 L32 · laatste kans op terugval naar eigen divisie", "round": "", "type": "Beker", "venue": ""}, {"address": "", "date": "2027-01-08", "id": "s16", "opponent": "Toernooi koppel Tac-Tic", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2027-01-15", "id": "s17", "opponent": "DC Carboon 1", "round": "10", "type": "Divisie", "venue": "Thuis"}, {"address": "Gravin van Schonbornlaan 4, 6433 AZ Hoensbroek", "date": "2027-01-22", "id": "s18", "opponent": "Lucky Ducks", "round": "11", "type": "Divisie", "venue": "Uit"}, {"address": "Roebroekweg 44, 6414 BC Heerlen", "date": "2027-01-29", "id": "s19", "opponent": "Heksenberg 3", "round": "12", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2027-02-05", "id": "s20", "opponent": "Vrije week i.v.m. carnaval", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2027-02-12", "id": "s21", "opponent": "Bekerronde 1 L16", "round": "", "type": "Beker", "venue": ""}, {"address": "", "date": "2027-02-19", "id": "s22", "opponent": "Flying Darts 5", "round": "13", "type": "Divisie", "venue": "Thuis"}, {"address": "", "date": "2027-02-26", "id": "s23", "opponent": "Vrije week / Inhaalweek", "round": "", "type": "Info", "venue": ""}, {"address": "Wieenweg 18, 6445 CD Brunssum", "date": "2027-03-05", "id": "s24", "opponent": "De Burcht 13", "round": "14", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2027-03-12", "id": "s25", "opponent": "DC Brandtaveerne 1", "round": "15", "type": "Divisie", "venue": "Thuis"}, {"address": "Maanstraat 20, 6446 XE Brunssum", "date": "2027-03-19", "id": "s26", "opponent": "Treebeekse Treffers 2", "round": "16", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2027-03-26", "id": "s27", "opponent": "Bekerronde 1 kwartfinale", "round": "", "type": "Beker", "venue": ""}, {"address": "", "date": "2027-04-02", "id": "s28", "opponent": "Bullys 2", "round": "17", "type": "Divisie", "venue": "Thuis"}, {"address": "Kerkstraat 75, 6137 SM Sittard", "date": "2027-04-09", "id": "s29", "opponent": "Hoekje 4", "round": "18", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2027-04-16", "id": "s30", "opponent": "Bekerronde 1 halve finale", "round": "", "type": "Beker", "venue": ""}, {"address": "", "date": "2027-04-23", "id": "s31", "opponent": "Vrije week / Inhaalweek", "round": "", "type": "Info", "venue": ""}, {"address": "Terbruggen 5, 6471 JS Eygelshoven", "date": "2027-04-30", "id": "s32", "opponent": "Kunt Jod", "round": "19", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2027-05-07", "id": "s33", "opponent": "Reunie 5", "round": "20", "type": "Divisie", "venue": "Thuis"}, {"address": "Ganzeweiden 38, 6413 GG Heerlen", "date": "2027-05-14", "id": "s34", "opponent": "DC Carboon 1", "round": "21", "type": "Divisie", "venue": "Uit"}, {"address": "", "date": "2027-05-21", "id": "s35", "opponent": "Lucky Ducks", "round": "22", "type": "Divisie", "venue": "Thuis"}, {"address": "", "date": "2027-05-28", "id": "s36", "opponent": "Ben Rozemeijer Memorial single 501 toernooi", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2027-06-04", "id": "s37", "opponent": "Algemene ledenvergadering", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2027-06-11", "id": "s38", "opponent": "Bekerfinales 1e, 2e en 3e divisie", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2027-06-12", "id": "s39", "opponent": "Bekerfinale algemene ronde", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2027-06-18", "id": "s40", "opponent": "Divisiekampioenschappen", "round": "", "type": "Info", "venue": ""}, {"address": "", "date": "2027-06-25", "id": "s41", "opponent": "Feestavond", "round": "", "type": "Info", "venue": ""}], "scheduleNote": "Speelronde 19, 20, 21 en 22 mogen niet uitgesteld worden, maar mogen wel vooruit gespeeld worden."}, {"division": "4e divisie", "id": "mvsf87qe54n8dm", "name": "Lentjheuvel 4", "players": [{"id": "mvsf87qeudn5lp", "name": "Tanja", "nr": "", "role": "C"}, {"id": "mvsf87qe2f1xcb", "name": "John", "nr": "", "role": "VC"}, {"id": "mvsf87qemosvw5", "name": "Robert-Paul", "nr": "", "role": ""}, {"id": "mvsf87qecg2gvb", "name": "Jacques", "nr": "", "role": ""}, {"id": "mvsf8ofigotpcq", "name": "Monique", "nr": "", "role": ""}, {"id": "mvsf8rbgkbgtz6", "name": "Bo", "nr": "", "role": ""}], "schedule": [], "scheduleNote": ""}, {"division": "1e divisie", "id": "mvsfaq24a2xdur", "name": "Lentjheuvel 2", "players": [], "schedule": [], "scheduleNote": ""}, {"division": "1e divisie", "id": "mvsfazf6tp3q7b", "name": "Lentjheuvel 3", "players": [], "schedule": [], "scheduleNote": ""}, {"division": "Hoofdklasse", "id": "mvsfb7n4wd4pjy", "name": "Scorpions", "players": [], "schedule": [], "scheduleNote": ""}];
 (function(){
 'use strict';
-const APP_VERSION='__APP_VERSION__'; /* wordt bij het online zetten vervangen door de versie */
+const APP_VERSION='__APP_VERSION__';
+/* De testversie gebruikt eigen kopieën van teams, avonden en instellingen (test_…),
+   zodat testen nooit de echte app raakt. Koppelingen en codes zijn gedeeld. */
+const IS_TEST=/--test/.test((typeof location!=='undefined'&&location.hostname)||'');
+const D=n=>(IS_TEST&&(n==='teams'||n==='matches'||n==='settings'))?'test_'+n:n; /* wordt bij het online zetten vervangen door de versie */
 
 /* ================= constanten ================= */
 const FORMAT_BLOCKS=[
@@ -514,7 +519,7 @@ function fromRemote(coll,v){
 function writeDoc(coll,id,games){
   if(!db||readOnly)return;
   const o=findAny(coll,id);if(!o)return;
-  const path=coll+'/'+id,r=toRemote(coll,o);let pr;
+  const path=D(coll)+'/'+id,r=toRemote(coll,o);let pr;
   if(games&&r.gm){const u={};Object.keys(r).forEach(k=>{if(k!=='gm'&&k!=='games')u[k]=r[k]});games.forEach(n=>{u['gm.'+n]=r.gm[n]});pr=db.doc(path).update(u)}
   else pr=db.doc(path).set(r);
   busy[path]=(busy[path]||0)+1;
@@ -555,18 +560,18 @@ const firstSnap={teams:true,matches:true};
 const cleaned=new Set();
 function remoteLos(coll,id,data){
   if(coll!=='matches'||!data||data.kind!=='los')return false;
-  if(db&&!readOnly&&!cleaned.has(id)&&!(S.matches[id]&&S.matches[id].kind==='los')){cleaned.add(id);db.doc('matches/'+id).delete().catch(()=>{})}
+  if(db&&!readOnly&&!cleaned.has(id)&&!(S.matches[id]&&S.matches[id].kind==='los')){cleaned.add(id);db.doc(D('matches')+'/'+id).delete().catch(()=>{})}
   return true;
 }
 function mergeSnap(coll,snap){
   if(firstSnap[coll]){firstSnap[coll]=false;const fresh={};snap.docs.forEach(d=>{const v=fromRemote(coll,d.data());if(remoteLos(coll,d.id,v))return;fresh[d.id]=clone(v)});
-    Object.keys(S[coll]).forEach(id=>{const p=coll+'/'+id,o=S[coll][id];if(((pend[p]||busy[p])||(coll==='matches'&&o&&o.kind==='los'))&&!fresh[id])fresh[id]=o});
+    Object.keys(S[coll]).forEach(id=>{const p=D(coll)+'/'+id,o=S[coll][id];if(((pend[p]||busy[p])||(coll==='matches'&&o&&o.kind==='los'))&&!fresh[id])fresh[id]=o});
     S[coll]=fresh;
     if(coll==='teams'){S.trashTeams={};Object.keys(fresh).forEach(id=>{if(fresh[id].deleted)place('teams',id,fresh[id])})}
     else{S.trash={};S.archived={};Object.keys(fresh).forEach(id=>{const v=fresh[id];if(v.deleted||v.archived)place('matches',id,v)})}
   }else{
     snap.docChanges().forEach(c=>{
-      const id=c.doc.id,p=coll+'/'+id;
+      const id=c.doc.id,p=D(coll)+'/'+id;
       if(coll==='matches'&&S.matches[id]&&S.matches[id].kind==='los')return;
       if(c.type!=='removed'&&remoteLos(coll,id,c.doc.data()))return;
       if(c.type==='removed'){if(!pend[p]&&!busy[p])place(coll,id,null);return}
@@ -759,7 +764,7 @@ function vUitleg(){
 function navTabs(cur){
   return '<nav class="tabs" aria-label="Hoofdmenu"><button class="tab'+(cur==='comp'?' on':'')+'" data-go="">Competitie</button><button class="tab'+(cur==='oef'?' on':'')+'" data-go="oefenen">Oefenen</button><button class="tab'+(cur==='uit'?' on':'')+'" data-go="uitleg">Uitleg</button></nav>';
 }
-function homeTop(cur){return '<div class="topbar"><h1 class="brand">Darts<b>club</b> Lentjheuvel</h1><span class="spacer"></span>'+syncPill()+'</div>'+navTabs(cur)}
+function homeTop(cur){return '<div class="topbar"><h1 class="brand">Darts<b>club</b> Lentjheuvel</h1>'+(IS_TEST?'<span class="testbadge">Testversie · eigen kopie van de gegevens</span>':'')+'<span class="spacer"></span>'+syncPill()+'</div>'+navTabs(cur)}
 function delDialog(){
   const dm=S.ui.delAsk&&S.matches[S.ui.delAsk];if(!dm)return '';
   return '<div class="cover"><div class="dialog"><h3>Verwijderen?</h3><p style="margin:0">'+(dm.kind==='los'?'Losse partij '+esc(sideLabel(dm,dm.games[0],0))+' tegen '+esc(sideLabel(dm,dm.games[0],1)):'Speelavond van '+fmtDate(dm.date)+': '+esc(dm.teamName)+' tegen '+esc(dm.opponent))+'</p><p class="meta" style="margin:0">Gaat naar de prullenbak. De beheerder kan het nog 30 dagen terugzetten.</p><div class="row" style="justify-content:center"><button class="btn danger" data-a="delheld">Verwijderen</button><button class="btn" data-a="delcancel">Annuleer</button></div></div></div>';
@@ -1445,7 +1450,7 @@ function act(el){
       if(!e.date){toast('Vul de datum in.');return}
       m.opponent=(e.opponent||'').trim()||m.opponent;m.date=e.date;if(m.type==='Divisie'){m.round=String(e.round||'').replace(/\D/g,'');m.venue=e.venue}
       S.ui.editNight=null;persist('matches',m,-1);toast('Gegevens aangepast.');render();return}
-    case 'sethf':setDoc(doc(fs,'settings','format'),{hf:+v,updatedAt:Date.now()},{merge:true}).then(()=>toast('High finish vanaf '+v+'.'),()=>toast('Opslaan lukte niet.'));S.settings=Object.assign({},S.settings||{},{hf:+v});render();return;
+    case 'sethf':setDoc(doc(fs,D('settings'),'format'),{hf:+v,updatedAt:Date.now()},{merge:true}).then(()=>toast('High finish vanaf '+v+'.'),()=>toast('Opslaan lukte niet.'));S.settings=Object.assign({},S.settings||{},{hf:+v});render();return;
     case 'openseason':S.ui.openSeason=S.ui.openSeason===v?null:v;render();return;
     case 'restore':restoreDoc(el.dataset.k,v);return;
     case 'appupdate':applyUpdate();return;
@@ -1510,8 +1515,8 @@ function makeDb(){
 async function seedIfEmpty(){
   try{
     if(localStorage.getItem('dc-seeded'))return;
-    const snap=await getDocsFromServer(collection(fs,'teams'));
-    if(snap.empty){const b=writeBatch(fs);SEED_TEAMS.forEach(t=>b.set(doc(fs,'teams',t.id),{...t,rev:1,updatedAt:Date.now()}));await b.commit()}
+    const snap=await getDocsFromServer(collection(fs,D('teams')));
+    if(snap.empty){const b=writeBatch(fs);SEED_TEAMS.forEach(t=>b.set(doc(fs,D('teams'),t.id),{...t,rev:1,updatedAt:Date.now()}));await b.commit()}
     localStorage.setItem('dc-seeded','1');
   }catch(e){}
 }
@@ -1521,12 +1526,12 @@ async function applySchedules(){
   try{
     const r=await fetch('schedules.json',{cache:'no-store'});if(!r.ok)return;
     const list=await r.json();if(!Array.isArray(list)||!list.length)return;
-    const snap=await getDocsFromServer(collection(fs,'teams'));
+    const snap=await getDocsFromServer(collection(fs,D('teams')));
     const teams=snap.docs.map(d=>({id:d.id,...d.data()}));
     for(const e of list){
       const t=teams.find(x=>x.id===e.teamId)||teams.find(x=>(x.name||'').toLowerCase()===(e.team||'').toLowerCase());
       if(!t||t.scheduleVersion===e.version)continue;
-      await setDoc(doc(fs,'teams',t.id),{schedule:e.schedule,scheduleNote:e.scheduleNote||'',scheduleVersion:e.version,rev:(t.rev||0)+1,updatedAt:Date.now()},{merge:true});
+      await setDoc(doc(fs,D('teams'),t.id),{schedule:e.schedule,scheduleNote:e.scheduleNote||'',scheduleVersion:e.version,rev:(t.rev||0)+1,updatedAt:Date.now()},{merge:true});
     }
   }catch(err){}
 }
@@ -1537,9 +1542,9 @@ async function initDb(){
   window.addEventListener('offline',()=>setSync('offline'));
   await seedIfEmpty();
   applySchedules();
-  onSnapshot(doc(fs,'settings','format'),d=>{S.settings=d.exists()?d.data():null;if(!(S.route&&S.route.name==='beheer'))render()},()=>{});
+  onSnapshot(doc(fs,D('settings'),'format'),d=>{S.settings=d.exists()?d.data():null;if(!(S.route&&S.route.name==='beheer'))render()},()=>{});
   checkAdmin();touchDevice();manageWake();
-  db.collection('teams').onSnapshot(s=>mergeSnap('teams',s),()=>{setSync('fout');verifyDevice()});
+  db.collection(D('teams')).onSnapshot(s=>mergeSnap('teams',s),()=>{setSync('fout');verifyDevice()});
   subMatches();
 }
 /* Zuinig met lezen: op het scorebord en de avondpagina luistert de tablet alleen naar die ene avond;
@@ -1555,11 +1560,11 @@ function subMatches(){
   if(local)return; /* oefenpartij: niets online te volgen */
   if(!one){
     firstSnap.matches=true;
-    matchUnsub=onSnapshot(query(collection(fs,'matches'),orderBy('createdAt','desc'),limit(400)),q=>mergeSnap('matches',wrap(q)),()=>{setSync('fout');verifyDevice()});
+    matchUnsub=onSnapshot(query(collection(fs,D('matches')),orderBy('createdAt','desc'),limit(400)),q=>mergeSnap('matches',wrap(q)),()=>{setSync('fout');verifyDevice()});
     return;
   }
-  const id=r.id,p='matches/'+id;
-  matchUnsub=onSnapshot(doc(fs,'matches',id),d=>{
+  const id=r.id,p=D('matches')+'/'+id;
+  matchUnsub=onSnapshot(doc(fs,D('matches'),id),d=>{
     if(!d.exists()){if(!pend[p]&&!busy[p]&&!(S.ui.losCache&&S.ui.losCache.id===id))place('matches',id,null)}
     else{const v=fromRemote('matches',d.data()),loc=findAny('matches',id);if(!loc||(v.rev||0)>=(loc.rev||0))place('matches',id,clone(v))}
     lsSave();render();
@@ -1581,27 +1586,10 @@ function vBeheer(){
       (S.ui.adminErr?'<p class="gate-err">'+esc(S.ui.adminErr)+'</p>':'')+
       '<button class="btn primary" type="submit"'+(st==='busy'?' disabled':'')+'>'+(st==='busy'?'Bezig…':'Ontgrendelen')+'</button></form></div>';
   }
-  if(!S.ui.devicesLoaded){S.ui.devicesLoaded=true;loadDevices()}
+  if(!IS_TEST&&!S.ui.devicesLoaded){S.ui.devicesLoaded=true;loadDevices()}
   if(!S.ui.purged){S.ui.purged=true;purgeOldTrash()}
-  // ---- tablets
-  h+='<section class="section"><h2 class="sec">Tablets <small>gekoppelde apparaten</small></h2>';
-  const dv=S.ui.devices;
-  if(!dv)h+='<p class="meta">Laden…</p>';
-  else if(dv.error)h+='<p class="gate-err">'+esc(dv.error)+'</p>';
-  else{
-    h+='<div class="nlist">'+dv.list.map(x=>{
-      const me=x.id===fbUid,adm=dv.admins.has(x.id);
-      return '<div class="drow"><span class="dn"><span class="dt"><b>'+esc(x.name||'Tablet')+'</b>'+(me?' <span class="badge">deze tablet</span>':'')+(adm?' <span class="badge vc">beheer</span>':'')+'</span><small>gekoppeld '+fmtTs(x.createdAt)+' · laatst actief '+(x.lastSeen?fmtTs(x.lastSeen):'onbekend')+'</small></span>'+
-        (me?'':'<span class="row">'+(adm?confirmBtn('unadm-'+x.id,'Beheer intrekken','unadmin:'+x.id):'')+confirmBtn('unlink-'+x.id,'Ontkoppelen','unlink:'+x.id)+'</span>')+'</div>';
-    }).join('')+'</div><p class="meta" style="margin:0">Ontkoppelde tablets moeten de clubcode opnieuw invoeren. "Laatst actief" wordt één keer per dag bijgewerkt.</p>';
-  }
-  h+='</section>';
-  // ---- clubcode
-  h+='<section class="section"><h2 class="sec">Clubcode wijzigen <small>gekoppelde tablets blijven gekoppeld</small></h2>'+
-    '<form id="codeform" class="form-grid" autocomplete="off"><label class="f">Nieuwe clubcode<input class="in" id="c-new" type="password" autocomplete="new-password" minlength="12" required></label>'+
-    '<label class="f">Nogmaals<input class="in" id="c-rep" type="password" autocomplete="new-password" required></label>'+
-    '<div class="row" style="align-self:end"><button class="btn primary" type="submit">Clubcode opslaan</button></div></form>'+
-    '<p class="meta" style="margin:0">Minstens 12 tekens, met zowel letters als cijfers. Alleen nieuwe apparaten hebben de nieuwe code nodig.</p></section>';
+  h+='<section class="section"><h2 class="sec">Live-weergave <small>alleen op beheer-apparaten</small></h2><p class="meta" style="margin:0">Alle avonden van vandaag naast elkaar, alleen om mee te kijken. Bedoeld voor een scherm achter de bar.</p><div class="row"><button class="btn primary" data-go="live">Live-weergave openen</button></div></section>';
+  h+='<section class="section"><h2 class="sec">High finish <small>vanaf welke finish een HF in het avondoverzicht komt</small></h2><div class="row"><span class="seg">'+[100,101,110,121].map(n=>'<button data-a="sethf" data-v="'+n+'" class="'+(hfMin()===n?'on':'')+'">'+n+'+</button>').join('')+'</span></div></section>';
   // ---- best of
   if(!S.ui.bo){S.ui.bo={};DIVISIONS.forEach(d=>{S.ui.bo[d]={};['501','701','tactic'].forEach(k=>S.ui.bo[d][k]=boFor(d,k))})}
   h+='<section class="section"><h2 class="sec">Best of per divisie <small>geldt voor nieuwe speelavonden</small></h2>';
@@ -1610,8 +1598,6 @@ function vBeheer(){
     h+='<tr><td class="d">'+d+'</td>'+['501','701','tactic'].map(k=>'<td><select class="in" id="bo-'+i+'-'+k+'" data-bodiv="'+d+'" data-bokind="'+k+'">'+[1,3,5,7,9,11].map(n=>'<option value="'+n+'"'+(S.ui.bo[d][k]===n?' selected':'')+'>Bo'+n+'</option>').join('')+'</select></td>').join('')+'</tr>';
   });
   h+='</tbody></table></div><div class="row"><button class="btn primary" data-a="bosave">Opslaan</button><button class="btn" data-a="boreset">Standaard herstellen</button></div></section>';
-  h+='<section class="section"><h2 class="sec">High finish <small>vanaf welke finish een HF in het avondoverzicht komt</small></h2><div class="row"><span class="seg">'+[100,101,110,121].map(n=>'<button data-a="sethf" data-v="'+n+'" class="'+(hfMin()===n?'on':'')+'">'+n+'+</button>').join('')+'</span></div></section>';
-  h+='<section class="section"><h2 class="sec">Live-weergave <small>alleen op beheer-apparaten</small></h2><p class="meta" style="margin:0">Alle avonden van vandaag naast elkaar, alleen om mee te kijken. Bedoeld voor een scherm achter de bar.</p><div class="row"><button class="btn primary" data-go="live">Live-weergave openen</button></div></section>';
   // ---- prullenbak
   const tm=Object.values(S.trash).map(m=>({k:'matches',id:m.id,at:m.deleted.at,by:m.deleted.by,label:(m.manual?'Uitslag':'Speelavond')+' '+fmtDate(m.date)+' · '+(m.teamName||'')+' tegen '+(m.opponent||'')}))
     .concat(Object.values(S.trashTeams).map(t=>({k:'teams',id:t.id,at:t.deleted.at,by:t.deleted.by,label:'Team '+(t.name||'')}))).sort((a,b)=>b.at-a.at);
@@ -1626,6 +1612,28 @@ function vBeheer(){
     (open?'<p class="gate-err" style="margin:0">Let op: er '+(open===1?'is nog 1 speelavond':'zijn nog '+open+' speelavonden')+' niet afgerond. Die worden ook gearchiveerd.</p>':'')+
     '<p class="meta" style="margin:0">Alle uitslagen gaan naar "Vorige seizoenen" op de teampagina\'s en de speelschema\'s worden leeggemaakt. Teams en spelers blijven bestaan.</p>'+
     '<div class="row">'+confirmBtn('season','Seizoen afsluiten','season')+'</div></section>';
+  if(IS_TEST){h+='<section class="section"><h2 class="sec">Clubcode en tablets</h2><p class="meta" style="margin:0">Alleen te beheren in de echte app, niet in de testversie.</p></section>';}
+  else{
+  // ---- clubcode
+  h+='<section class="section"><h2 class="sec">Clubcode wijzigen <small>gekoppelde tablets blijven gekoppeld</small></h2>'+
+    '<form id="codeform" class="form-grid" autocomplete="off"><label class="f">Nieuwe clubcode<input class="in" id="c-new" type="password" autocomplete="new-password" minlength="12" required></label>'+
+    '<label class="f">Nogmaals<input class="in" id="c-rep" type="password" autocomplete="new-password" required></label>'+
+    '<div class="row" style="align-self:end"><button class="btn primary" type="submit">Clubcode opslaan</button></div></form>'+
+    '<p class="meta" style="margin:0">Minstens 12 tekens, met zowel letters als cijfers. Alleen nieuwe apparaten hebben de nieuwe code nodig.</p></section>';
+  // ---- tablets
+  h+='<section class="section"><h2 class="sec">Tablets <small>gekoppelde apparaten</small></h2>';
+  const dv=S.ui.devices;
+  if(!dv)h+='<p class="meta">Laden…</p>';
+  else if(dv.error)h+='<p class="gate-err">'+esc(dv.error)+'</p>';
+  else{
+    h+='<div class="nlist">'+dv.list.map(x=>{
+      const me=x.id===fbUid,adm=dv.admins.has(x.id);
+      return '<div class="drow"><span class="dn"><span class="dt"><b>'+esc(x.name||'Tablet')+'</b>'+(me?' <span class="badge">deze tablet</span>':'')+(adm?' <span class="badge vc">beheer</span>':'')+'</span><small>gekoppeld '+fmtTs(x.createdAt)+' · laatst actief '+(x.lastSeen?fmtTs(x.lastSeen):'onbekend')+'</small></span>'+
+        (me?'':'<span class="row">'+(adm?confirmBtn('unadm-'+x.id,'Beheer intrekken','unadmin:'+x.id):'')+confirmBtn('unlink-'+x.id,'Ontkoppelen','unlink:'+x.id)+'</span>')+'</div>';
+    }).join('')+'</div><p class="meta" style="margin:0">Ontkoppelde tablets moeten de clubcode opnieuw invoeren. "Laatst actief" wordt één keer per dag bijgewerkt.</p>';
+  }
+  h+='</section>';
+  }
   return h+'</div>';
 }
 async function checkAdmin(){
@@ -1653,14 +1661,14 @@ async function adminAction(kind,arg){
 }
 function restoreDoc(coll,id){const o=findAny(coll,id);if(!o)return;delete o.deleted;persist(coll,o);toast('Teruggezet.');render()}
 async function purgeDoc(coll,id){
-  try{await deleteDoc(doc(fs,coll,id));place(coll,id,null);lsSave();toast('Definitief verwijderd.')}
+  try{await deleteDoc(doc(fs,D(coll),id));place(coll,id,null);lsSave();toast('Definitief verwijderd.')}
   catch(e){toast('Verwijderen lukte niet.')}
   render();
 }
 function purgeOldTrash(){
   const lim=Date.now()-30*864e5;
-  Object.values(S.trash).forEach(m=>{if(m.deleted.at<lim)deleteDoc(doc(fs,'matches',m.id)).then(()=>{place('matches',m.id,null)}).catch(()=>{})});
-  Object.values(S.trashTeams).forEach(t=>{if(t.deleted.at<lim)deleteDoc(doc(fs,'teams',t.id)).then(()=>{place('teams',t.id,null)}).catch(()=>{})});
+  Object.values(S.trash).forEach(m=>{if(m.deleted.at<lim)deleteDoc(doc(fs,D('matches'),m.id)).then(()=>{place('matches',m.id,null)}).catch(()=>{})});
+  Object.values(S.trashTeams).forEach(t=>{if(t.deleted.at<lim)deleteDoc(doc(fs,D('teams'),t.id)).then(()=>{place('teams',t.id,null)}).catch(()=>{})});
 }
 async function closeSeason(){
   const season=(S.ui.season||'').trim()||seasonGuess();
@@ -1668,9 +1676,9 @@ async function closeSeason(){
     const b=writeBatch(fs);let n=0;
     Object.values(S.teams).forEach(t=>{
       const o=clone(t);o.archive=o.archive||{};o.archive[season]={schedule:o.schedule||[],scheduleNote:o.scheduleNote||''};
-      o.schedule=[];o.scheduleNote='';o.rev=(o.rev||0)+1;o.updatedAt=Date.now();b.set(doc(fs,'teams',t.id),o);n++;
+      o.schedule=[];o.scheduleNote='';o.rev=(o.rev||0)+1;o.updatedAt=Date.now();b.set(doc(fs,D('teams'),t.id),o);n++;
     });
-    Object.values(S.matches).filter(m=>m.kind==='avond').forEach(m=>{const o=clone(m);o.archived=season;o.rev=(o.rev||0)+1;o.updatedAt=Date.now();b.set(doc(fs,'matches',m.id),toRemote('matches',o));n++});
+    Object.values(S.matches).filter(m=>m.kind==='avond').forEach(m=>{const o=clone(m);o.archived=season;o.rev=(o.rev||0)+1;o.updatedAt=Date.now();b.set(doc(fs,D('matches'),m.id),toRemote('matches',o));n++});
     await b.commit();
     toast('Seizoen '+season+' afgesloten.');
   }catch(e){toast(e&&e.code==='permission-denied'?'Geen beheerrechten op deze tablet.':'Afsluiten lukte niet. Controleer de internetverbinding.')}
@@ -1705,7 +1713,7 @@ async function touchDevice(){
 }
 async function saveBo(reset){
   const bo=reset?null:S.ui.bo;
-  try{await setDoc(doc(fs,'settings','format'),{bo:bo||{},updatedAt:Date.now()},{merge:!reset});S.ui.bo=null;toast(reset?'Standaardinstellingen hersteld.':'Opgeslagen. Geldt voor nieuwe speelavonden.')}
+  try{await setDoc(doc(fs,D('settings'),'format'),{bo:bo||{},updatedAt:Date.now()},{merge:!reset});S.ui.bo=null;toast(reset?'Standaardinstellingen hersteld.':'Opgeslagen. Geldt voor nieuwe speelavonden.')}
   catch(e){toast(e&&e.code==='permission-denied'?'Geen beheerrechten op deze tablet.':'Opslaan mislukt. Controleer de internetverbinding.')}
   render();
 }

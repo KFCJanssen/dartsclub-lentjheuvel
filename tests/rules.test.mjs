@@ -69,6 +69,8 @@ await t('mag de clubcode wijzigen', () => assertSucceeds(setDoc(doc(beheer, 'con
 await t('mag de beheercode niet via de app wijzigen', () => assertFails(setDoc(doc(beheer, 'config/admin'), {code: 'x'})));
 await t('mag een tablet ontkoppelen', () => assertSucceeds(deleteDoc(doc(beheer, 'devices/nieuw'))));
 await t('mag definitief verwijderen', () => assertSucceeds(deleteDoc(doc(beheer, 'matches/m2'))));
+await t('testversie: tablet mag in de testkopie spelen', () => assertSucceeds(setDoc(doc(tablet, 'test_matches/x'), {id: 'x', kind: 'avond', games: []})));
+await t('testversie: zelfde beperkingen (schema alleen beheer)', () => assertFails(setDoc(doc(tablet, 'test_teams/t9'), {schedule: [1]}, {merge: true}).then(() => setDoc(doc(tablet, 'test_teams/t9'), {schedule: [2]}, {merge: true}))));
 await t('na ontkoppelen geen toegang meer', () => assertFails(getDoc(doc(nieuw, 'teams/t1'))));
 await t('gekoppelde tablet blijft werken na nieuwe clubcode', () => assertSucceeds(getDoc(doc(tablet, 'teams/t1'))));
 

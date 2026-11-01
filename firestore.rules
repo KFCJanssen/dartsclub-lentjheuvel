@@ -43,30 +43,55 @@ service cloud.firestore {
       allow delete: if admin();
     }
 
+    // Teams: captains mogen naam, divisie, spelers en instellingen aanpassen.
+    // Speelschema, archief en verwijderen: alleen een beheerder.
+    // (Uitzondering: een nieuw meegeleverd speelschema, herkenbaar aan een nieuwe scheduleVersion.)
+    function teamUpdateOk() {
+      return admin() || (registered()
+        && same('deleted') && same('archive')
+        && ((same('schedule') && same('scheduleNote')) || !same('scheduleVersion')));
+    }
+    // Speelavonden en uitslagen: iedereen mag spelen en naar de prullenbak verplaatsen;
+    // terugzetten, archiveren en definitief verwijderen alleen een beheerder.
+    function matchCreateOk() {
+      return registered() && request.resource.data.get('archived', null) == null;
+    }
+    function matchUpdateOk() {
+      return admin() || (registered() && same('archived')
+        && (same('deleted') || resource.data.get('deleted', null) == null));
+    }
+
+    // ---- echte app ----
     match /settings/{id} {
       allow read: if registered();
       allow write: if admin();
     }
-
-    // Teams: captains mogen naam, divisie, spelers en instellingen aanpassen.
-    // Speelschema, archief en verwijderen: alleen een beheerder.
-    // (Uitzondering: een nieuw meegeleverd speelschema, herkenbaar aan een nieuwe scheduleVersion.)
     match /teams/{id} {
+      allow read, create: if registered();
+      allow update: if teamUpdateOk();
+      allow delete: if admin();
+    }
+    match /matches/{id} {
       allow read: if registered();
-      allow create: if registered();
-      allow update: if admin() || (registered()
-        && same('deleted') && same('archive')
-        && ((same('schedule') && same('scheduleNote')) || !same('scheduleVersion')));
+      allow create: if matchCreateOk();
+      allow update: if matchUpdateOk();
       allow delete: if admin();
     }
 
-    // Speelavonden en uitslagen: iedereen mag spelen en naar de prullenbak verplaatsen;
-    // terugzetten, archiveren en definitief verwijderen alleen een beheerder.
-    match /matches/{id} {
+    // ---- testversie: eigen kopie van de gegevens, zelfde regels ----
+    match /test_settings/{id} {
       allow read: if registered();
-      allow create: if registered() && request.resource.data.get('archived', null) == null;
-      allow update: if admin() || (registered() && same('archived')
-        && (same('deleted') || resource.data.get('deleted', null) == null));
+      allow write: if admin();
+    }
+    match /test_teams/{id} {
+      allow read, create: if registered();
+      allow update: if teamUpdateOk();
+      allow delete: if admin();
+    }
+    match /test_matches/{id} {
+      allow read: if registered();
+      allow create: if matchCreateOk();
+      allow update: if matchUpdateOk();
       allow delete: if admin();
     }
   }

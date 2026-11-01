@@ -8,17 +8,15 @@ Scorebord-app voor de dartsclub: teams, competitie- en bekeravonden, live scores
 Elke wijziging wordt eerst automatisch gecontroleerd (`tests/run.mjs`). Faalt een controle, dan gaat er niets online.
 
 - **Testversie:** wijzigingen op de branch `test` komen op een apart testadres
-  (te zien onder **Actions** bij de laatste run). Die gebruikt dezelfde database als de echte app:
-  test risicovolle dingen met een oefenpartij.
+  (https://dartsclub-lentjheuvel--test-fgakqiwy.web.app). Bij elke testdeploy krijgt de testversie een
+  verse kopie van de echte teams, avonden en instellingen (in `test_teams`, `test_matches`, `test_settings`).
+  Testen raakt de echte app dus nooit. Koppelingen en codes zijn wel gedeeld.
 - **Echte app:** wijzigingen op `main` komen online voor alle tablets.
   Op het teamoverzicht verschijnt dan "Nieuwe versie beschikbaar"; tik erop om bij te werken.
   Tijdens een partij verschijnt die melding nooit.
 
-De database-regels (`firestore.rules`) gaan niet automatisch mee. Na een wijziging daarin, vanaf de pc:
-```
-cd $HOME\Coding\dartsclub-lentjheuvel
-firebase deploy --only firestore:rules
-```
+De database-regels (`firestore.rules`) gaan automatisch mee, maar pas nadat ze in de Firestore-emulator
+gecontroleerd zijn. Ze gelden voor de echte app en de testversie samen.
 
 ## Tablet koppelen
 - iPad: open het adres in Safari → Deel-knop → "Zet op beginscherm". Open de app via het icoon en voer de clubcode in.
