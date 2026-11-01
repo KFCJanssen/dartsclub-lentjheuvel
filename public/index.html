@@ -259,6 +259,8 @@ input.in:focus,select.in:focus{border-color:var(--brass);outline:none}
 .lc-meta,.lc-game,.lc-sub{color:var(--muted);font-size:.9rem;font-weight:600}
 .lc-big{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .lc-big b{font-family:var(--font-display);font-weight:900;font-size:clamp(3rem,9vw,6rem);line-height:.9;text-align:center;background:var(--bg);border-radius:10px;padding:8px 0}
+.lc-head .turn{font-style:normal;color:var(--brass);margin:0 .35em;font-size:.9em}
+.lc-big b.on{box-shadow:inset 0 0 0 3px var(--brass)}
 .lc-none{color:var(--muted);font-weight:700;padding:16px 0}
 .tabs{display:flex;gap:4px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:4px;align-self:flex-start}
 .tab{border:0;background:transparent;border-radius:9px;padding:10px 22px;font-weight:700;font-size:1.05rem;min-height:48px;color:var(--muted)}
@@ -1048,19 +1050,19 @@ function editNightDialog(){
 function liveCard(m){
   const w=matchScore(m),lt=legTotal(m);
   const cur=m.games.find(g=>g.winner==null&&gameStarted(g))||m.games.find(g=>g.winner==null);
-  let body='<div class="lc-none">Alle partijen gespeeld</div>';
+  let body='<div class="lc-none">Alle partijen gespeeld</div>',turn=-1;
   if(cur){
     const lw=legsWon(cur),g0=sideLabel(m,cur,0),g1=sideLabel(m,cur,1);
     let v0='–',v1='–',sub='';
     if(!gameStarted(cur))sub='Nog niet begonnen';
     else if(cur.kind==='tactic'){const l=cur.legs[cur.legs.length-1]||newTacLeg();v0=l.pts[0];v1=l.pts[1];sub='punten · dicht '+TARGETS.filter(t=>l.marks[0][t]>=3).length+'–'+TARGETS.filter(t=>l.marks[1][t]>=3).length}
-    else{const st=x01State(cur,cur.legs[cur.legs.length-1]);v0=st.rem[0];v1=st.rem[1];sub='rest · '+esc(g0)+' '+(st.next.side===0?'gooit':'')+(st.next.side===1?esc(g1)+' gooit':'')}
+    else{const st=x01State(cur,cur.legs[cur.legs.length-1]);v0=st.rem[0];v1=st.rem[1];sub='rest';turn=st.next.side}
     body='<div class="lc-game">Partij '+cur.n+' · '+KIND_LABEL[cur.kind]+' '+(cur.size===2?'koppel':'enkel')+'</div>'+
-      '<div class="lc-big"><b class="c0">'+v0+'</b><b class="c1">'+v1+'</b></div><div class="lc-sub">'+sub+'</div>';
+      '<div class="lc-big"><b class="c0'+(turn===0?' on':'')+'">'+v0+'</b><b class="c1'+(turn===1?' on':'')+'">'+v1+'</b></div><div class="lc-sub">'+sub+'</div>';
   }
   /* midden bovenaan: legs van de partij die nu bezig is (anders de partijstand) */
   const top=cur?legsWon(cur):w,topLbl=cur?'legs':'partijen';
-  return '<div class="lcard"><div class="lc-head"><span class="c0">'+esc(m.teamName)+'</span><span class="lc-score">'+top[0]+'–'+top[1]+'<small>'+topLbl+'</small></span><span class="c1">'+esc(m.opponent)+'</span></div>'+
+  return '<div class="lcard"><div class="lc-head"><span class="c0">'+(turn===0?'<i class="turn">▶</i>':'')+esc(m.teamName)+'</span><span class="lc-score">'+top[0]+'–'+top[1]+'<small>'+topLbl+'</small></span><span class="c1">'+esc(m.opponent)+(turn===1?'<i class="turn">◀</i>':'')+'</span></div>'+
     '<div class="lc-meta">'+(m.type==='Beker'?'Beker':m.round?'SpR '+esc(m.round):'Competitie')+' · tussenstand '+w[0]+'–'+w[1]+'</div>'+body+hlSummary(m)+'</div>';
 }
 function vLive(){
