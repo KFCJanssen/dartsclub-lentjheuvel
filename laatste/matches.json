@@ -1039,139 +1039,6 @@
   "autoKlaar": true
  },
  {
-  "id": "mvvmq6f7kisam9",
-  "teamName": "Lentjheuvel 4",
-  "rev": 35,
-  "games": [
-   {
-    "legs": [
-     {
-      "turns": [],
-      "starter": 0
-     }
-    ],
-    "size": 1,
-    "away": [],
-    "block": 0,
-    "winner": null,
-    "n": 1,
-    "kind": "501",
-    "home": [],
-    "bestOf": 3
-   },
-   {
-    "away": [],
-    "winner": null,
-    "size": 1,
-    "bestOf": 3,
-    "legs": [],
-    "home": [],
-    "kind": "501",
-    "block": 0,
-    "n": 2
-   },
-   {
-    "block": 0,
-    "away": [],
-    "bestOf": 3,
-    "winner": null,
-    "legs": [],
-    "size": 1,
-    "kind": "501",
-    "home": [],
-    "n": 3
-   },
-   {
-    "size": 1,
-    "block": 0,
-    "legs": [],
-    "away": [],
-    "bestOf": 3,
-    "home": [],
-    "winner": null,
-    "kind": "501",
-    "n": 4
-   },
-   {
-    "home": [],
-    "bestOf": 3,
-    "kind": "701",
-    "winner": null,
-    "block": 1,
-    "away": [],
-    "size": 2,
-    "n": 5,
-    "legs": []
-   },
-   {
-    "n": 6,
-    "winner": null,
-    "bestOf": 3,
-    "home": [],
-    "kind": "701",
-    "size": 2,
-    "legs": [],
-    "block": 1,
-    "away": []
-   },
-   {
-    "size": 2,
-    "block": 2,
-    "bestOf": 3,
-    "legs": [],
-    "away": [],
-    "winner": null,
-    "home": [],
-    "n": 7,
-    "kind": "tactic"
-   },
-   {
-    "winner": null,
-    "bestOf": 3,
-    "kind": "tactic",
-    "home": [],
-    "legs": [],
-    "size": 2,
-    "block": 2,
-    "n": 8,
-    "away": []
-   },
-   {
-    "block": 3,
-    "away": [],
-    "legs": [],
-    "size": 1,
-    "kind": "501",
-    "n": 9,
-    "home": [],
-    "bestOf": 3,
-    "winner": null
-   },
-   {
-    "away": [],
-    "n": 10,
-    "size": 1,
-    "legs": [],
-    "winner": null,
-    "home": [],
-    "kind": "501",
-    "block": 3,
-    "bestOf": 3
-   }
-  ],
-  "date": "2026-11-06",
-  "venue": "Thuis",
-  "opponent": "Treebeekse Treffers 3",
-  "updatedAt": 1793404571617,
-  "round": "6",
-  "teamId": "mvsf87qe54n8dm",
-  "division": "4e divisie",
-  "type": "Divisie",
-  "kind": "avond",
-  "createdAt": 1793404486915,
-  "status": "open"
- },
- {
   "id": "mvwwckrkiadfgs",
   "kind": "avond",
   "manual": true,
@@ -1315,5 +1182,251 @@
   },
   "rev": 1,
   "updatedAt": 1793481335280
+ },
+ {
+  "id": "mvxua8kc9vcnog",
+  "kind": "avond",
+  "schedId": "l4s09",
+  "type": "Divisie",
+  "round": "6",
+  "venue": "Thuis",
+  "teamId": "mvsf87qe54n8dm",
+  "teamName": "Lentjheuvel 4",
+  "division": "4e divisie",
+  "opponent": "Treebeekse Treffers 3",
+  "date": "2026-11-06",
+  "createdAt": 1793538112476,
+  "status": "open",
+  "games": [
+   {
+    "n": 1,
+    "block": 0,
+    "kind": "501",
+    "size": 1,
+    "bestOf": 3,
+    "home": [],
+    "away": [],
+    "legs": [],
+    "winner": null
+   },
+   {
+    "n": 2,
+    "block": 0,
+    "kind": "501",
+    "size": 1,
+    "bestOf": 3,
+    "home": [],
+    "away": [],
+    "legs": [],
+    "winner": null
+   },
+   {
+    "n": 3,
+    "block": 0,
+    "kind": "501",
+    "size": 1,
+    "bestOf": 3,
+    "home": [],
+    "away": [],
+    "legs": [],
+    "winner": null
+   },
+   {
+    "n": 4,
+    "block": 0,
+    "kind": "501",
+    "size": 1,
+    "bestOf": 3,
+    "home": [],
+    "away": [],
+    "legs": [],
+    "winner": null
+   },
+   {
+    "n": 5,
+    "block": 1,
+    "kind": "701",
+    "size": 2,
+    "bestOf": 3,
+    "home": [],
+    "away": [],
+    "legs": [],
+    "winner": null
+   },
+   {
+    "n": 6,
+    "block": 1,
+    "kind": "701",
+    "size": 2,
+    "bestOf": 3,
+    "home": [],
+    "away": [],
+    "legs": [],
+    "winner": null
+   },
+   {
+    "n": 7,
+    "block": 2,
+    "kind": "tactic",
+    "size": 2,
+    "bestOf": 3,
+    "home": [],
+    "away": [],
+    "legs": [],
+    "winner": null
+   },
+   {
+    "n": 8,
+    "block": 2,
+    "kind": "tactic",
+    "size": 2,
+    "bestOf": 3,
+    "home": [],
+    "away": [],
+    "legs": [],
+    "winner": null
+   },
+   {
+    "n": 9,
+    "block": 3,
+    "kind": "501",
+    "size": 1,
+    "bestOf": 3,
+    "home": [],
+    "away": [],
+    "legs": [],
+    "winner": null
+   },
+   {
+    "n": 10,
+    "block": 3,
+    "kind": "501",
+    "size": 1,
+    "bestOf": 3,
+    "home": [],
+    "away": [],
+    "legs": [],
+    "winner": null
+   }
+  ],
+  "rev": 27,
+  "gm": {
+   "1": {
+    "legs": [
+     {
+      "starter": 0,
+      "turns": []
+     }
+    ],
+    "n": 1,
+    "block": 0,
+    "winner": null,
+    "size": 1,
+    "home": [],
+    "kind": "501",
+    "bestOf": 3,
+    "away": []
+   },
+   "2": {
+    "n": 2,
+    "block": 0,
+    "kind": "501",
+    "size": 1,
+    "bestOf": 3,
+    "home": [],
+    "away": [],
+    "legs": [],
+    "winner": null
+   },
+   "3": {
+    "n": 3,
+    "block": 0,
+    "kind": "501",
+    "size": 1,
+    "bestOf": 3,
+    "home": [],
+    "away": [],
+    "legs": [],
+    "winner": null
+   },
+   "4": {
+    "n": 4,
+    "block": 0,
+    "kind": "501",
+    "size": 1,
+    "bestOf": 3,
+    "home": [],
+    "away": [],
+    "legs": [],
+    "winner": null
+   },
+   "5": {
+    "n": 5,
+    "block": 1,
+    "kind": "701",
+    "size": 2,
+    "bestOf": 3,
+    "home": [],
+    "away": [],
+    "legs": [],
+    "winner": null
+   },
+   "6": {
+    "n": 6,
+    "block": 1,
+    "kind": "701",
+    "size": 2,
+    "bestOf": 3,
+    "home": [],
+    "away": [],
+    "legs": [],
+    "winner": null
+   },
+   "7": {
+    "n": 7,
+    "block": 2,
+    "kind": "tactic",
+    "size": 2,
+    "bestOf": 3,
+    "home": [],
+    "away": [],
+    "legs": [],
+    "winner": null
+   },
+   "8": {
+    "n": 8,
+    "block": 2,
+    "kind": "tactic",
+    "size": 2,
+    "bestOf": 3,
+    "home": [],
+    "away": [],
+    "legs": [],
+    "winner": null
+   },
+   "9": {
+    "n": 9,
+    "block": 3,
+    "kind": "501",
+    "size": 1,
+    "bestOf": 3,
+    "home": [],
+    "away": [],
+    "legs": [],
+    "winner": null
+   },
+   "10": {
+    "n": 10,
+    "block": 3,
+    "kind": "501",
+    "size": 1,
+    "bestOf": 3,
+    "home": [],
+    "away": [],
+    "legs": [],
+    "winner": null
+   }
+  },
+  "updatedAt": 1793538210918
  }
 ]

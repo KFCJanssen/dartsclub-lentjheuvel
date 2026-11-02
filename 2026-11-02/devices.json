@@ -1,0 +1,42 @@
+[
+ {
+  "id": "Ai5jxGiCyydgSqHLs4aCs4b6NF32",
+  "name": "Admin_iPad",
+  "device": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.3 Safari/605.1.15",
+  "createdAt": "2026-10-31T23:28:24.039Z",
+  "lastSeen": 1793489304228
+ },
+ {
+  "id": "DsuU06HAs0cwbhCKYL3qf5mTjc53",
+  "name": "Tablet_2",
+  "device": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+  "createdAt": "2026-10-30T23:53:03.718Z"
+ },
+ {
+  "id": "NeOml5uGVXRPKlg5L46w0pkAvy12",
+  "name": "Admin_iPhone",
+  "device": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.3 Mobile/15",
+  "createdAt": "2026-10-31T23:33:28.733Z",
+  "lastSeen": 1793489608910
+ },
+ {
+  "id": "WszMttWBgxPPZRk75Sbc4vjVwt33",
+  "name": "Admin_iPhone",
+  "device": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.3 Mobile/15",
+  "createdAt": "2026-10-31T23:36:59.512Z",
+  "lastSeen": 1793489833365
+ },
+ {
+  "id": "WtdOmu3er0W30FxzITZkaSzmwHs1",
+  "name": "Admin iPad",
+  "device": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.3 Safari/605.1.15",
+  "createdAt": "2026-11-01T12:50:19.560Z",
+  "lastSeen": 1793537419773
+ },
+ {
+  "id": "gNBjzg1Vs8cZy1EeCVFlDZLtA6q1",
+  "name": "Tablet_1",
+  "device": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+  "createdAt": "2026-10-30T23:18:14.830Z"
+ }
+]
